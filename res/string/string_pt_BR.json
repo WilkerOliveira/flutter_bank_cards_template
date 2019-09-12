@@ -1,0 +1,18 @@
+{
+  "welcome": "\nOlá, nós somos o Tribanco Digital, seu banco digital.\n",
+  "explanation": "Vamos começar?\nPara acessar ou se é sua primeira vez insira seu CPF/CNPJ abaixo:",
+  "CPF_CNPJ": "CPF ou CNPJ",
+  "cpf_required": "Informe o CPF/CNPJ",
+  "btn_continue": "CONTINUAR",
+  "triconta": "Triconta",
+  "cpf_not_found": "CPF não encontrado!",
+  "login_success": "Login realizado com sucesso!",
+  "login_failed": "Login não realizado!",
+  "help": "Ajuda",
+  "close_button": "Fechar",
+  "current_balance": "Saldo Atual",
+  "statement": "Extrato",
+  "app_name": "Triconta",
+  "cvv": "CVV",
+  "password": "Senha"
+}
