@@ -1,6 +1,7 @@
+import 'package:bank_cards/src/models/card/login.dart';
 import 'package:dio/dio.dart';
 
 abstract class Request {
-  String token;
+  Login login;
   CancelToken cancelToken;
 }

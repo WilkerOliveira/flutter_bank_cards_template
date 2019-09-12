@@ -13,7 +13,7 @@ class StatementCardRepository {
 
   Future<StatementCardResponse> consultStatement(
       StatementCardRequest request) async {
-    var header = new Header(false, "default", null, request.token);
+    var header = new Header(false, "default", null, request.login.token);
 
     await this._service.setHeader(header);
 

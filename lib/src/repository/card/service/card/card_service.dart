@@ -12,7 +12,7 @@ class CardService extends RestClient {
   Future<CardResponse> consultCards(CardRequest request) async {
     var response = await getAsync<CardResponse>(
         super.environment.getEndPoint() +
-            sprintf(EndPoints.CARDS, [request.token]),
+            sprintf(EndPoints.CARDS, [request.login.token]),
         null,
         request.cancelToken);
 
@@ -30,7 +30,7 @@ class CardService extends RestClient {
     return await super
         .fireStoneReference
         .collection("cards")
-        .document("12345678909")
+        .document(request.login.token)
         .collection("data")
         .getDocuments();
   }

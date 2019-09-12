@@ -12,7 +12,7 @@ class StatementCardService extends RestClient {
       StatementCardRequest request) async {
     var response = await getAsync<StatementCardResponse>(
         super.environment.getEndPoint() +
-            sprintf(EndPoints.STATEMENT_CARD, [request.token]),
+            sprintf(EndPoints.STATEMENT_CARD, [request.login.token]),
         null,
         request.cancelToken);
 

@@ -13,7 +13,7 @@ class InvoiceCardRepository {
   }
 
   Future<InvoiceResponse> consultClosedInvoice(InvoiceRequest request) async {
-    var header = new Header(false, "default", null, request.token);
+    var header = new Header(false, "default", null, request.login.token);
 
     await this._service.setHeader(header);
 
@@ -28,7 +28,7 @@ class InvoiceCardRepository {
   }
 
   Future<InvoiceResponse> consultInvoiceMonths(InvoiceRequest request) async {
-    var header = new Header(false, "default", null, request.token);
+    var header = new Header(false, "default", null, request.login.token);
 
     await this._service.setHeader(header);
 
@@ -37,7 +37,7 @@ class InvoiceCardRepository {
 
   Future<InvoiceResponse> consultClosedInvoiceTransactions(
       InvoiceRequest request) async {
-    var header = new Header(false, "default", null, request.token);
+    var header = new Header(false, "default", null, request.login.token);
 
     await this._service.setHeader(header);
 

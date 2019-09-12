@@ -11,7 +11,7 @@ class InvoiceService extends RestClient {
   Future<InvoiceResponse> consultClosedInvoice(InvoiceRequest request) async {
     var response = await getAsync<CardResponse>(
         super.environment.getEndPoint() +
-            sprintf(EndPoints.CLOSED_INVOICE, [request.token]),
+            sprintf(EndPoints.CLOSED_INVOICE, [request.login.token]),
         null,
         request.cancelToken);
 
@@ -30,7 +30,7 @@ class InvoiceService extends RestClient {
     var response = await getAsync<CardResponse>(
         super.environment.getEndPoint() +
             sprintf(EndPoints.CLOSED_INVOICE_TRANSACTIONS,
-                [request.token, request.month]),
+                [request.login.token, request.month]),
         null,
         request.cancelToken);
 
@@ -49,7 +49,7 @@ class InvoiceService extends RestClient {
   Future<InvoiceResponse> consultInvoiceMonths(InvoiceRequest request) async {
     var response = await getAsync<CardResponse>(
         super.environment.getEndPoint() +
-            sprintf(EndPoints.INVOICE_MONTHS, [request.token]),
+            sprintf(EndPoints.INVOICE_MONTHS, [request.login.token]),
         null,
         request.cancelToken);
 

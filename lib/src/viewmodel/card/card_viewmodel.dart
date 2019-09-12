@@ -17,6 +17,7 @@ class CardViewModel extends BaseViewModel {
 
     try {
       CardRequest request = CardRequest();
+      request.login = super.login; //TODO: MOCK
 
       CardResponse cardsResponse =
           await _cardRepository.consultCardsFB(request);
