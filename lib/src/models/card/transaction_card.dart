@@ -4,9 +4,11 @@ part 'transaction_card.g.dart';
 
 @JsonSerializable()
 class TransactionCard {
-  String expenseDate;
-  String expenseHistory;
+  String id;
+  String effectiveDate;
+  String releaseDate;
   double amount;
+  String type;
 
   @JsonKey(ignore: true)
   String icon;

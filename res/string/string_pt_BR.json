@@ -14,5 +14,8 @@
   "statement": "Extrato",
   "app_name": "Triconta",
   "cvv": "CVV",
-  "password": "Senha"
+  "password": "Senha",
+  "due_date": "Vencimento",
+  "limit": "Limite",
+  "available": "Disponível"
 }

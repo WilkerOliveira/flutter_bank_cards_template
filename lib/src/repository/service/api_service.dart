@@ -16,12 +16,10 @@ abstract class APIService {
     _environment = new EnvironmentConfig().environment;
   }
 
-  ///Configura o DIO
   void _initDio() {
     _dio = new Dio();
   }
 
-  ///Retorna o Environment
   Environment get environment => _environment;
 
   void _minVersionInterceptor() {}
@@ -30,14 +28,8 @@ abstract class APIService {
 
   void _emptyResponseBodyErrorInterceptor() {}
 
-  /// Retorna a API para comunicação com o Servidor
   Dio getClient() => _dio;
 
-  ///Configura o HEADER da Requisição
-  ///
-  /// @headerType: Tipo de Header (form-urlencoded, sTransaction, withdraw, deviceId)
-  /// @headerInfo: Informação que deve ser preenchida conforme o Header Type
-  /// @clientId: Client ID que deve ser utilizado na execução
   Future<bool> setHeader(Header header) async {
     try {
       /// Http request headers.

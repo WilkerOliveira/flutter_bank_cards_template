@@ -22,18 +22,22 @@ class StatementCardViewModel extends BaseViewModel {
     setState(ViewState.Busy);
 
     try {
+      //TODO
       this._request = StatementCardRequest();
       this._request.cancelToken = CancelToken();
+      this._request.month = "2019-07";
+      this._request.cardNumber = "5101685003780116";
+      this._request.login = super.login;
 
       StatementCardResponse result =
-          await _statementCardRepository.consultStatement(this._request);
+          await _statementCardRepository.consultStatementFB(this._request);
 
       if (result.success &&
           result.statement != null &&
           result.statement.isNotEmpty) {
         //TODO: must be refactored after backend correction
         result.statement.forEach((item) {
-          item.icon = Constants.STATEMENT_IMAGE_DEBIT;
+          item.icon = item.type == "D" ? Constants.STATEMENT_IMAGE_DEBIT : Constants.STATEMENT_IMAGE_CREDIT;
           item.additionalInfo = this.toDateString(item.effectiveDate);
         });
 
@@ -54,8 +58,8 @@ class StatementCardViewModel extends BaseViewModel {
   }
 
   String toCurrency(double value, String type) {
-    //TODO: must be refactored to get from String.xml
-    var signal = type == Constants.STATEMENT_TYPE_DEBIT ? "- R\$ " : "R\$ ";
+
+    var signal = type == Constants.STATEMENT_TYPE_DEBIT ? "- " : " ";
 
     return signal + Formatter.toCurrency(value, Intl.defaultLocale);
   }

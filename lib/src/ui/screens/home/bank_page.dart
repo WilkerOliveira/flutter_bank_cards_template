@@ -1,11 +1,11 @@
+import 'package:bank_cards/src/ui/widgets/common/common_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:bank_cards/src/ui/widgets/common/account_header.dart';
 import 'package:bank_cards/generated/i18n.dart';
 import 'package:bank_cards/src/resources/dimens.dart';
-import 'package:bank_cards/src/resources/images.dart';
 import 'package:bank_cards/src/resources/styles.dart';
 import 'package:bank_cards/src/utils/formatter.dart';
-import 'package:bank_cards/src/resources/custom_colors.dart' as customColors;
+import 'package:bank_cards/src/resources/custom_colors.dart';
 
 class BankPage extends StatefulWidget {
   @override
@@ -18,13 +18,13 @@ class _BankPageState extends State<BankPage> with TickerProviderStateMixin {
   @override
   void initState() {
     _menuItems = [
-      createNewItem("assets/images/extrato_verde.png", 'Statements', 0),
-      createNewItem("assets/images/pagamentos_verde.png", 'Payments', 1),
+      createNewItem("assets/images/ic_statement.png", 'Statements', 0),
+      createNewItem("assets/images/ic_payments.png", 'Payments', 1),
       createNewItem(
-          "assets/images/transferencias_verde.png", 'Bank Transfer', 2),
-      createNewItem("assets/images/investimentos_verde.png", 'Investments', 3),
-      createNewItem("assets/images/investimentos_verde.png", 'Loan', 4),
-      createNewItem("assets/images/servicos_verde.png", 'More', 5),
+          "assets/images/ic_invoices.png", 'Bank Transfer', 2),
+      createNewItem("assets/images/ic_statement.png", 'Investments', 3),
+      createNewItem("assets/images/ic_statement.png", 'Loan', 4),
+      createNewItem("assets/images/ic_services.png", 'More', 5),
     ];
 
     super.initState();
@@ -33,7 +33,6 @@ class _BankPageState extends State<BankPage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return new Container(
-      color: Colors.white,
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
       child: Column(
@@ -50,12 +49,6 @@ class _BankPageState extends State<BankPage> with TickerProviderStateMixin {
   Widget balance(mainContext) {
     return Container(
       padding: EdgeInsets.only(top: Dimens.BALANCE_MARGIN_TOP),
-      decoration: new BoxDecoration(
-        image: new DecorationImage(
-          image: new AssetImage(Images.CURVE_BACKGROUND),
-          fit: BoxFit.fill,
-        ),
-      ),
       height: Dimens.BALANCE_BODY_HEIGHT,
       width: MediaQuery.of(context).size.width,
       child: Padding(
@@ -106,35 +99,7 @@ class _BankPageState extends State<BankPage> with TickerProviderStateMixin {
   Widget createNewItem(img, text, position) {
     return new GestureDetector(
       onTap: () {},
-      child: Container(
-        height: 90,
-        width: 112,
-        decoration: new BoxDecoration(
-          border: new Border.all(color: customColors.green),
-          borderRadius: new BorderRadius.only(
-            bottomLeft: const Radius.circular(15.0),
-            bottomRight: const Radius.circular(15.0),
-            topRight: const Radius.circular(15.0),
-            topLeft: const Radius.circular(15.0),
-          ),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Image.asset(img, width: 48),
-            Padding(
-              padding: EdgeInsets.all(8),
-              child: Text(
-                text,
-                style: TextStyle(
-                  fontSize: 12,
-                  color: customColors.blue,
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
+      child: CommonWidgets.menuItem(img, text),
     );
   }
 }
@@ -166,15 +131,15 @@ class FunkyOverlayState extends State<FunkyOverlay>
     controller.forward();
 
     _menuItemsPopup = [
-      createNewItem2("assets/images/extrato_verde.png", 'Extratos', 0),
-      createNewItem2("assets/images/pagamentos_verde.png", 'Pagamentos', 1),
+      createNewItem2("assets/images/ic_statement.png", 'Extratos', 0),
+      createNewItem2("assets/images/ic_payments.png", 'Pagamentos', 1),
       createNewItem2(
-          "assets/images/transferencias_verde.png", 'Transferências', 2),
+          "assets/images/ic_invoices.png", 'Transferências', 2),
       createNewItem2(
-          "assets/images/investimentos_verde.png", 'Investimentos', 3),
+          "assets/images/ic_statement.png", 'Investimentos', 3),
       createNewItem2(
-          "assets/images/investimentos_verde.png", 'Investimentos', 4),
-      createNewItem2("assets/images/servicos_verde.png", 'Opções', 5),
+          "assets/images/ic_statement.png", 'Investimentos', 4),
+      createNewItem2("assets/images/ic_services.png", 'Opções', 5),
     ];
   }
 
@@ -198,7 +163,7 @@ class FunkyOverlayState extends State<FunkyOverlay>
       height: 90,
       width: 112,
       decoration: new BoxDecoration(
-        border: new Border.all(color: customColors.green),
+        border: new Border.all(color: CustomColors.GREEN),
         borderRadius: new BorderRadius.only(
           bottomLeft: const Radius.circular(15.0),
           bottomRight: const Radius.circular(15.0),
@@ -216,7 +181,7 @@ class FunkyOverlayState extends State<FunkyOverlay>
               text,
               style: TextStyle(
                 fontSize: 12,
-                color: customColors.blue,
+                color: CustomColors.BLUE,
               ),
             ),
           ),

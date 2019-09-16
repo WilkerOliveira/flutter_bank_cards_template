@@ -1,22 +1,19 @@
+import 'package:bank_cards/src/resources/custom_colors.dart';
+import 'package:bank_cards/src/resources/dimens.dart';
 import 'package:flutter/material.dart';
 
 class AccountHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: new BoxDecoration(
-        image: new DecorationImage(
-          image: new AssetImage("assets/images/normal_bg.png"),
-          fit: BoxFit.fill,
-        ),
-      ),
+      margin: EdgeInsets.all(Dimens.MARGIN_ACCOUNT_HEADER),
       width: MediaQuery.of(context).size.width,
       child: Center(
         child: Stack(
           children: <Widget>[
             Container(
               decoration: new BoxDecoration(
-                color: Color(0xFFDC0F7D),
+                color: CustomColors.GREEN,
                 borderRadius: new BorderRadius.only(
                   bottomLeft: const Radius.circular(15.0),
                   bottomRight: const Radius.circular(15.0),
@@ -32,7 +29,7 @@ class AccountHeader extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(right: 15),
                     child: Text(
-                      'Banco: ' + "634",
+                      'Bank: ' + "634",
                       textAlign: TextAlign.left,
                       style: TextStyle(
                         color: Colors.white,

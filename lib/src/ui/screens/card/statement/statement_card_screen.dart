@@ -1,3 +1,4 @@
+import 'package:bank_cards/src/ui/widgets/common/common_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:bank_cards/src/models/card/card.dart' as model;
@@ -34,85 +35,52 @@ class _StatementCardScreenState extends State<StatementCardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: mainAppHeader(context),
-      body: BaseWidget<StatementCardViewModel>(
-        model: StatementCardViewModel(repository: Provider.of(context)),
-        onModelReady: (model) async {
-          _statementResponse = await model.consultStatement();
-        },
-        builder: (mainContext, model, child) => new Container(
-          color: Colors.white,
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          child: Column(
-            children: <Widget>[
-              SizedBox(
-                height: 230.0,
-                child: Container(
-                  padding: EdgeInsets.all(10),
-                  child: new Image.network(
-                    _privateCard.cardImage,
-                    fit: BoxFit.fill,
-                  ),
+      body: Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        child: Column(
+          children: <Widget>[
+            SizedBox(
+              height: 230.0,
+              child: Container(
+                padding: EdgeInsets.all(10),
+                child: new Image.network(
+                  _privateCard.cardImage,
+                  fit: BoxFit.fill,
                 ),
               ),
-              model.state != ViewState.Busy
-                  ? _statementResponse != null
-                      ? this.statement(model)
-                      : Text("Nothing to show!!!")
-                  : CustomCircularProgressIndicator(),
-            ],
-          ),
+            ),
+            this.statement(),
+          ],
         ),
       ),
     );
   }
 
-  Widget statement(model) {
-    return Expanded(
-      child: Container(
-        margin: EdgeInsets.only(top: 10, bottom: 10),
-        alignment: Alignment.centerLeft,
-        child: new ListView.builder(
-          itemCount: _statementResponse.statement.length,
-          itemBuilder: (BuildContext ctxt, int index) {
-            return createItem(_statementResponse.statement[index], model);
-          },
-        ),
-      ),
-    );
-  }
-
-  Widget createItem(StatementCard statement, model) {
-    return Card(
-      margin: EdgeInsets.only(top: 15),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          new ListTile(
-            leading: new Image(
-              image: AssetImage(statement.icon),
-              width: 36,
-            ),
-            title: Text(statement.description),
-            subtitle: Text(statement.additionalInfo),
-            trailing: Container(
-              alignment: Alignment.center,
-              width: 100,
-              height: 40,
-              child: Text(
-                model.toCurrency(
-                    statement.amount, Constants.STATEMENT_TYPE_DEBIT),
-                style: TextStyle(
-                    color: Color(0xFFB34747),
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold),
-              ),
-            ),
-          ),
-        ],
-      ),
+  Widget statement() {
+    return BaseWidget<StatementCardViewModel>(
+      model: StatementCardViewModel(repository: Provider.of(context)),
+      onModelReady: (model) async {
+        _statementResponse = await model.consultStatement();
+      },
+      builder: (mainContext, model, child) => model.state != ViewState.Busy
+          ? _statementResponse != null
+              ? Expanded(
+                  child: Container(
+                    margin: EdgeInsets.only(top: 10, bottom: 10),
+                    alignment: Alignment.centerLeft,
+                    child: new ListView.builder(
+                      itemCount: _statementResponse.statement.length,
+                      itemBuilder: (BuildContext ctxt, int index) {
+                        return CommonWidgets.createInvoiceItem(
+                            _statementResponse.statement[index], model);
+                      },
+                    ),
+                  ),
+                )
+              : Text("Nothing to show!!!")
+          : CustomCircularProgressIndicator(),
     );
   }
 }

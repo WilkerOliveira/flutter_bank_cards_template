@@ -161,8 +161,8 @@ class _ClosedInvoiceCardScreenState extends State<ClosedInvoiceCardScreen> {
               image: AssetImage(statement.icon),
               width: 36,
             ),
-            title: Text(statement.expenseHistory),
-            subtitle: Text(statement.expenseDate),
+            title: Text(statement.effectiveDate),
+            subtitle: Text(statement.effectiveDate),
             trailing: Container(
               alignment: Alignment.center,
               width: 100,

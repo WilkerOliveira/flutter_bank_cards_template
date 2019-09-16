@@ -1,4 +1,4 @@
-import 'package:bank_cards/src/models/card/login.dart';
+import 'package:bank_cards/src/models/login.dart';
 import 'package:dio/dio.dart';
 
 abstract class Request {

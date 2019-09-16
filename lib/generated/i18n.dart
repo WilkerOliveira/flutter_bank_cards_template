@@ -90,6 +90,18 @@ class S {
     return Intl.message("Senha", name: 'password');
   }
 
+  String get due_date {
+    return Intl.message("Vencimento", name: 'due_date');
+  }
+
+  String get limit {
+    return Intl.message("Limite", name: 'limit');
+  }
+
+  String get available {
+    return Intl.message("Disponível", name: 'available');
+  }
+
 
 }
 

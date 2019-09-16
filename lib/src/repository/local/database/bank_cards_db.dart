@@ -38,7 +38,7 @@ class BankCardsDatabase {
 
   void _onCreate(Database db, int version) {
     db.execute('''
-      CREATE TABLE ${_TB_NAME}(
+      CREATE TABLE $_TB_NAME(
         name TEXT PRIMARY KEY,
         value TEXT)
     ''');

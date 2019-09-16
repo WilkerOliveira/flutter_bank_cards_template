@@ -8,14 +8,18 @@ part of 'transaction_card.dart';
 
 TransactionCard _$TransactionCardFromJson(Map<String, dynamic> json) {
   return TransactionCard()
-    ..expenseDate = json['expenseDate'] as String
-    ..expenseHistory = json['expenseHistory'] as String
-    ..amount = (json['amount'] as num)?.toDouble();
+    ..id = json['id'] as String
+    ..effectiveDate = json['effectiveDate'] as String
+    ..releaseDate = json['releaseDate'] as String
+    ..amount = (json['amount'] as num)?.toDouble()
+    ..type = json['type'] as String;
 }
 
 Map<String, dynamic> _$TransactionCardToJson(TransactionCard instance) =>
     <String, dynamic>{
-      'expenseDate': instance.expenseDate,
-      'expenseHistory': instance.expenseHistory,
-      'amount': instance.amount
+      'id': instance.id,
+      'effectiveDate': instance.effectiveDate,
+      'releaseDate': instance.releaseDate,
+      'amount': instance.amount,
+      'type': instance.type
     };

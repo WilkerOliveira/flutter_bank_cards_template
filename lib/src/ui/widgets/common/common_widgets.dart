@@ -1,9 +1,8 @@
+
+import 'package:bank_cards/src/resources/custom_colors.dart';
+import 'package:bank_cards/src/utils/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:bank_cards/src/resources/dimens.dart';
-import 'package:bank_cards/src/resources/styles.dart';
 import 'package:bank_cards/src/utils/converter.dart';
-import 'package:bank_cards/src/viewmodel/base/BaseViewModel.dart';
 
 class CommonWidgets {
   static BoxDecoration loginBackground() {
@@ -25,87 +24,75 @@ class CommonWidgets {
     );
   }
 
-  static Widget logoImage() {
-    return Container(
-      padding: const EdgeInsets.fromLTRB(16.0, 50.0, 16.0, 16.0),
-      margin: const EdgeInsets.symmetric(horizontal: 8.0),
-      child: SvgPicture.asset("assets/images/TribancoDigital.svg"),
-    );
-  }
-
-  static Widget curveImage() {
-    return Container(
-      child: Image.asset("assets/images/linha_curva.png"),
-    );
-  }
-
-  static Widget defaultButton(
-      mainContext, BaseViewModel model, textButton, onPress) {
-    return ButtonTheme(
-      minWidth: Dimens.DEFAULT_BOTTOM_WIDTH,
-      height: Dimens.DEFAULT_BOTTOM_HEIGHT,
-      child: RaisedButton(
-        shape: new RoundedRectangleBorder(
-            borderRadius: new BorderRadius.circular(10.0)),
-        child: Text(
-          textButton,
-          style: defaultTextStyle(),
-        ),
-        color: Colors.green,
-        elevation: 4.0,
-        splashColor: Colors.blue,
-        onPressed: () {
-          onPress(mainContext, model);
-        },
+  static Widget separator() {
+    return Text(
+      "|",
+      style: TextStyle(
+        fontSize: 30,
       ),
     );
   }
 
-  static Widget customButton(mainContext, BaseViewModel model, textButton,
-      onPress, width, height, color) {
-    return ButtonTheme(
-      minWidth: width,
-      height: height,
-      child: RaisedButton(
-        shape: new RoundedRectangleBorder(
-            borderRadius: new BorderRadius.circular(10.0)),
-        child: Text(
-          textButton,
-          style: customTextStyle(),
+  static Widget menuItem(img, text) {
+    return Container(
+      height: 90,
+      width: 112,
+      decoration: new BoxDecoration(
+        border: new Border.all(color: CustomColors.GREEN),
+        borderRadius: new BorderRadius.only(
+          bottomLeft: const Radius.circular(15.0),
+          bottomRight: const Radius.circular(15.0),
+          topRight: const Radius.circular(15.0),
+          topLeft: const Radius.circular(15.0),
         ),
-        color: color,
-        elevation: 4.0,
-        splashColor: Color(0xFF202858),
-        onPressed: () {
-          onPress(mainContext, model);
-        },
       ),
-    );
-  }
-
-  static Widget outlineButton(
-      mainContext, BaseViewModel model, textButton, onPress) {
-    return ButtonTheme(
-      minWidth: Dimens.MIN_BOTTOM_WIDTH,
-      height: Dimens.MIN_BOTTOM_HEIGHT,
-      child: OutlineButton(
-        borderSide: BorderSide(
-          color: Colors.pinkAccent, //Color of the border
-          style: BorderStyle.solid, //Style of the border
-          width: 0.5, //width of the border
-        ),
-        child: Text(
-          textButton,
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 14,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Image.asset(img, width: 48),
+          Padding(
+            padding: EdgeInsets.all(8),
+            child: Text(
+              text,
+              style: TextStyle(
+                fontSize: 12,
+                color: Colors.white,
+              ),
+            ),
           ),
-        ),
-        highlightColor: Colors.pinkAccent,
-        splashColor: Colors.blue,
-        onPressed: () {
-          onPress(mainContext, model);
-        },
+        ],
+      ),
+    );
+  }
+
+  static Widget createInvoiceItem(statement, model) {
+    return Card(
+      margin: EdgeInsets.only(top: 5),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          new ListTile(
+            leading: new Image(
+              image: AssetImage(statement.icon),
+              width: 36,
+            ),
+            title: Text(statement.description),
+            subtitle: Text(statement.additionalInfo),
+            trailing: Container(
+              alignment: Alignment.center,
+              width: 100,
+              height: 40,
+              child: Text(
+                model.toCurrency(
+                    statement.amount, statement.type),
+                style: TextStyle(
+                    color: statement.type == Constants.STATEMENT_TYPE_DEBIT ? Color(0xFFB34747) : CustomColors.GREEN,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

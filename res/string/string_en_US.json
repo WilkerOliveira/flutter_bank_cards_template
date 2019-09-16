@@ -14,5 +14,8 @@
   "statement": "Statement",
   "app_name": "Triconta",
   "cvv": "CVV",
-  "password": "Password"
+  "password": "Password",
+  "due_date": "Due Date",
+  "limit":"Limit",
+  "available": "Available"
 }

@@ -10,14 +10,13 @@ class _UserPageState extends State<UserPage> {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(top: 15.0),
-      color: Colors.white,
       child: Column(
         children: <Widget>[
           Card(
             child: Container(
               padding: EdgeInsets.all(10.0),
               height: 100.0,
-              width: 300.0,
+              width: MediaQuery.of(context).size.width,
               child: Text(
                 'User Data',
                 textAlign: TextAlign.left,

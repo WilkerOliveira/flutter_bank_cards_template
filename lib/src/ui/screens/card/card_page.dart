@@ -1,15 +1,17 @@
+import 'package:bank_cards/generated/i18n.dart';
+import 'package:bank_cards/src/resources/dimens.dart';
+import 'package:bank_cards/src/router.dart';
+import 'package:bank_cards/src/ui/widgets/common/common_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:provider/provider.dart';
-import 'package:bank_cards/src/models/card/card_dto.dart';
 import 'package:bank_cards/src/models/card/card.dart' as model;
 import 'package:bank_cards/src/ui/screens/base/base_widget.dart';
 import 'package:bank_cards/src/ui/widgets/custom_circular_progress_indicator.dart';
-import 'package:bank_cards/src/resources/custom_colors.dart' as tricardColors;
+import 'package:bank_cards/src/resources/custom_colors.dart';
 import 'package:bank_cards/src/utils/formatter.dart';
 import 'package:bank_cards/src/viewmodel/base/BaseViewModel.dart';
 import 'package:bank_cards/src/viewmodel/card/card_viewmodel.dart';
-import 'package:bank_cards/src/router.dart';
 import 'package:bank_cards/src/repository/card/service/card/card_response.dart';
 
 class CardPage extends StatefulWidget {
@@ -25,11 +27,11 @@ class _CardPageState extends State<CardPage> {
   @override
   void initState() {
     _menuItems = [
-      createNewItem("assets/images/extrato_verde.png", 'Statement', 0),
-      createNewItem("assets/images/pagamentos_verde.png", 'Pay Invoice', 1),
-      createNewItem("assets/images/transferencias_verde.png", 'Invoices', 2),
-      createNewItem("assets/images/investimentos_verde.png", 'Investments', 3),
-      createNewItem("assets/images/servicos_verde.png", 'More', 4),
+      createNewItem("assets/images/ic_statement.png", 'Statement', 0),
+      createNewItem("assets/images/ic_payments.png", 'Pay Invoice', 1),
+      createNewItem("assets/images/ic_invoices.png", 'Invoices', 2),
+      createNewItem("assets/images/ic_statement.png", 'Investments', 3),
+      createNewItem("assets/images/ic_services.png", 'More', 4),
     ];
 
     super.initState();
@@ -47,7 +49,6 @@ class _CardPageState extends State<CardPage> {
       },
       builder: (mainContext, model, child) => new Container(
         margin: EdgeInsets.only(top: 15.0),
-        color: Colors.white,
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: SingleChildScrollView(
@@ -55,7 +56,7 @@ class _CardPageState extends State<CardPage> {
             children: <Widget>[
               model.state != ViewState.Busy
                   ? SizedBox(
-                      height: 230.0,
+                      height: Dimens.CARDS_HEIGHT,
                       child: new Swiper(
                         itemBuilder: (BuildContext context, int index) {
                           return new Image.network(
@@ -63,7 +64,6 @@ class _CardPageState extends State<CardPage> {
                             fit: BoxFit.fill,
                           );
                         },
-                        //index: _currentIndex,
                         onIndexChanged: (int index) {
                           setState(() {
                             _privateCard = _response.cards[index];
@@ -73,9 +73,8 @@ class _CardPageState extends State<CardPage> {
                         outer: true,
                         fade: 0.8,
                         loop: false,
-                        viewportFraction: 0.7,
-                        scale: 0.8,
-                        pagination: new SwiperPagination(),
+                        viewportFraction: 0.9,
+                        scale: 1.0,
                         control: new SwiperControl(),
                       ),
                     )
@@ -102,70 +101,102 @@ class _CardPageState extends State<CardPage> {
     return Column(
       children: <Widget>[
         Container(
+          margin: EdgeInsets.only(
+              left: Dimens.MARGIN_CARD_DETAIL,
+              right: Dimens.MARGIN_CARD_DETAIL),
           child: Card(
+            color: CustomColors.BLACK_BAR,
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Column(
                   children: <Widget>[
                     Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Text("Due date"),
+                      padding: EdgeInsets.all(Dimens.PADDING_CARD_DETAIL),
+                      child: Text(
+                        S.of(context).due_date,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: CustomColors.GREEN,
+                        ),
+                      ),
                     ),
                     Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Text("Better day"),
+                      padding: EdgeInsets.all(Dimens.PADDING_CARD_DETAIL),
+                      child: Text(
+                        model.state != ViewState.Busy && _privateCard != null
+                            ? _privateCard.dueDate.toString()
+                            : " - ",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                   ],
+                ),
+                Padding(
+                  padding: EdgeInsets.all(Dimens.PADDING_CARD_DETAIL),
+                  child: CommonWidgets.separator(),
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Padding(
-                      padding: EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(Dimens.PADDING_CARD_DETAIL),
                       child: Text(
-                          model.state != ViewState.Busy && _privateCard != null
-                              ? _privateCard.dueDate.toString()
-                              : " - "),
+                        S.of(context).limit,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: CustomColors.GREEN,
+                        ),
+                      ),
                     ),
                     Padding(
-                      padding: EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(Dimens.PADDING_CARD_DETAIL),
                       child: Text(
-                          model.state != ViewState.Busy && _privateCard != null
-                              ? _privateCard.bestBuyDate.toString()
-                              : " - "),
+                        model.state != ViewState.Busy && _privateCard != null
+                            ? Formatter.moneyFormatter(_privateCard.limit)
+                            : " - ",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: getAmountColor(
+                              _privateCard == null ? 0 : _privateCard.limit),
+                        ),
+                      ),
                     ),
                   ],
+                ),
+                Padding(
+                  padding: EdgeInsets.all(Dimens.PADDING_CARD_DETAIL),
+                  child: CommonWidgets.separator(),
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Text("Used"),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Text("Available"),
-                    ),
-                  ],
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(Dimens.PADDING_CARD_DETAIL),
                       child: Text(
-                          model.state != ViewState.Busy && _privateCard != null
-                              ? Formatter.moneyFormatter(_privateCard.limitUsed)
-                              : " - "),
+                        S.of(context).available,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: CustomColors.GREEN,
+                        ),
+                      ),
                     ),
                     Padding(
-                      padding: EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(Dimens.PADDING_CARD_DETAIL),
                       child: Text(
-                          model.state != ViewState.Busy && _privateCard != null
-                              ? Formatter.moneyFormatter(
-                                  _privateCard.limitAvailable)
-                              : " - "),
+                        model.state != ViewState.Busy && _privateCard != null
+                            ? Formatter.moneyFormatter(
+                                _privateCard.limitAvailable)
+                            : " - ",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: getAmountColor(_privateCard == null
+                              ? 0
+                              : _privateCard.limitAvailable),
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -177,9 +208,12 @@ class _CardPageState extends State<CardPage> {
     );
   }
 
+  Color getAmountColor(amount) {
+    return amount <= 0 ? Colors.red : Colors.green;
+  }
+
   Widget menu(model) {
     return Container(
-      //margin: EdgeInsets.symmetric(vertical: 10.0),
       height: 300.0,
       child: GridView.count(
         primary: false,
@@ -195,53 +229,25 @@ class _CardPageState extends State<CardPage> {
   Widget createNewItem(img, text, position) {
     return new GestureDetector(
       onTap: () {
-        // switch (position) {
-        //   case 0:
-        //     Navigator.pushNamed(context, Router.CARD_STATEMENT,
-        //         arguments: _privateCard);
-        //     break;
-        //   case 1:
-        //     var cardDto = CardDto();
-        //     cardDto.privateCard = _privateCard;
-        //     cardDto.extraInfo = "2019-08-01"; //TODO
-        //     Navigator.pushNamed(context, Router.CARD_CLOSED_INVOICE,
-        //         arguments: cardDto);
-        //     break;
-        //   case 2:
-        //     Navigator.pushNamed(context, Router.CARD_MONTHLY_CLOSED_INVOICE,
-        //         arguments: _privateCard);
-        //     break;
-        // }
+         switch (position) {
+           case 0:
+             Navigator.pushNamed(context, Router.CARD_STATEMENT,
+                 arguments: _privateCard);
+             break;
+//           case 1:
+//             var cardDto = CardDto();
+//             cardDto.privateCard = _privateCard;
+//             cardDto.extraInfo = "2019-08-01"; //TODO
+//             Navigator.pushNamed(context, Router.CARD_CLOSED_INVOICE,
+//                 arguments: cardDto);
+//             break;
+//           case 2:
+//             Navigator.pushNamed(context, Router.CARD_MONTHLY_CLOSED_INVOICE,
+//                 arguments: _privateCard);
+//             break;
+         }
       },
-      child: Container(
-        height: 90,
-        width: 112,
-        decoration: new BoxDecoration(
-          border: new Border.all(color: tricardColors.green),
-          borderRadius: new BorderRadius.only(
-            bottomLeft: const Radius.circular(15.0),
-            bottomRight: const Radius.circular(15.0),
-            topRight: const Radius.circular(15.0),
-            topLeft: const Radius.circular(15.0),
-          ),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Image.asset(img, width: 48),
-            Padding(
-              padding: EdgeInsets.all(8),
-              child: Text(
-                text,
-                style: TextStyle(
-                  fontSize: 12,
-                  color: tricardColors.blue,
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
+      child: CommonWidgets.menuItem(img, text),
     );
   }
 }

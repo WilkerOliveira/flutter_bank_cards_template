@@ -1,5 +1,7 @@
+import 'package:bank_cards/src/repository/card/service/urls/card_firebase_collections.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:sprintf/sprintf.dart';
-import 'package:bank_cards/src/repository/card/card_endpoints.dart';
+import 'package:bank_cards/src/repository/card/service/urls/card_endpoints.dart';
 import 'package:bank_cards/src/repository/card/service/invoice/invoice_request.dart';
 import 'package:bank_cards/src/repository/card/service/invoice/invoice_response.dart';
 import 'package:bank_cards/src/repository/card/service/card/card_response.dart';
@@ -61,5 +63,16 @@ class InvoiceService extends RestClient {
     error.fromErrorJson(response.mappedResult);
 
     return error;
+  }
+
+  Future<QuerySnapshot> consultClosedInvoiceFB(InvoiceRequest request) async {
+    return await super
+        .fireStoneReference
+        .collection(CardFireBaseCollections.CARDS_CLOSED_INVOICE)
+        .document(request.login.token)
+        .collection(request.cardNumber)
+        .document(request.month)
+        .collection(CardFireBaseCollections.CARDS)
+        .getDocuments();
   }
 }
