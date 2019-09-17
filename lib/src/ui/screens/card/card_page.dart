@@ -105,7 +105,7 @@ class _CardPageState extends State<CardPage> {
               left: Dimens.MARGIN_CARD_DETAIL,
               right: Dimens.MARGIN_CARD_DETAIL),
           child: Card(
-            color: CustomColors.BLACK_BAR,
+            color: CustomColors.GRAY_BAR,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[

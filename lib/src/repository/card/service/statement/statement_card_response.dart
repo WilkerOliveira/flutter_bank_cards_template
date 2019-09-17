@@ -5,6 +5,8 @@ class StatementCardResponse extends Response {
 
   List<StatementCard> statement;
 
+  String filterMonth;
+
   StatementCardResponse();
 
   StatementCardResponse.fromJson(Map<String, dynamic> json) :

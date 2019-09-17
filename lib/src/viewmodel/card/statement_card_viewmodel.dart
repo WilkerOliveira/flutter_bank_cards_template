@@ -41,6 +41,8 @@ class StatementCardViewModel extends BaseViewModel {
           item.additionalInfo = this.toDateString(item.effectiveDate);
         });
 
+        result.filterMonth = this._request.month;
+
         return result;
       }
 
