@@ -13,49 +13,77 @@ class AccountHeader extends StatelessWidget {
           children: <Widget>[
             Container(
               decoration: new BoxDecoration(
-                color: CustomColors.GREEN,
+                //color: CustomColors.GREEN,
                 borderRadius: new BorderRadius.only(
-                  bottomLeft: const Radius.circular(15.0),
-                  bottomRight: const Radius.circular(15.0),
-                  topLeft: const Radius.circular(15.0),
-                  topRight: const Radius.circular(15.0),
+                  bottomLeft: const Radius.circular(10.0),
+                  bottomRight: const Radius.circular(10.0),
+                  topLeft: const Radius.circular(10.0),
+                  topRight: const Radius.circular(10.0),
                 ),
               ),
               width: 330.0,
               height: 40.0,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.only(right: 15),
-                    child: Text(
-                      'Bank: ' + "634",
+
+                   Text(
+                      'BANK: ',
                       textAlign: TextAlign.left,
                       style: TextStyle(
                         color: Colors.white,
+                        fontWeight: FontWeight.bold,
                         fontSize: 16,
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(right: 15),
-                    child: Text(
-                      'Agency: 001',
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                      ),
-                    ),
-                  ),
                   Text(
-                    'Account: 9837-0',
+                    "999",
                     textAlign: TextAlign.left,
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 16,
                     ),
-                  )
+                  ),
+
+
+                 Text(
+                      'AGCY: ',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+
+                  Text(
+                    '3892',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                    ),
+                  ),
+
+                  Text(
+                    'ACCT: ',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
+                  ),
+                  Text(
+                    '9837-0',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                    ),
+                  ),
+
+                 Icon(Icons.content_copy, size: 20,),
                 ],
               ),
             ),

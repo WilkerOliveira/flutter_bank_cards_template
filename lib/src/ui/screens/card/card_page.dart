@@ -101,11 +101,12 @@ class _CardPageState extends State<CardPage> {
     return Column(
       children: <Widget>[
         Container(
+          color: Colors.indigo[700],
           margin: EdgeInsets.only(
               left: Dimens.MARGIN_CARD_DETAIL,
               right: Dimens.MARGIN_CARD_DETAIL),
           child: Card(
-            color: CustomColors.GRAY_BAR,
+            color: Colors.transparent,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -229,11 +230,11 @@ class _CardPageState extends State<CardPage> {
   Widget createNewItem(img, text, position) {
     return new GestureDetector(
       onTap: () {
-         switch (position) {
-           case 0:
-             Navigator.pushNamed(context, Router.CARD_STATEMENT,
-                 arguments: _privateCard);
-             break;
+        switch (position) {
+          case 0:
+            Navigator.pushNamed(context, Router.CARD_STATEMENT,
+                arguments: _privateCard);
+            break;
 //           case 1:
 //             var cardDto = CardDto();
 //             cardDto.privateCard = _privateCard;
@@ -245,7 +246,7 @@ class _CardPageState extends State<CardPage> {
 //             Navigator.pushNamed(context, Router.CARD_MONTHLY_CLOSED_INVOICE,
 //                 arguments: _privateCard);
 //             break;
-         }
+        }
       },
       child: CommonWidgets.menuItem(img, text),
     );

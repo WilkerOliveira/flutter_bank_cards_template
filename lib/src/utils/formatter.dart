@@ -12,9 +12,7 @@ class Formatter {
 
   //TODO
   static String moneyFormatter(double value) {
-    //TODO
-    var signal = value < 0 ? "- R\$ " : "R\$ ";
 
-    return signal + Formatter.toCurrency(value, Intl.defaultLocale);
+    return  Formatter.toCurrency(value, Intl.defaultLocale);
   }
 }

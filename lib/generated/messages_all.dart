@@ -13,12 +13,7 @@ class $pt_BR extends MessageLookupByLibrary {
   get localeName => 'pt_BR';
   
   final messages = {
-		"welcome" : MessageLookupByLibrary.simpleMessage("\nOlá, nós somos o Tribanco Digital, seu banco digital.\n"),
-		"explanation" : MessageLookupByLibrary.simpleMessage("Vamos começar?\nPara acessar ou se é sua primeira vez insira seu CPF/CNPJ abaixo:"),
-		"CPF_CNPJ" : MessageLookupByLibrary.simpleMessage("CPF ou CNPJ"),
-		"cpf_required" : MessageLookupByLibrary.simpleMessage("Informe o CPF/CNPJ"),
 		"btn_continue" : MessageLookupByLibrary.simpleMessage("CONTINUAR"),
-		"triconta" : MessageLookupByLibrary.simpleMessage("Triconta"),
 		"cpf_not_found" : MessageLookupByLibrary.simpleMessage("CPF não encontrado!"),
 		"login_success" : MessageLookupByLibrary.simpleMessage("Login realizado com sucesso!"),
 		"login_failed" : MessageLookupByLibrary.simpleMessage("Login não realizado!"),
@@ -26,12 +21,13 @@ class $pt_BR extends MessageLookupByLibrary {
 		"close_button" : MessageLookupByLibrary.simpleMessage("Fechar"),
 		"current_balance" : MessageLookupByLibrary.simpleMessage("Saldo Atual"),
 		"statement" : MessageLookupByLibrary.simpleMessage("Extrato"),
-		"app_name" : MessageLookupByLibrary.simpleMessage("Triconta"),
+		"app_name" : MessageLookupByLibrary.simpleMessage("Bank Cards"),
 		"cvv" : MessageLookupByLibrary.simpleMessage("CVV"),
 		"password" : MessageLookupByLibrary.simpleMessage("Senha"),
 		"due_date" : MessageLookupByLibrary.simpleMessage("Vencimento"),
 		"limit" : MessageLookupByLibrary.simpleMessage("Limite"),
 		"available" : MessageLookupByLibrary.simpleMessage("Disponível"),
+		"investments" : MessageLookupByLibrary.simpleMessage("Investimentos"),
 
   };
 }
@@ -42,12 +38,7 @@ class $en_US extends MessageLookupByLibrary {
   get localeName => 'en_US';
   
   final messages = {
-		"welcome" : MessageLookupByLibrary.simpleMessage("\nHello, we are Tribanco Digital, your digital bank.\n"),
-		"explanation" : MessageLookupByLibrary.simpleMessage("Let's begin?\nTo access or if it is your first time, put your CPF/CNPJ below:"),
-		"CPF_CNPJ" : MessageLookupByLibrary.simpleMessage("CPF ou CNPJ"),
-		"cpf_required" : MessageLookupByLibrary.simpleMessage("CPF/CNPJ is required"),
 		"btn_continue" : MessageLookupByLibrary.simpleMessage("CONTINUE"),
-		"triconta" : MessageLookupByLibrary.simpleMessage("Triconta"),
 		"cpf_not_found" : MessageLookupByLibrary.simpleMessage("CPF not found!"),
 		"login_success" : MessageLookupByLibrary.simpleMessage("Login successfully!"),
 		"login_failed" : MessageLookupByLibrary.simpleMessage("Login failed!"),
@@ -55,12 +46,13 @@ class $en_US extends MessageLookupByLibrary {
 		"close_button" : MessageLookupByLibrary.simpleMessage("Close"),
 		"current_balance" : MessageLookupByLibrary.simpleMessage("Current Balance"),
 		"statement" : MessageLookupByLibrary.simpleMessage("Statement"),
-		"app_name" : MessageLookupByLibrary.simpleMessage("Triconta"),
+		"app_name" : MessageLookupByLibrary.simpleMessage("Bank Cards"),
 		"cvv" : MessageLookupByLibrary.simpleMessage("CVV"),
 		"password" : MessageLookupByLibrary.simpleMessage("Password"),
 		"due_date" : MessageLookupByLibrary.simpleMessage("Due Date"),
 		"limit" : MessageLookupByLibrary.simpleMessage("Limit"),
 		"available" : MessageLookupByLibrary.simpleMessage("Available"),
+		"investments" : MessageLookupByLibrary.simpleMessage("Investments"),
 
   };
 }

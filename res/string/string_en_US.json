@@ -1,10 +1,5 @@
 {
-  "welcome": "\nHello, we are Tribanco Digital, your digital bank.\n",
-  "explanation": "Let's begin?\nTo access or if it is your first time, put your CPF/CNPJ below:",
-  "CPF_CNPJ": "CPF ou CNPJ",
-  "cpf_required": "CPF/CNPJ is required",
   "btn_continue": "CONTINUE",
-  "triconta": "Triconta",
   "cpf_not_found": "CPF not found!",
   "login_success": "Login successfully!",
   "login_failed": "Login failed!",
@@ -12,10 +7,11 @@
   "close_button": "Close",
   "current_balance": "Current Balance",
   "statement": "Statement",
-  "app_name": "Triconta",
+  "app_name": "Bank Cards",
   "cvv": "CVV",
   "password": "Password",
   "due_date": "Due Date",
   "limit":"Limit",
-  "available": "Available"
+  "available": "Available",
+  "investments": "Investments"
 }

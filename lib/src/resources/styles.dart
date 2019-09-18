@@ -34,16 +34,41 @@ TextStyle customTextStyle() {
 
 TextStyle balanceTitleStyle() {
   return TextStyle(
-    fontSize: 18,
-    color: CustomColors.GREEN,
-    fontWeight: FontWeight.bold,
-  );
-}
-
-TextStyle balanceAmountStyle() {
-  return TextStyle(
-    fontWeight: FontWeight.bold,
-    fontSize: 26,
+    fontSize: 15,
     color: Colors.white,
   );
 }
+
+TextStyle balanceAmountStyle(amount) {
+  return TextStyle(
+    fontWeight: FontWeight.bold,
+    fontSize: 20,
+    color: amount <= 0 ? Colors.red : CustomColors.GREEN,
+  );
+}
+
+BoxDecoration balanceDecoration() {
+  return new BoxDecoration(
+    borderRadius: new BorderRadius.only(
+      bottomLeft: const Radius.circular(15.0),
+      bottomRight: const Radius.circular(15.0),
+      topLeft: const Radius.circular(15.0),
+      topRight: const Radius.circular(15.0),
+    ),
+    gradient: LinearGradient(
+      // Where the linear gradient begins and ends
+      begin: Alignment.topRight,
+      end: Alignment.topLeft,
+      // Add one stop for each color. Stops should increase from 0 to 1
+      stops: [0.3, 0.9],
+      colors: [
+        // Colors are easy thanks to Flutter's Colors class.
+        //Colors.indigo[800],
+        Colors.indigo[700],
+        Colors.indigo[500],
+        //Colors.indigo[400],
+      ],
+    ),
+  );
+}
+

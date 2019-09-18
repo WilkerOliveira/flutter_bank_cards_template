@@ -9,7 +9,8 @@ class Dimens {
   static const HEADER_SIZE = 150.0;
 
   static const BALANCE_MARGIN_TOP = 13.0;
-  static const BALANCE_BODY_HEIGHT = 120.0;
+  static const BALANCE_BODY_HEIGHT = 100.0;
+  static const BALANCE_BODY_WIDTH = 170.0;
   static const BALANCE_BODY_LEFT_PADDING = 25.0;
   static const BALANCE_BODY_TOP_PADDING = 10.0;
   static const BALANCE_BODY_RIGHT_PADDING = 20.0;
@@ -18,7 +19,7 @@ class Dimens {
   static const BALANCE_AMOUNT_TOP_PADDING = 10.0;
 
   static const CARDS_HEIGHT = 230.0;
-  static const MARGIN_CARD_DETAIL = 5.0;
+  static const MARGIN_CARD_DETAIL = 20.0;
   static const PADDING_CARD_DETAIL = 8.0;
 
   static const MARGIN_ACCOUNT_HEADER = 20.0;

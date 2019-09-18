@@ -20,8 +20,7 @@ class _BankPageState extends State<BankPage> with TickerProviderStateMixin {
     _menuItems = [
       createNewItem("assets/images/ic_statement.png", 'Statements', 0),
       createNewItem("assets/images/ic_payments.png", 'Payments', 1),
-      createNewItem(
-          "assets/images/ic_invoices.png", 'Bank Transfer', 2),
+      createNewItem("assets/images/ic_invoices.png", 'Bank Transfer', 2),
       createNewItem("assets/images/ic_statement.png", 'Investments', 3),
       createNewItem("assets/images/ic_statement.png", 'Loan', 4),
       createNewItem("assets/images/ic_services.png", 'More', 5),
@@ -47,37 +46,78 @@ class _BankPageState extends State<BankPage> with TickerProviderStateMixin {
   }
 
   Widget balance(mainContext) {
-    return Container(
-      padding: EdgeInsets.only(top: Dimens.BALANCE_MARGIN_TOP),
-      height: Dimens.BALANCE_BODY_HEIGHT,
-      width: MediaQuery.of(context).size.width,
-      child: Padding(
-        padding: EdgeInsets.fromLTRB(
-          Dimens.BALANCE_BODY_LEFT_PADDING,
-          Dimens.BALANCE_BODY_TOP_PADDING,
-          Dimens.BALANCE_BODY_RIGHT_PADDING,
-          Dimens.BALANCE_BODY_BOTTOM_PADDING,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(
-              S.of(context).current_balance,
-              textAlign: TextAlign.start,
-              style: balanceTitleStyle(),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: <Widget>[
+        Container(
+          decoration: balanceDecoration(),
+          padding: EdgeInsets.only(top: Dimens.BALANCE_MARGIN_TOP),
+          height: Dimens.BALANCE_BODY_HEIGHT,
+          width: Dimens.BALANCE_BODY_WIDTH,
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(
+              Dimens.BALANCE_BODY_LEFT_PADDING,
+              Dimens.BALANCE_BODY_TOP_PADDING,
+              Dimens.BALANCE_BODY_RIGHT_PADDING,
+              Dimens.BALANCE_BODY_BOTTOM_PADDING,
             ),
-            SizedBox(width: Dimens.BALANCE_SIZED_BOX),
-            Padding(
-              padding: EdgeInsets.only(top: Dimens.BALANCE_AMOUNT_TOP_PADDING),
-              child: Text(
-                Formatter.moneyFormatter(300),
-                textAlign: TextAlign.start,
-                style: balanceAmountStyle(),
-              ),
-            )
-          ],
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  S.of(context).current_balance,
+                  textAlign: TextAlign.start,
+                  style: balanceTitleStyle(),
+                ),
+                SizedBox(width: Dimens.BALANCE_SIZED_BOX),
+                Padding(
+                  padding:
+                      EdgeInsets.only(top: Dimens.BALANCE_AMOUNT_TOP_PADDING),
+                  child: Text(
+                    Formatter.moneyFormatter(-400),
+                    textAlign: TextAlign.start,
+                    style: balanceAmountStyle(-400),
+                  ),
+                )
+              ],
+            ),
+          ),
         ),
-      ),
+        Container(
+          decoration: balanceDecoration(),
+          padding: EdgeInsets.only(top: Dimens.BALANCE_MARGIN_TOP),
+          height: Dimens.BALANCE_BODY_HEIGHT,
+          width: Dimens.BALANCE_BODY_WIDTH,
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(
+              Dimens.BALANCE_BODY_LEFT_PADDING,
+              Dimens.BALANCE_BODY_TOP_PADDING,
+              Dimens.BALANCE_BODY_RIGHT_PADDING,
+              Dimens.BALANCE_BODY_BOTTOM_PADDING,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  S.of(context).investments,
+                  textAlign: TextAlign.start,
+                  style: balanceTitleStyle(),
+                ),
+                SizedBox(width: Dimens.BALANCE_SIZED_BOX),
+                Padding(
+                  padding:
+                      EdgeInsets.only(top: Dimens.BALANCE_AMOUNT_TOP_PADDING),
+                  child: Text(
+                    Formatter.moneyFormatter(300),
+                    textAlign: TextAlign.start,
+                    style: balanceAmountStyle(300),
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+      ],
     );
   }
 
@@ -133,12 +173,9 @@ class FunkyOverlayState extends State<FunkyOverlay>
     _menuItemsPopup = [
       createNewItem2("assets/images/ic_statement.png", 'Extratos', 0),
       createNewItem2("assets/images/ic_payments.png", 'Pagamentos', 1),
-      createNewItem2(
-          "assets/images/ic_invoices.png", 'Transferências', 2),
-      createNewItem2(
-          "assets/images/ic_statement.png", 'Investimentos', 3),
-      createNewItem2(
-          "assets/images/ic_statement.png", 'Investimentos', 4),
+      createNewItem2("assets/images/ic_invoices.png", 'Transferências', 2),
+      createNewItem2("assets/images/ic_statement.png", 'Investimentos', 3),
+      createNewItem2("assets/images/ic_statement.png", 'Investimentos', 4),
       createNewItem2("assets/images/ic_services.png", 'Opções', 5),
     ];
   }

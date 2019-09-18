@@ -26,28 +26,8 @@ class S {
     });
   }
   
-  String get welcome {
-    return Intl.message("\nOlá, nós somos o Tribanco Digital, seu banco digital.\n", name: 'welcome');
-  }
-
-  String get explanation {
-    return Intl.message("Vamos começar?\nPara acessar ou se é sua primeira vez insira seu CPF/CNPJ abaixo:", name: 'explanation');
-  }
-
-  String get CPF_CNPJ {
-    return Intl.message("CPF ou CNPJ", name: 'CPF_CNPJ');
-  }
-
-  String get cpf_required {
-    return Intl.message("Informe o CPF/CNPJ", name: 'cpf_required');
-  }
-
   String get btn_continue {
     return Intl.message("CONTINUAR", name: 'btn_continue');
-  }
-
-  String get triconta {
-    return Intl.message("Triconta", name: 'triconta');
   }
 
   String get cpf_not_found {
@@ -79,7 +59,7 @@ class S {
   }
 
   String get app_name {
-    return Intl.message("Triconta", name: 'app_name');
+    return Intl.message("Bank Cards", name: 'app_name');
   }
 
   String get cvv {
@@ -100,6 +80,10 @@ class S {
 
   String get available {
     return Intl.message("Disponível", name: 'available');
+  }
+
+  String get investments {
+    return Intl.message("Investimentos", name: 'investments');
   }
 
 
