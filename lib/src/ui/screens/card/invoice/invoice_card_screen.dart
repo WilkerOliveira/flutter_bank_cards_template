@@ -7,11 +7,11 @@ import 'package:bank_cards/src/models/card/card.dart' as model;
 import 'package:bank_cards/src/repository/card/service/invoice/invoice_response.dart';
 import 'package:bank_cards/src/resources/custom_colors.dart';
 import 'package:bank_cards/src/router.dart';
-import 'package:bank_cards/src/ui/screens/base/base_widget.dart';
+import 'file:///Users/wilkeroliveira/Documents/Projects/FlutterProjects/lnl/lib/ui/screens/base/base_widget.dart';
 import 'package:bank_cards/src/ui/widgets/common/main_app_header.dart';
 import 'package:bank_cards/src/ui/widgets/custom_circular_progress_indicator.dart';
 import 'package:bank_cards/src/utils/formatter.dart';
-import 'package:bank_cards/src/viewmodel/base/BaseViewModel.dart';
+import 'package:bank_cards/src/viewmodel/base/base_viewmodel.dart';
 import 'package:bank_cards/src/viewmodel/card/invoice_card_viewmodel.dart';
 
 class InvoiceCardScreen extends StatefulWidget {

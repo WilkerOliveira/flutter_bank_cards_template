@@ -6,7 +6,7 @@ import 'package:bank_cards/src/repository/card/service/invoice/invoice_request.d
 import 'package:bank_cards/src/repository/card/service/invoice/invoice_response.dart';
 import 'package:bank_cards/src/utils/constants.dart';
 import 'package:bank_cards/src/utils/formatter.dart' as customFormatter;
-import 'package:bank_cards/src/viewmodel/base/BaseViewModel.dart';
+import 'package:bank_cards/src/viewmodel/base/base_viewmodel.dart';
 
 class ClosedInvoiceCardViewModel extends BaseViewModel {
   InvoiceCardRepository _invoiceCardRepository;

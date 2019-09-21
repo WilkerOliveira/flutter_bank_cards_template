@@ -47,28 +47,25 @@ TextStyle balanceAmountStyle(amount) {
   );
 }
 
-BoxDecoration balanceDecoration() {
-  return new BoxDecoration(
-    borderRadius: new BorderRadius.only(
-      bottomLeft: const Radius.circular(15.0),
-      bottomRight: const Radius.circular(15.0),
-      topLeft: const Radius.circular(15.0),
-      topRight: const Radius.circular(15.0),
-    ),
-    gradient: LinearGradient(
-      // Where the linear gradient begins and ends
-      begin: Alignment.topRight,
-      end: Alignment.topLeft,
-      // Add one stop for each color. Stops should increase from 0 to 1
-      stops: [0.3, 0.9],
-      colors: [
-        // Colors are easy thanks to Flutter's Colors class.
-        //Colors.indigo[800],
-        Colors.indigo[700],
-        Colors.indigo[500],
-        //Colors.indigo[400],
-      ],
-    ),
+TextStyle titleDetailStyle() {
+  return TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.bold,
+    color: CustomColors.GREEN,
   );
 }
 
+BoxDecoration balanceDecoration() {
+  return new BoxDecoration(
+    gradient: LinearGradient(
+      begin: Alignment.centerLeft,
+      end:
+      Alignment(1.0, 0.0),
+      colors: [
+        const Color(0xFF707070),
+        const Color(0xFFbdbdbd)
+      ], // whitish to gray
+      tileMode: TileMode.repeated,
+    ),
+  );
+}

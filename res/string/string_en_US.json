@@ -10,8 +10,8 @@
   "app_name": "Bank Cards",
   "cvv": "CVV",
   "password": "Password",
-  "due_date": "Due Date",
-  "limit":"Limit",
-  "available": "Available",
+  "due_date": "Due Date: ",
+  "limit":"Limit: ",
+  "available": "Available: ",
   "investments": "Investments"
 }

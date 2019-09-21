@@ -24,9 +24,9 @@ class $pt_BR extends MessageLookupByLibrary {
 		"app_name" : MessageLookupByLibrary.simpleMessage("Bank Cards"),
 		"cvv" : MessageLookupByLibrary.simpleMessage("CVV"),
 		"password" : MessageLookupByLibrary.simpleMessage("Senha"),
-		"due_date" : MessageLookupByLibrary.simpleMessage("Vencimento"),
-		"limit" : MessageLookupByLibrary.simpleMessage("Limite"),
-		"available" : MessageLookupByLibrary.simpleMessage("Disponível"),
+		"due_date" : MessageLookupByLibrary.simpleMessage("Vencimento: "),
+		"limit" : MessageLookupByLibrary.simpleMessage("Limite: "),
+		"available" : MessageLookupByLibrary.simpleMessage("Disponível: "),
 		"investments" : MessageLookupByLibrary.simpleMessage("Investimentos"),
 
   };
@@ -49,9 +49,9 @@ class $en_US extends MessageLookupByLibrary {
 		"app_name" : MessageLookupByLibrary.simpleMessage("Bank Cards"),
 		"cvv" : MessageLookupByLibrary.simpleMessage("CVV"),
 		"password" : MessageLookupByLibrary.simpleMessage("Password"),
-		"due_date" : MessageLookupByLibrary.simpleMessage("Due Date"),
-		"limit" : MessageLookupByLibrary.simpleMessage("Limit"),
-		"available" : MessageLookupByLibrary.simpleMessage("Available"),
+		"due_date" : MessageLookupByLibrary.simpleMessage("Due Date: "),
+		"limit" : MessageLookupByLibrary.simpleMessage("Limit: "),
+		"available" : MessageLookupByLibrary.simpleMessage("Available: "),
 		"investments" : MessageLookupByLibrary.simpleMessage("Investments"),
 
   };

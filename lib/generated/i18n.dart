@@ -71,15 +71,15 @@ class S {
   }
 
   String get due_date {
-    return Intl.message("Vencimento", name: 'due_date');
+    return Intl.message("Vencimento: ", name: 'due_date');
   }
 
   String get limit {
-    return Intl.message("Limite", name: 'limit');
+    return Intl.message("Limite: ", name: 'limit');
   }
 
   String get available {
-    return Intl.message("Disponível", name: 'available');
+    return Intl.message("Disponível: ", name: 'available');
   }
 
   String get investments {

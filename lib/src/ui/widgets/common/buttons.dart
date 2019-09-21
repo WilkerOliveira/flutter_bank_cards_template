@@ -1,6 +1,6 @@
 import 'package:bank_cards/src/resources/dimens.dart';
 import 'package:bank_cards/src/resources/styles.dart';
-import 'package:bank_cards/src/viewmodel/base/BaseViewModel.dart';
+import 'package:bank_cards/src/viewmodel/base/base_viewmodel.dart';
 import 'package:flutter/material.dart';
 
 class Buttons {

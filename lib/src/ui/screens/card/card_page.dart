@@ -1,16 +1,17 @@
 import 'package:bank_cards/generated/i18n.dart';
 import 'package:bank_cards/src/resources/dimens.dart';
+import 'package:bank_cards/src/resources/styles.dart';
 import 'package:bank_cards/src/router.dart';
 import 'package:bank_cards/src/ui/widgets/common/common_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:provider/provider.dart';
 import 'package:bank_cards/src/models/card/card.dart' as model;
-import 'package:bank_cards/src/ui/screens/base/base_widget.dart';
+import 'file:///Users/wilkeroliveira/Documents/Projects/FlutterProjects/lnl/lib/ui/screens/base/base_widget.dart';
 import 'package:bank_cards/src/ui/widgets/custom_circular_progress_indicator.dart';
 import 'package:bank_cards/src/resources/custom_colors.dart';
 import 'package:bank_cards/src/utils/formatter.dart';
-import 'package:bank_cards/src/viewmodel/base/BaseViewModel.dart';
+import 'package:bank_cards/src/viewmodel/base/base_viewmodel.dart';
 import 'package:bank_cards/src/viewmodel/card/card_viewmodel.dart';
 import 'package:bank_cards/src/repository/card/service/card/card_response.dart';
 
@@ -98,114 +99,103 @@ class _CardPageState extends State<CardPage> {
   }
 
   Widget cardDetails(CardViewModel model) {
-    return Column(
-      children: <Widget>[
-        Container(
-          color: Colors.indigo[700],
-          margin: EdgeInsets.only(
-              left: Dimens.MARGIN_CARD_DETAIL,
-              right: Dimens.MARGIN_CARD_DETAIL),
-          child: Card(
-            color: Colors.transparent,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+    return Container(
+      decoration: balanceDecoration(),
+      margin: EdgeInsets.only(
+          left: Dimens.MARGIN_CARD_DETAIL, right: Dimens.MARGIN_CARD_DETAIL),
+      child: Card(
+        color: Colors.transparent,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Row(
               children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.all(Dimens.PADDING_CARD_DETAIL),
-                      child: Text(
-                        S.of(context).due_date,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: CustomColors.GREEN,
-                        ),
-                      ),
+                SizedBox(
+                  width: 100,
+                  child: Padding(
+                    padding: EdgeInsets.all(Dimens.PADDING_CARD_DETAIL),
+                    child: Text(
+                      S.of(context).due_date,
+                      style: titleDetailStyle(),
                     ),
-                    Padding(
-                      padding: EdgeInsets.all(Dimens.PADDING_CARD_DETAIL),
-                      child: Text(
-                        model.state != ViewState.Busy && _privateCard != null
-                            ? _privateCard.dueDate.toString()
-                            : " - ",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
                 Padding(
                   padding: EdgeInsets.all(Dimens.PADDING_CARD_DETAIL),
-                  child: CommonWidgets.separator(),
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.all(Dimens.PADDING_CARD_DETAIL),
-                      child: Text(
-                        S.of(context).limit,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: CustomColors.GREEN,
-                        ),
-                      ),
+                  child: Text(
+                    model.state != ViewState.Busy && _privateCard != null
+                        ? _privateCard.dueDate.toString()
+                        : " - ",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
                     ),
-                    Padding(
-                      padding: EdgeInsets.all(Dimens.PADDING_CARD_DETAIL),
-                      child: Text(
-                        model.state != ViewState.Busy && _privateCard != null
-                            ? Formatter.moneyFormatter(_privateCard.limit)
-                            : " - ",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: getAmountColor(
-                              _privateCard == null ? 0 : _privateCard.limit),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: EdgeInsets.all(Dimens.PADDING_CARD_DETAIL),
-                  child: CommonWidgets.separator(),
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.all(Dimens.PADDING_CARD_DETAIL),
-                      child: Text(
-                        S.of(context).available,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: CustomColors.GREEN,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(Dimens.PADDING_CARD_DETAIL),
-                      child: Text(
-                        model.state != ViewState.Busy && _privateCard != null
-                            ? Formatter.moneyFormatter(
-                                _privateCard.limitAvailable)
-                            : " - ",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: getAmountColor(_privateCard == null
-                              ? 0
-                              : _privateCard.limitAvailable),
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
               ],
             ),
-          ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                SizedBox(
+                  width: 100,
+                  child: Padding(
+                    padding: EdgeInsets.all(Dimens.PADDING_CARD_DETAIL),
+                    child: Text(
+                      S.of(context).limit,
+                      style: titleDetailStyle(),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(Dimens.PADDING_CARD_DETAIL),
+                  child: Text(
+                    model.state != ViewState.Busy && _privateCard != null
+                        ? Formatter.moneyFormatter(_privateCard.limit)
+                        : " - ",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: getAmountColor(
+                          _privateCard == null ? 0 : _privateCard.limit),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                SizedBox(
+                  width: 100,
+                  child: Padding(
+                    padding: EdgeInsets.all(Dimens.PADDING_CARD_DETAIL),
+                    child: Text(
+                      S.of(context).available,
+                      style: titleDetailStyle(),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(Dimens.PADDING_CARD_DETAIL),
+                  child: Text(
+                    model.state != ViewState.Busy && _privateCard != null
+                        ? Formatter.moneyFormatter(_privateCard.limitAvailable)
+                        : " - ",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: getAmountColor(_privateCard == null
+                          ? 0
+                          : _privateCard.limitAvailable),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 

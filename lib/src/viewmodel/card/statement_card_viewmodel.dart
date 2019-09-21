@@ -8,7 +8,7 @@ import 'package:bank_cards/src/repository/card/service/statement/statement_card_
 import 'package:bank_cards/src/repository/card/statement_card_repository.dart';
 import 'package:bank_cards/src/utils/constants.dart';
 import 'package:bank_cards/src/utils/formatter.dart';
-import 'package:bank_cards/src/viewmodel/base/BaseViewModel.dart';
+import 'package:bank_cards/src/viewmodel/base/base_viewmodel.dart';
 
 class StatementCardViewModel extends BaseViewModel {
   StatementCardRepository _statementCardRepository;

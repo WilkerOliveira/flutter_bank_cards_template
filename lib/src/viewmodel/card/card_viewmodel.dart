@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:bank_cards/src/models/card/card.dart';
 import 'package:bank_cards/src/repository/card/service/card/card_request.dart';
 import 'package:bank_cards/src/repository/card/service/card/card_response.dart';
-import 'package:bank_cards/src/viewmodel/base/BaseViewModel.dart';
+import 'package:bank_cards/src/viewmodel/base/base_viewmodel.dart';
 
 class CardViewModel extends BaseViewModel {
   CardRepository _cardRepository;
