@@ -1,11 +1,9 @@
-# Bank Cards Template
+# Bank Credit Cards Template
 
-<div style='text-align: center'>
-<img src='http://wilkeroliveira.cloudapp.net/mwmobile/bank-cards-01.png' width="30%" />
-<br />
-<img src='http://wilkeroliveira.cloudapp.net/mwmobile/bank-cards-02.png' width="30%" />
-</div>
-<br />
+|  <img src='http://wilkeroliveira.cloudapp.net/mwmobile/bank-cards-01.png' width="30%" /> |  <img src='http://wilkeroliveira.cloudapp.net/mwmobile/bank-cards-02.png' width="30%" /> |
+| :------------: | :------------: |
+|  Main  | Statement  |
+
 
 This is a template of bank cards under development and migrating from a private server to Cloud Firestore.
 
