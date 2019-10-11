@@ -1,4 +1,4 @@
-# Bank Credit Cards Template
+# Mobile Bank Template
 
 |  <img src='http://wilkeroliveira.cloudapp.net/mwmobile/bank-cards-01.png' width="30%" /> |  <img src='http://wilkeroliveira.cloudapp.net/mwmobile/bank-cards-02.png' width="30%" /> |
 | :------------: | :------------: |
