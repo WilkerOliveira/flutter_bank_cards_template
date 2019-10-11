@@ -1,3 +1,4 @@
+import 'package:bank_cards/src/ui/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:bank_cards/src/ui/screens/card/invoice/closed_invoice_card_screen.dart';
@@ -11,6 +12,7 @@ class Router {
   static const CARD_STATEMENT = "card_statement";
   static const CARD_CLOSED_INVOICE = "card_closed_invoice";
   static const CARD_MONTHLY_CLOSED_INVOICE = "card_monthly_closed_invoice";
+  static const  String SPLASH = "splash";
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -27,6 +29,8 @@ class Router {
       case CARD_MONTHLY_CLOSED_INVOICE:
         return MaterialPageRoute(
             builder: (_) => InvoiceCardScreen(settings.arguments));
+      case SPLASH:
+        return MaterialPageRoute(builder: (_) => SplashScreen());
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(

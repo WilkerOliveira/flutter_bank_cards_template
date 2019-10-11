@@ -1,3 +1,4 @@
+import 'package:bank_cards/src/ui/screens/base/base_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:intl/intl.dart';
@@ -7,7 +8,6 @@ import 'package:bank_cards/src/models/card/invoice_transactions_card.dart';
 import 'package:bank_cards/src/models/card/card.dart' as model;
 import 'package:bank_cards/src/models/card/transaction_card.dart';
 import 'package:bank_cards/src/repository/card/service/invoice/invoice_response.dart';
-import 'file:///Users/wilkeroliveira/Documents/Projects/FlutterProjects/lnl/lib/ui/screens/base/base_widget.dart';
 import 'package:bank_cards/src/ui/widgets/common/main_app_header.dart';
 import 'package:bank_cards/src/ui/widgets/custom_circular_progress_indicator.dart';
 import 'package:bank_cards/src/utils/constants.dart';

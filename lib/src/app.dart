@@ -1,10 +1,11 @@
+import 'package:bank_cards/src/ui/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:bank_cards/generated/i18n.dart';
 import 'package:bank_cards/src/resources/styles.dart';
-import 'package:bank_cards/src/router.dart';
+import 'package:bank_cards/src/router.dart' ;
 
 import '../provider_setup.dart';
 
@@ -26,7 +27,8 @@ class App extends StatelessWidget {
         darkTheme: ThemeData(
           brightness: Brightness.dark,
         ),
-        initialRoute: Router.initialRoute,
+        home: SplashScreen(),
+        initialRoute: Router.SPLASH,
         onGenerateRoute: Router.generateRoute,
       ),
     );
