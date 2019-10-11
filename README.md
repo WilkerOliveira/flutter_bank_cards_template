@@ -5,7 +5,7 @@
 |  Main  | Statement  |
 
 
-This is a template of bank cards under development and migrating from a private server to Cloud Firestore.
+This is a template of mobile bank under development and migrating from a private server to Cloud Firestore.
 
 Some items that should be implemented soon:
 
