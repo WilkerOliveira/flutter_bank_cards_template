@@ -1,8 +1,8 @@
 # Mobile Bank Template
 
-|  <img src='http://wilkeroliveira.cloudapp.net/mwmobile/bank-cards-01.png' width="30%" /> |  <img src='http://wilkeroliveira.cloudapp.net/mwmobile/bank-cards-02.png' width="30%" /> |
-| :------------: | :------------: |
-|  Main  | Statement  |
+|  <img src='http://wilkeroliveira.cloudapp.net/mwmobile/bank-cards-01.png' width="30%" /> |  <img src='http://wilkeroliveira.cloudapp.net/mwmobile/bank-cards-02.png' width="30%" /> |  <img src='http://wilkeroliveira.cloudapp.net/mwmobile/bank-cards-03.png' width="30%" /> |  <img src='http://wilkeroliveira.cloudapp.net/mwmobile/bank-cards-04.png' width="30%" /> |
+| :------------: | :------------: | :------------: | :------------: |
+| Login |  Register | Main  | Statement  |
 
 
 This is a template of mobile bank under development and migrating from a private server to Cloud Firestore.
@@ -18,7 +18,6 @@ Some items that should be implemented soon:
 - [flutter_svg](https://pub.dev/packages/flutter_svg)
 - [flutter_swiper](https://pub.dev/packages/flutter_swiper)
 - [brasil_fields](https://pub.dev/packages/brasil_fields)
-- [curved_navigation_bar](https://pub.dev/packages/curved_navigation_bar)
 
 
 #### Extra infos
