@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Mobile Bank Template</string>
 
-    <string name="facebook_app_id">437985153509269</string>
-    <string name="fb_login_protocol_scheme">fb437985153509269</string>
+    <string name="facebook_app_id">XXXXX</string>
+    <string name="fb_login_protocol_scheme">fbXXXXX</string>
 
 </resources>
