@@ -1,9 +1,11 @@
 import 'package:bank_cards/generated/i18n.dart';
-import 'package:bank_cards/src/resources/dimens.dart';
-import 'package:bank_cards/src/resources/styles.dart';
 import 'package:bank_cards/src/router.dart';
+import 'package:bank_cards/src/ui/resources/decorations.dart';
+import 'package:bank_cards/src/ui/resources/dimens.dart';
+import 'package:bank_cards/src/ui/resources/styles.dart';
 import 'package:bank_cards/src/ui/screens/base/base_widget.dart';
 import 'package:bank_cards/src/ui/widgets/common/common_widgets.dart';
+import 'package:bank_cards/src/ui/widgets/credit_card/credit_card_front.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:provider/provider.dart';
@@ -48,7 +50,9 @@ class _CardPageState extends State<CardPage> {
         }
       },
       builder: (mainContext, model, child) => new Container(
-        margin: EdgeInsets.only(top: 15.0),
+        decoration: BoxDecoration(
+          gradient: Decorations.gradientDecoration(),
+        ),
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: SingleChildScrollView(
@@ -59,10 +63,7 @@ class _CardPageState extends State<CardPage> {
                       height: Dimens.CARDS_HEIGHT,
                       child: new Swiper(
                         itemBuilder: (BuildContext context, int index) {
-                          return new Image.network(
-                            _response.cards[index].cardImage,
-                            fit: BoxFit.fill,
-                          );
+                          return CreditCardFront();
                         },
                         onIndexChanged: (int index) {
                           setState(() {
@@ -71,7 +72,7 @@ class _CardPageState extends State<CardPage> {
                         },
                         itemCount: _response.cards.length,
                         outer: true,
-                        fade: 0.8,
+                        fade: 0.4,
                         loop: false,
                         viewportFraction: 0.9,
                         scale: 1.0,
@@ -79,10 +80,12 @@ class _CardPageState extends State<CardPage> {
                       ),
                     )
                   : Container(
-                      height: 80.0,
+                      height: Dimens.CARDS_HEIGHT,
                       width: 80.0,
                       padding: EdgeInsets.all(10),
-                      child: CustomCircularProgressIndicator(),
+                      child: Center(
+                        child: CustomCircularProgressIndicator(),
+                      ),
                     ),
               Column(
                 children: <Widget>[
@@ -99,7 +102,6 @@ class _CardPageState extends State<CardPage> {
 
   Widget cardDetails(CardViewModel model) {
     return Container(
-      decoration: balanceDecoration(),
       margin: EdgeInsets.only(
           left: Dimens.MARGIN_CARD_DETAIL, right: Dimens.MARGIN_CARD_DETAIL),
       child: Card(

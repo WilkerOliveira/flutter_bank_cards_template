@@ -1,13 +1,15 @@
-import 'package:bank_cards/src/resources/custom_colors.dart';
-import 'package:bank_cards/src/resources/styles.dart';
+import 'package:bank_cards/generated/i18n.dart';
+import 'package:bank_cards/src/ui/resources/custom_colors.dart';
+import 'package:bank_cards/src/ui/resources/decorations.dart';
 import 'package:bank_cards/src/ui/screens/base/base_widget.dart';
 import 'package:bank_cards/src/ui/widgets/common/common_widgets.dart';
+import 'package:bank_cards/src/ui/widgets/credit_card/credit_card_front.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:bank_cards/src/models/card/card.dart' as model;
 import 'package:bank_cards/src/repository/card/service/statement/statement_card_response.dart';
-import 'package:bank_cards/src/ui/widgets/common/main_app_header.dart';
+import 'package:bank_cards/src/ui/widgets/common/custom_appbar.dart';
 import 'package:bank_cards/src/ui/widgets/custom_circular_progress_indicator.dart';
 import 'package:bank_cards/src/viewmodel/base/base_viewmodel.dart';
 import 'package:bank_cards/src/viewmodel/card/statement_card_viewmodel.dart';
@@ -36,8 +38,13 @@ class _StatementCardScreenState extends State<StatementCardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: mainAppHeader(context),
+      appBar: CustomAppBar(
+              appBarType: AppBarType.simple, title: S.of(context).app_name)
+          .build(context),
       body: Container(
+        decoration: BoxDecoration(
+          gradient: Decorations.gradientDecoration(),
+        ),
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: Column(
@@ -46,10 +53,7 @@ class _StatementCardScreenState extends State<StatementCardScreen> {
               height: 230.0,
               child: Container(
                 padding: EdgeInsets.all(10),
-                child: new Image.network(
-                  _privateCard.cardImage,
-                  fit: BoxFit.fill,
-                ),
+                child: CreditCardFront(),
               ),
             ),
             this.filter(),
@@ -70,7 +74,6 @@ class _StatementCardScreenState extends State<StatementCardScreen> {
         child: Column(
           children: <Widget>[
             Container(
-              decoration: balanceDecoration(),
               height: 60,
               child: Card(
                 color: Colors.transparent,
@@ -94,7 +97,10 @@ class _StatementCardScreenState extends State<StatementCardScreen> {
                       ),
                       Align(
                         alignment: Alignment.centerRight,
-                        child: Icon(Icons.filter_list, size: 35,),
+                        child: Icon(
+                          Icons.filter_list,
+                          size: 35,
+                        ),
                       )
                     ],
                   ),

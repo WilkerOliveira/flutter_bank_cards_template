@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bank_cards/generated/i18n.dart';
-import 'package:bank_cards/src/resources/styles.dart' as style;
+import 'package:bank_cards/src/ui/resources/styles.dart' as style;
 
 class HelpButton extends StatelessWidget {
   @override

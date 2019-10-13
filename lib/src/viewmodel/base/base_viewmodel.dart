@@ -1,3 +1,4 @@
+import 'package:bank_cards/src/exceptions/exception_messages.dart';
 import 'package:bank_cards/src/models/login.dart';
 import 'package:flutter/foundation.dart';
 
@@ -8,6 +9,14 @@ class BaseViewModel extends ChangeNotifier {
   ViewState _state = ViewState.Idle;
 
   ViewState get state => _state;
+
+  @protected
+  bool error;
+  @protected
+  ExceptionMessages customErrorMessage;
+
+  bool get isError => error;
+  ExceptionMessages get errorMessage => customErrorMessage;
 
   //TODO: mock
   Login _login = Login("12345678909");

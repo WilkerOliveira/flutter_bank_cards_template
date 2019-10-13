@@ -23,4 +23,19 @@ class Dimens {
   static const PADDING_CARD_DETAIL = 8.0;
 
   static const MARGIN_ACCOUNT_HEADER = 20.0;
+
+  static const double border_container = 20.0;
+  static const double login_header_height = 230.0;
+  static const double button_alt_login_width = 80.0;
+  static const double button_alt_login_height = 51.0;
+  static const double button_default_width = 350.0;
+  static const double button_default_height = 51.0;
+  static const double border_button = 10.0;
+
+  static const double sized_box_space = 20.0;
+
+  static const double button_text_size = 14.0;
+  static const double form_text_size = 18.0;
+  static const double menu_text_size = 18.0;
+  static const double form_field_width = 350.0;
 }

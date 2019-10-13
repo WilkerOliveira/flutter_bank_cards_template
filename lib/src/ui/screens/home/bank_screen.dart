@@ -1,11 +1,12 @@
+import 'package:bank_cards/src/ui/resources/decorations.dart';
 import 'package:bank_cards/src/ui/widgets/common/common_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:bank_cards/src/ui/widgets/common/account_header.dart';
 import 'package:bank_cards/generated/i18n.dart';
-import 'package:bank_cards/src/resources/dimens.dart';
-import 'package:bank_cards/src/resources/styles.dart';
+import 'package:bank_cards/src/ui/resources/dimens.dart';
+import 'package:bank_cards/src/ui/resources/styles.dart';
 import 'package:bank_cards/src/utils/formatter.dart';
-import 'package:bank_cards/src/resources/custom_colors.dart';
+import 'package:bank_cards/src/ui/resources/custom_colors.dart';
 
 class BankPage extends StatefulWidget {
   @override
@@ -32,6 +33,9 @@ class _BankPageState extends State<BankPage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return new Container(
+      decoration: BoxDecoration(
+        gradient: Decorations.gradientDecoration(),
+      ),
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
       child: Column(
@@ -50,7 +54,7 @@ class _BankPageState extends State<BankPage> with TickerProviderStateMixin {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
         Container(
-          decoration: balanceDecoration(),
+          decoration: Decorations.balanceDecoration(),
           padding: EdgeInsets.only(top: Dimens.BALANCE_MARGIN_TOP),
           height: Dimens.BALANCE_BODY_HEIGHT,
           width: Dimens.BALANCE_BODY_WIDTH,
@@ -84,7 +88,7 @@ class _BankPageState extends State<BankPage> with TickerProviderStateMixin {
           ),
         ),
         Container(
-          decoration: balanceDecoration(),
+          decoration: Decorations.balanceDecoration(),
           padding: EdgeInsets.only(top: Dimens.BALANCE_MARGIN_TOP),
           height: Dimens.BALANCE_BODY_HEIGHT,
           width: Dimens.BALANCE_BODY_WIDTH,

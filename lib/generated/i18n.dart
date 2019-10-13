@@ -59,7 +59,7 @@ class S {
   }
 
   String get app_name {
-    return Intl.message("Bank Cards", name: 'app_name');
+    return Intl.message("Mobile Bank", name: 'app_name');
   }
 
   String get cvv {
@@ -84,6 +84,138 @@ class S {
 
   String get investments {
     return Intl.message("Investimentos", name: 'investments');
+  }
+
+  String get login_with_google {
+    return Intl.message("Google", name: 'login_with_google');
+  }
+
+  String get login_with_facebook {
+    return Intl.message("Facebook", name: 'login_with_facebook');
+  }
+
+  String get dont_have_account {
+    return Intl.message("Não tem conta?", name: 'dont_have_account');
+  }
+
+  String get sign_up_now {
+    return Intl.message(" Cadastra-se agora!", name: 'sign_up_now');
+  }
+
+  String get email {
+    return Intl.message("E-mail", name: 'email');
+  }
+
+  String get confirm_password {
+    return Intl.message("Confirmar Senha", name: 'confirm_password');
+  }
+
+  String get btn_login {
+    return Intl.message("ENTRAR", name: 'btn_login');
+  }
+
+  String get forgot_password {
+    return Intl.message("Esqueceu a senha?", name: 'forgot_password');
+  }
+
+  String get name {
+    return Intl.message("Nome", name: 'name');
+  }
+
+  String get nick_name {
+    return Intl.message("Apelido", name: 'nick_name');
+  }
+
+  String get register_with_google {
+    return Intl.message("Registrar com o Google", name: 'register_with_google');
+  }
+
+  String get register_with_facebook {
+    return Intl.message("Registrar com Facebook", name: 'register_with_facebook');
+  }
+
+  String get btn_register {
+    return Intl.message("Registrar", name: 'btn_register');
+  }
+
+  String get required_field {
+    return Intl.message("Campo obrigatório", name: 'required_field');
+  }
+
+  String get invalid_email {
+    return Intl.message("E-mail inválido", name: 'invalid_email');
+  }
+
+  String get invalid_password_format {
+    return Intl.message("Deve conter pelo menos 6 caracteres.", name: 'invalid_password_format');
+  }
+
+  String get error_title {
+    return Intl.message("Erro", name: 'error_title');
+  }
+
+  String get user_email_already_exist {
+    return Intl.message("Já existe um usuário com este e-mail!", name: 'user_email_already_exist');
+  }
+
+  String get user_nickname_already_exist {
+    return Intl.message("Já existe um usuário com este apelido!", name: 'user_nickname_already_exist');
+  }
+
+  String get password_not_match {
+    return Intl.message("Senhas não conferem!", name: 'password_not_match');
+  }
+
+  String get no_internet_connection {
+    return Intl.message("Sem conexão com a Internet!", name: 'no_internet_connection');
+  }
+
+  String get info_title {
+    return Intl.message("Informação", name: 'info_title');
+  }
+
+  String get success_title {
+    return Intl.message("Sucesso", name: 'success_title');
+  }
+
+  String get saved_successfully {
+    return Intl.message("Salvo com sucesso", name: 'saved_successfully');
+  }
+
+  String get invalid_email_or_password {
+    return Intl.message("E-mail ou senha inválidos!", name: 'invalid_email_or_password');
+  }
+
+  String get reset_button {
+    return Intl.message("ENVIAR SENHA", name: 'reset_button');
+  }
+
+  String get default_error {
+    return Intl.message("Desculpe, algo deu errado!", name: 'default_error');
+  }
+
+  String get user_not_registered {
+    return Intl.message("Usuário não cadastrado! Registre-se primeiro.", name: 'user_not_registered');
+  }
+
+  String get login_cancelled_by_user {
+    return Intl.message("Login cancelado pelo usuário!", name: 'login_cancelled_by_user');
+  }
+
+  String get login_title {
+    return Intl.message("Login", name: 'login_title');
+  }
+
+  String get cards {
+    return Intl.message("Cartão", name: 'cards');
+  }
+
+  String get account {
+    return Intl.message("Conta", name: 'account');
+  }
+
+  String get user {
+    return Intl.message("Usuário", name: 'user');
   }
 
 

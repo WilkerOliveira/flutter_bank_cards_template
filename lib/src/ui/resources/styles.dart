@@ -1,4 +1,4 @@
-import 'package:bank_cards/src/resources/custom_colors.dart';
+import 'package:bank_cards/src/ui/resources/custom_colors.dart';
 import 'package:flutter/material.dart';
 
 ThemeData defaultThemeData() {
@@ -55,17 +55,17 @@ TextStyle titleDetailStyle() {
   );
 }
 
-BoxDecoration balanceDecoration() {
-  return new BoxDecoration(
-    gradient: LinearGradient(
-      begin: Alignment.centerLeft,
-      end:
-      Alignment(1.0, 0.0),
-      colors: [
-        const Color(0xFF707070),
-        const Color(0xFFbdbdbd)
-      ], // whitish to gray
-      tileMode: TileMode.repeated,
-    ),
-  );
-}
+TextStyle formTextStyle(Color color, double fontSize) => TextStyle(
+      fontFamily: 'Roboto',
+      fontSize: fontSize,
+      color: color,
+    );
+
+TextStyle buttonTextStyle(Color color, double fontSize) => TextStyle(
+      fontFamily: 'Roboto',
+      color: color,
+      fontSize: fontSize,
+      fontWeight: FontWeight.w700,
+      fontStyle: FontStyle.normal,
+      letterSpacing: 0.15000000596046448,
+    );

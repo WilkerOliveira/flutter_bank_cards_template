@@ -1,3 +1,4 @@
+import 'package:bank_cards/generated/i18n.dart';
 import 'package:bank_cards/src/ui/screens/base/base_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -6,9 +7,9 @@ import 'package:bank_cards/src/models/card/card_dto.dart';
 import 'package:bank_cards/src/models/card/invoice_months.dart';
 import 'package:bank_cards/src/models/card/card.dart' as model;
 import 'package:bank_cards/src/repository/card/service/invoice/invoice_response.dart';
-import 'package:bank_cards/src/resources/custom_colors.dart';
+import 'package:bank_cards/src/ui/resources/custom_colors.dart';
 import 'package:bank_cards/src/router.dart';
-import 'package:bank_cards/src/ui/widgets/common/main_app_header.dart';
+import 'package:bank_cards/src/ui/widgets/common/custom_appbar.dart';
 import 'package:bank_cards/src/ui/widgets/custom_circular_progress_indicator.dart';
 import 'package:bank_cards/src/utils/formatter.dart';
 import 'package:bank_cards/src/viewmodel/base/base_viewmodel.dart';
@@ -34,7 +35,7 @@ class _InvoiceCardScreenState extends State<InvoiceCardScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: mainAppHeader(context),
+      appBar: CustomAppBar(appBarType: AppBarType.simple , title: S.of(context).app_name).build(context),
       body: BaseWidget<InvoiceCardViewModel>(
         model: InvoiceCardViewModel(repository: Provider.of(context)),
         onModelReady: (model) async {

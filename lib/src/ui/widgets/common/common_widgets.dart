@@ -1,5 +1,6 @@
 
-import 'package:bank_cards/src/resources/custom_colors.dart';
+import 'package:bank_cards/src/ui/resources/custom_colors.dart';
+import 'package:bank_cards/src/ui/resources/decorations.dart';
 import 'package:bank_cards/src/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:bank_cards/src/utils/converter.dart';
@@ -68,31 +69,34 @@ class CommonWidgets {
   static Widget createInvoiceItem(statement, model) {
     return Card(
       margin: EdgeInsets.only(top: 5),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          new ListTile(
-            leading: new Image(
-              image: AssetImage(statement.icon),
-              width: 36,
-            ),
-            title: Text(statement.description),
-            subtitle: Text(statement.additionalInfo),
-            trailing: Container(
-              alignment: Alignment.center,
-              width: 100,
-              height: 40,
-              child: Text(
-                model.toCurrency(
-                    statement.amount, statement.type),
-                style: TextStyle(
-                    color: statement.type == Constants.STATEMENT_TYPE_DEBIT ? Color(0xFFB34747) : CustomColors.GREEN,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold),
+      child: Container(
+        decoration: Decorations.listItemDecoration(),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            new ListTile(
+              leading: new Image(
+                image: AssetImage(statement.icon),
+                width: 36,
+              ),
+              title: Text(statement.description),
+              subtitle: Text(statement.additionalInfo),
+              trailing: Container(
+                alignment: Alignment.center,
+                width: 100,
+                height: 40,
+                child: Text(
+                  model.toCurrency(
+                      statement.amount, statement.type),
+                  style: TextStyle(
+                      color: statement.type == Constants.STATEMENT_TYPE_DEBIT ? Color(0xFFB34747) : CustomColors.GREEN,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold),
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

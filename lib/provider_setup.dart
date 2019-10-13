@@ -1,3 +1,4 @@
+import 'package:bank_cards/src/repository/login/login_repository.dart';
 import 'package:provider/provider.dart';
 import 'package:bank_cards/src/repository/card/invoice_card_repository.dart';
 import 'package:bank_cards/src/repository/card/card_repository.dart';
@@ -16,6 +17,7 @@ List<SingleChildCloneableWidget> independentServices = [
   Provider.value(value: CardService()),
   Provider.value(value: StatementCardService()),
   Provider.value(value: InvoiceService()),
+  Provider.value(value: LoginRepository()),
 ];
 
 List<SingleChildCloneableWidget> dependentServices = [
