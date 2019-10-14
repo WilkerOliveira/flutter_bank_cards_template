@@ -15,12 +15,7 @@ class SplashViewModel extends BaseViewModel {
           await this._loginRepository.getCurrentFirebaseUser();
 
       if (fireBaseUser != null) {
-        User user = new User(
-          firstName: fireBaseUser.displayName,
-          userID: fireBaseUser.uid,
-          email: fireBaseUser.email ?? '',
-          profilePictureURL: fireBaseUser.photoUrl ?? '',
-        );
+        User user = await this._loginRepository.getUser(fireBaseUser.uid);
 
         this.error = false;
 

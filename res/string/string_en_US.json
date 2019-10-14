@@ -46,5 +46,6 @@
   "login_title": "Login",
   "cards": "Cards",
   "account": "Account",
-  "user": "User"
+  "user": "User",
+  "logout": "Logout"
 }

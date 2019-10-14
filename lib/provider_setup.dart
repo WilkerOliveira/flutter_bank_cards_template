@@ -1,3 +1,4 @@
+import 'package:bank_cards/src/models/user.dart';
 import 'package:bank_cards/src/repository/login/login_repository.dart';
 import 'package:provider/provider.dart';
 import 'package:bank_cards/src/repository/card/invoice_card_repository.dart';
@@ -34,4 +35,9 @@ List<SingleChildCloneableWidget> dependentServices = [
   )
 ];
 
-List<SingleChildCloneableWidget> uiConsumableProviders = [];
+List<SingleChildCloneableWidget> uiConsumableProviders = [
+  StreamProvider<User>(
+    builder: (context) =>
+    Provider.of<LoginRepository>(context, listen: false).currentUser,
+  ),
+];

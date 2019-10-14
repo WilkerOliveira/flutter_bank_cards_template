@@ -58,9 +58,10 @@ class $pt_BR extends MessageLookupByLibrary {
 		"user_not_registered" : MessageLookupByLibrary.simpleMessage("Usuário não cadastrado! Registre-se primeiro."),
 		"login_cancelled_by_user" : MessageLookupByLibrary.simpleMessage("Login cancelado pelo usuário!"),
 		"login_title" : MessageLookupByLibrary.simpleMessage("Login"),
-		"cards" : MessageLookupByLibrary.simpleMessage("Cartão"),
+		"cards" : MessageLookupByLibrary.simpleMessage("Cartões"),
 		"account" : MessageLookupByLibrary.simpleMessage("Conta"),
 		"user" : MessageLookupByLibrary.simpleMessage("Usuário"),
+		"logout" : MessageLookupByLibrary.simpleMessage("Sair"),
 
   };
 }
@@ -119,6 +120,7 @@ class $en_US extends MessageLookupByLibrary {
 		"cards" : MessageLookupByLibrary.simpleMessage("Cards"),
 		"account" : MessageLookupByLibrary.simpleMessage("Account"),
 		"user" : MessageLookupByLibrary.simpleMessage("User"),
+		"logout" : MessageLookupByLibrary.simpleMessage("Logout"),
 
   };
 }

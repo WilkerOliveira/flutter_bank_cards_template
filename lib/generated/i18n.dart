@@ -207,7 +207,7 @@ class S {
   }
 
   String get cards {
-    return Intl.message("Cartão", name: 'cards');
+    return Intl.message("Cartões", name: 'cards');
   }
 
   String get account {
@@ -216,6 +216,10 @@ class S {
 
   String get user {
     return Intl.message("Usuário", name: 'user');
+  }
+
+  String get logout {
+    return Intl.message("Sair", name: 'logout');
   }
 
 

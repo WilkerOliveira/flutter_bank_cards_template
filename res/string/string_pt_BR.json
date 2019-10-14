@@ -46,5 +46,6 @@
   "login_title": "Login",
   "cards": "Cartões",
   "account": "Conta",
-  "user": "Usuário"
+  "user": "Usuário",
+  "logout": "Sair"
 }

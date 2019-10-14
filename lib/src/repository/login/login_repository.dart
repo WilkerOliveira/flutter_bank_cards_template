@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bank_cards/src/exceptions/exception_messages.dart';
 import 'package:bank_cards/src/exceptions/login_exception.dart';
 import 'package:bank_cards/src/models/user.dart';
@@ -10,6 +12,10 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginRepository extends BaseRepository {
   LoginRepository();
+
+  StreamController<User> _loginController = StreamController<User>();
+
+  Stream<User> get currentUser => _loginController.stream;
 
   Future<FirebaseUser> loginWithFacebook() async {
     //New version, but this new version has an issue
@@ -50,7 +56,7 @@ class LoginRepository extends BaseRepository {
 
     final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
     final GoogleSignInAuthentication googleSignInAuthentication =
-    await googleSignInAccount.authentication;
+        await googleSignInAccount.authentication;
 
     try {
       return await LoginService.signInWithGoogle(googleSignInAuthentication);
@@ -87,6 +93,21 @@ class LoginRepository extends BaseRepository {
     } else {
       print("User already exist");
     }
+
+    this._loginController.add(user);
+  }
+
+  Future<User> getUser(String uid) async {
+    try {
+      User current = await LoginService.getUser(uid);
+
+      this._loginController.add(current);
+
+      return current;
+    } on Exception catch (ex) {
+      print(ex);
+      throw new LoginException.withCode(null, ExceptionMessages.error);
+    }
   }
 
   Future<User> signIn(String email, String password) async {
@@ -94,10 +115,11 @@ class LoginRepository extends BaseRepository {
       String uid = await LoginService.signIn(email, password);
 
       if (uid != null) {
-        return await LoginService.getUser(uid);
+        return this.getUser(uid);
       }
     } on PlatformException catch (ex) {
-      if (ex.code == "ERROR_WRONG_PASSWORD"|| ex.code == "ERROR_USER_NOT_FOUND") {
+      if (ex.code == "ERROR_WRONG_PASSWORD" ||
+          ex.code == "ERROR_USER_NOT_FOUND") {
         throw new LoginException.withCode(
             null, ExceptionMessages.invalidEmailOrPassword);
       } else {
@@ -106,5 +128,15 @@ class LoginRepository extends BaseRepository {
     }
 
     throw LoginException.withCode(null, ExceptionMessages.userNotRegistered);
+  }
+
+  Future<void> logout() async {
+    await LoginService.signOut();
+  }
+
+  void dispose() {
+    if (this._loginController != null && !this._loginController.isClosed) {
+      this._loginController.close();
+    }
   }
 }

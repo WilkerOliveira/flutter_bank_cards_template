@@ -33,7 +33,6 @@ class _LoginScreenState extends State<LoginScreen>
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     _emailFocus = FocusNode();
@@ -117,7 +116,8 @@ class _LoginScreenState extends State<LoginScreen>
               children: <Widget>[
                 GestureDetector(
                   onTap: () async {
-                    _checkLogin(model, await model.loginWithGoogle());
+                    await model.loginWithGoogle();
+                    _checkLogin(model);
                   },
                   child: new Container(
                     width: Dimens.button_alt_login_width,
@@ -136,7 +136,8 @@ class _LoginScreenState extends State<LoginScreen>
                 ),
                 GestureDetector(
                   onTap: () async {
-                    _checkLogin(model, await model.loginWithFacebook());
+                    await model.loginWithFacebook();
+                    _checkLogin(model);
                   },
                   child: new Container(
                     width: Dimens.button_alt_login_width,
@@ -193,10 +194,9 @@ class _LoginScreenState extends State<LoginScreen>
     );
   }
 
-  void _checkLogin(LoginViewModel model, User user) {
-    if (model.isError) {
-      AlertDialogs.showErrorDialog(
-          context, S.of(context).login_title, model.errorMessage);
+  void _checkLogin(LoginViewModel model) {
+    if (!model.isError) {
+      Navigator.pushNamed(context, Router.HOME, arguments: null);
     }
   }
 
@@ -312,7 +312,8 @@ class _LoginScreenState extends State<LoginScreen>
   _signIn(LoginViewModel model) async {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
-      User user = await model.signIn(currentUser);
+
+      await model.signIn(currentUser);
 
       if (model.isError) {
         AlertDialogs.showErrorDialog(
@@ -322,8 +323,7 @@ class _LoginScreenState extends State<LoginScreen>
         AlertDialogs.showInfoDialog(
             context, S.of(context).info_title, model.errorMessage);
       } else {
-        AlertDialogs.showSuccessDialog(
-            context, S.of(context).success_title, user.nickName, () {});
+        _checkLogin(model);
       }
     }
   }

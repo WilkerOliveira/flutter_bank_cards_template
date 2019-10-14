@@ -1,3 +1,4 @@
+import 'package:bank_cards/src/ui/resources/custom_colors.dart';
 import 'package:bank_cards/src/ui/resources/dimens.dart';
 import 'package:bank_cards/src/ui/resources/styles.dart';
 import 'package:bank_cards/src/viewmodel/base/base_viewmodel.dart';
@@ -16,7 +17,7 @@ class Buttons {
           textButton,
           style: defaultTextStyle(),
         ),
-        color: Colors.green,
+        color: CustomColors.login_button_background,
         elevation: 4.0,
         splashColor: Colors.blue,
         onPressed: () {

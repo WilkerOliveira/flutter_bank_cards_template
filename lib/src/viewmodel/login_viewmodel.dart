@@ -11,29 +11,21 @@ class LoginViewModel extends BaseViewModel {
     this._loginRepository = LoginRepository();
   }
 
-  Future<User> signIn(User user) async {
-
+  Future<void> signIn(User user) async {
     setState(ViewState.Busy);
 
     try {
-
       this.error = false;
       this.customErrorMessage = null;
 
-      User currentUser =
-          await this._loginRepository.signIn(user.email, user.password);
-
-      return currentUser;
+      await this._loginRepository.signIn(user.email, user.password);
     } on LoginException catch (ex) {
       super.error = true;
       super.customErrorMessage = ex.status;
-      return null;
     } catch (ex) {
       super.error = true;
       super.customErrorMessage = null;
-      return null;
-    }
-    finally{
+    } finally {
       setState(ViewState.Idle);
     }
   }
