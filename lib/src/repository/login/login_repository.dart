@@ -34,6 +34,9 @@ class LoginRepository extends BaseRepository {
           if (ex.code == "ERROR_INVALID_CREDENTIAL") {
             throw new LoginException.withCode(
                 null, ExceptionMessages.userNotRegistered);
+          }else if(ex.code == "ERROR_ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL"){
+            throw new LoginException.withCode(
+                null, ExceptionMessages.userRegisteredWithDiffCredential);
           } else {
             throw new LoginException.withCode(null, ExceptionMessages.error);
           }
@@ -86,6 +89,9 @@ class LoginRepository extends BaseRepository {
   }
 
   Future<void> addUser(user) async {
+
+    this._loginController.add(user);
+
     bool userExist = await LoginService.checkUserExist(user.userID);
 
     if (!userExist) {
@@ -94,7 +100,6 @@ class LoginRepository extends BaseRepository {
       print("User already exist");
     }
 
-    this._loginController.add(user);
   }
 
   Future<User> getUser(String uid) async {

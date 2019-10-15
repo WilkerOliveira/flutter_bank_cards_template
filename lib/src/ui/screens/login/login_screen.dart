@@ -16,6 +16,7 @@ import 'package:bank_cards/src/viewmodel/base/base_viewmodel.dart';
 import 'package:bank_cards/src/viewmodel/login_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -103,7 +104,7 @@ class _LoginScreenState extends State<LoginScreen>
 
   Widget _body() {
     return BaseWidget<LoginViewModel>(
-      model: LoginViewModel(),
+      model: LoginViewModel(Provider.of(context)),
       onModelReady: (model) async {},
       builder: (mainContext, model, child) => Container(
         width: MediaQuery.of(context).size.width,
@@ -195,7 +196,14 @@ class _LoginScreenState extends State<LoginScreen>
   }
 
   void _checkLogin(LoginViewModel model) {
-    if (!model.isError) {
+    if (model.isError) {
+      AlertDialogs.showErrorDialog(
+          context, S.of(context).error_title, model.errorMessage);
+    } else if (model.errorMessage != null &&
+        model.errorMessage.toString().isNotEmpty) {
+      AlertDialogs.showInfoDialog(
+          context, S.of(context).info_title, model.errorMessage);
+    } else {
       Navigator.pushNamed(context, Router.HOME, arguments: null);
     }
   }
@@ -335,16 +343,7 @@ class _LoginScreenState extends State<LoginScreen>
 
       await model.signIn(currentUser);
 
-      if (model.isError) {
-        AlertDialogs.showErrorDialog(
-            context, S.of(context).error_title, model.errorMessage);
-      } else if (model.errorMessage != null &&
-          model.errorMessage.toString().isNotEmpty) {
-        AlertDialogs.showInfoDialog(
-            context, S.of(context).info_title, model.errorMessage);
-      } else {
-        _checkLogin(model);
-      }
+      _checkLogin(model);
     }
   }
 }

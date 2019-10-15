@@ -7,5 +7,6 @@ enum ExceptionMessages {
   userNickNameAlreadyExists,
   passwordNotMatch,
   noInternetConnection,
-  invalidEmailOrPassword
+  invalidEmailOrPassword,
+  userRegisteredWithDiffCredential
 }

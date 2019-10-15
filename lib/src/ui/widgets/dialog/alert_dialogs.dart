@@ -24,6 +24,8 @@ class AlertDialogs {
         return S.of(context).no_internet_connection;
       case ExceptionMessages.invalidEmailOrPassword:
         return S.of(context).invalid_email_or_password;
+      case ExceptionMessages.userRegisteredWithDiffCredential:
+        return S.of(context).userRegisteredWithDiffCredential;
       default:
         return S.of(context).default_error;
     }
@@ -31,7 +33,6 @@ class AlertDialogs {
 
   static void showErrorDialog(
       BuildContext context, String title, ExceptionMessages exceptionMessages) {
-
     String errorMessage = exceptionMessages == null
         ? S.of(context).default_error
         : _getMessage(context, exceptionMessages);
@@ -51,7 +52,6 @@ class AlertDialogs {
 
   static void showInfoDialog(
       BuildContext context, String title, ExceptionMessages exceptionMessages) {
-
     String message = exceptionMessages == null
         ? S.of(context).default_error
         : _getMessage(context, exceptionMessages);
@@ -71,7 +71,6 @@ class AlertDialogs {
 
   static void showSuccessDialog(
       BuildContext context, String title, String message, callbackFunction) {
-
     showDialog(
       barrierDismissible: false,
       context: context,
@@ -82,20 +81,18 @@ class AlertDialogs {
         color: Colors.green,
         dialogType: DialogType.success,
       ),
-    ).then((val){
-      if(callbackFunction != null) callbackFunction();
+    ).then((val) {
+      if (callbackFunction != null) callbackFunction();
     });
   }
 
-  static void showResetPassword(
-      BuildContext context, callbackFunction) {
-
+  static void showResetPassword(BuildContext context, callbackFunction) {
     showDialog(
       barrierDismissible: false,
       context: context,
       builder: (BuildContext context) => ResetPasswordDialog(),
-    ).then((val){
-      if(callbackFunction != null) callbackFunction();
+    ).then((val) {
+      if (callbackFunction != null) callbackFunction();
     });
   }
 }

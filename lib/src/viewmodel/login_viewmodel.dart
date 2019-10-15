@@ -7,9 +7,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 class LoginViewModel extends BaseViewModel {
   LoginRepository _loginRepository;
 
-  LoginViewModel() {
-    this._loginRepository = LoginRepository();
-  }
+  LoginViewModel(this._loginRepository);
 
   Future<void> signIn(User user) async {
     setState(ViewState.Busy);
@@ -31,6 +29,9 @@ class LoginViewModel extends BaseViewModel {
   }
 
   Future<User> loginWithFacebook() async {
+
+    setState(ViewState.Busy);
+
     try {
       FirebaseUser facebookUser =
           await this._loginRepository.loginWithFacebook();
@@ -64,9 +65,14 @@ class LoginViewModel extends BaseViewModel {
       super.customErrorMessage = null;
       return null;
     }
+    finally{
+        setState(ViewState.Idle);
+    }
   }
 
   Future<User> loginWithGoogle() async {
+    setState(ViewState.Busy);
+
     try {
       FirebaseUser googleUser = await this._loginRepository.loginWithGoogle();
 
@@ -98,6 +104,9 @@ class LoginViewModel extends BaseViewModel {
       super.error = true;
       super.customErrorMessage = null;
       return null;
+    }
+    finally{
+      setState(ViewState.Idle);
     }
   }
 }

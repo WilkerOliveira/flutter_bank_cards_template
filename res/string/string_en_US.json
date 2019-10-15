@@ -47,5 +47,6 @@
   "cards": "Cards",
   "account": "Account",
   "user": "User",
-  "logout": "Logout"
+  "logout": "Logout",
+  "userRegisteredWithDiffCredential" : "You are already registered using different credential!"
 }

@@ -62,6 +62,7 @@ class $pt_BR extends MessageLookupByLibrary {
 		"account" : MessageLookupByLibrary.simpleMessage("Conta"),
 		"user" : MessageLookupByLibrary.simpleMessage("Usuário"),
 		"logout" : MessageLookupByLibrary.simpleMessage("Sair"),
+		"userRegisteredWithDiffCredential" : MessageLookupByLibrary.simpleMessage("Você já está registrado com uma credencial diferente!"),
 
   };
 }
@@ -121,6 +122,7 @@ class $en_US extends MessageLookupByLibrary {
 		"account" : MessageLookupByLibrary.simpleMessage("Account"),
 		"user" : MessageLookupByLibrary.simpleMessage("User"),
 		"logout" : MessageLookupByLibrary.simpleMessage("Logout"),
+		"userRegisteredWithDiffCredential" : MessageLookupByLibrary.simpleMessage("You are already registered using different credential!"),
 
   };
 }

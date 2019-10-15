@@ -49,7 +49,7 @@ class ResetPasswordDialog extends StatelessWidget {
           ),
           margin: EdgeInsets.only(top: avatarRadius),
           decoration: new BoxDecoration(
-            color: Colors.white,
+            color: CustomColors.TOP_HEAD,
             shape: BoxShape.rectangle,
             borderRadius: BorderRadius.circular(padding),
             boxShadow: [
@@ -61,9 +61,19 @@ class ResetPasswordDialog extends StatelessWidget {
             ],
           ),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min, // To make the card compact
             children: <Widget>[
-              SizedBox(height: 16.0),
+              Padding(
+                padding: EdgeInsets.only(bottom: 10, left: 5),
+                child: Text(
+                  S.of(context).email,
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
               emailField,
               Align(
                 alignment: Alignment.bottomRight,

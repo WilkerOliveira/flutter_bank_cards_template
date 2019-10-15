@@ -47,5 +47,6 @@
   "cards": "Cartões",
   "account": "Conta",
   "user": "Usuário",
-  "logout": "Sair"
+  "logout": "Sair",
+  "userRegisteredWithDiffCredential" : "Você já está registrado com uma credencial diferente!"
 }

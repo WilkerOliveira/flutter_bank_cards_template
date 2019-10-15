@@ -222,6 +222,10 @@ class S {
     return Intl.message("Sair", name: 'logout');
   }
 
+  String get userRegisteredWithDiffCredential {
+    return Intl.message("Você já está registrado com uma credencial diferente!", name: 'userRegisteredWithDiffCredential');
+  }
+
 
 }
 
