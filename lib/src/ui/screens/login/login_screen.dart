@@ -263,13 +263,33 @@ class _LoginScreenState extends State<LoginScreen>
       child: Padding(
         padding: EdgeInsets.only(top: 30),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            Padding(
+              padding: EdgeInsets.only(bottom: 10, left: 5),
+              child: Text(
+                S.of(context).email,
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.white,
+                ),
+              ),
+            ),
             SizedBox(
               width: Dimens.form_field_width,
               child: emailField,
             ),
             SizedBox(height: 10.0),
+            Padding(
+              padding: EdgeInsets.only(bottom: 10, left: 5),
+              child: Text(
+                S.of(context).password,
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.white,
+                ),
+              ),
+            ),
             SizedBox(
               width: Dimens.form_field_width,
               child: passwordField,
@@ -285,6 +305,7 @@ class _LoginScreenState extends State<LoginScreen>
               },
               child: new Text(
                 S.of(context).forgot_password,
+                textAlign: TextAlign.center,
                 style: TextStyle(
                   fontFamily: 'Roboto',
                   color: Colors.white,
@@ -292,7 +313,6 @@ class _LoginScreenState extends State<LoginScreen>
                   fontSize: Dimens.button_text_size,
                   fontWeight: FontWeight.w400,
                   fontStyle: FontStyle.normal,
-                  letterSpacing: 0.15000000596046448,
                 ),
               ),
             ),
