@@ -10,7 +10,6 @@ This is a template of mobile bank under development and migrating from a private
 Some items that should be implemented soon:
 
     - Exceptions
-    - Log in
     - Unit tests
 
 ### This app use other plugins like:
