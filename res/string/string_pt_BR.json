@@ -48,5 +48,8 @@
   "account": "Conta",
   "user": "Usuário",
   "logout": "Sair",
-  "userRegisteredWithDiffCredential" : "Você já está registrado com uma credencial diferente!"
+  "userRegisteredWithDiffCredential" : "Você já está registrado com uma credencial diferente!",
+  "cancel_button": "CANCELAR",
+  "new_password_sent": "Uma nova senha foi enviado para seu e-mail!",
+  "emailNotFound": "E-mail não encontrado!"
 }

@@ -48,5 +48,8 @@
   "account": "Account",
   "user": "User",
   "logout": "Logout",
-  "userRegisteredWithDiffCredential" : "You are already registered using different credential!"
+  "userRegisteredWithDiffCredential" : "You are already registered using different credential!",
+  "cancel_button": "CANCEL",
+  "new_password_sent": "A new password has been sent to your email address!",
+  "emailNotFound": "Email not found!"
 }

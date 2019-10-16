@@ -12,10 +12,10 @@ class LoginViewModel extends BaseViewModel {
   Future<void> signIn(User user) async {
     setState(ViewState.Busy);
 
-    try {
-      this.error = false;
-      this.customErrorMessage = null;
+    super.error = false;
+    super.customErrorMessage = null;
 
+    try {
       await this._loginRepository.signIn(user.email, user.password);
     } on LoginException catch (ex) {
       super.error = true;
@@ -29,8 +29,10 @@ class LoginViewModel extends BaseViewModel {
   }
 
   Future<User> loginWithFacebook() async {
-
     setState(ViewState.Busy);
+
+    super.error = false;
+    super.customErrorMessage = null;
 
     try {
       FirebaseUser facebookUser =
@@ -49,8 +51,6 @@ class LoginViewModel extends BaseViewModel {
 
           await this._loginRepository.addUser(user);
 
-          this.error = false;
-
           return user;
         }
       }
@@ -64,14 +64,16 @@ class LoginViewModel extends BaseViewModel {
       super.error = true;
       super.customErrorMessage = null;
       return null;
-    }
-    finally{
-        setState(ViewState.Idle);
+    } finally {
+      setState(ViewState.Idle);
     }
   }
 
   Future<User> loginWithGoogle() async {
     setState(ViewState.Busy);
+
+    super.error = false;
+    super.customErrorMessage = null;
 
     try {
       FirebaseUser googleUser = await this._loginRepository.loginWithGoogle();
@@ -89,8 +91,6 @@ class LoginViewModel extends BaseViewModel {
 
           await this._loginRepository.addUser(user);
 
-          this.error = false;
-
           return user;
         }
       }
@@ -104,8 +104,30 @@ class LoginViewModel extends BaseViewModel {
       super.error = true;
       super.customErrorMessage = null;
       return null;
+    } finally {
+      setState(ViewState.Idle);
     }
-    finally{
+  }
+
+  Future<bool> sendPasswordResetEmail(String email) async {
+    setState(ViewState.Busy);
+
+    super.error = false;
+    super.customErrorMessage = null;
+
+    try {
+      await this._loginRepository.sendPasswordResetEmail(email);
+
+      return true;
+    } on LoginException catch (ex) {
+      super.error = true;
+      super.customErrorMessage = ex.status;
+      return false;
+    } catch (ex) {
+      super.error = true;
+      super.customErrorMessage = null;
+      return false;
+    } finally {
       setState(ViewState.Idle);
     }
   }

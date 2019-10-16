@@ -63,6 +63,16 @@ class LoginRepository extends BaseRepository {
 
     try {
       return await LoginService.signInWithGoogle(googleSignInAuthentication);
+    } on PlatformException catch (ex) {
+      if (ex.code == "ERROR_INVALID_CREDENTIAL") {
+        throw new LoginException.withCode(
+            null, ExceptionMessages.userNotRegistered);
+      }else if(ex.code == "ERROR_ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL"){
+        throw new LoginException.withCode(
+            null, ExceptionMessages.userRegisteredWithDiffCredential);
+      } else {
+        throw new LoginException.withCode(null, ExceptionMessages.error);
+      }
     } catch (ex) {
       throw new LoginException.withCode(null, ExceptionMessages.error);
     }
@@ -133,6 +143,19 @@ class LoginRepository extends BaseRepository {
     }
 
     throw LoginException.withCode(null, ExceptionMessages.userNotRegistered);
+  }
+
+  Future<void> sendPasswordResetEmail(String email) async {
+    try {
+      await LoginService.sendPasswordResetEmail(email);
+    } on PlatformException catch (ex) {
+      if (ex.code == "ERROR_USER_NOT_FOUND") {
+        throw new LoginException.withCode(
+            null, ExceptionMessages.emailNotFound);
+      } else {
+        throw new LoginException.withCode(null, ExceptionMessages.error);
+      }
+    }
   }
 
   Future<void> logout() async {

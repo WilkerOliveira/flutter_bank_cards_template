@@ -226,6 +226,18 @@ class S {
     return Intl.message("Você já está registrado com uma credencial diferente!", name: 'userRegisteredWithDiffCredential');
   }
 
+  String get cancel_button {
+    return Intl.message("CANCELAR", name: 'cancel_button');
+  }
+
+  String get new_password_sent {
+    return Intl.message("Uma nova senha foi enviado para seu e-mail!", name: 'new_password_sent');
+  }
+
+  String get emailNotFound {
+    return Intl.message("E-mail não encontrado!", name: 'emailNotFound');
+  }
+
 
 }
 

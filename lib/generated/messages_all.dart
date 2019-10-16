@@ -63,6 +63,9 @@ class $pt_BR extends MessageLookupByLibrary {
 		"user" : MessageLookupByLibrary.simpleMessage("Usuário"),
 		"logout" : MessageLookupByLibrary.simpleMessage("Sair"),
 		"userRegisteredWithDiffCredential" : MessageLookupByLibrary.simpleMessage("Você já está registrado com uma credencial diferente!"),
+		"cancel_button" : MessageLookupByLibrary.simpleMessage("CANCELAR"),
+		"new_password_sent" : MessageLookupByLibrary.simpleMessage("Uma nova senha foi enviado para seu e-mail!"),
+		"emailNotFound" : MessageLookupByLibrary.simpleMessage("E-mail não encontrado!"),
 
   };
 }
@@ -123,6 +126,9 @@ class $en_US extends MessageLookupByLibrary {
 		"user" : MessageLookupByLibrary.simpleMessage("User"),
 		"logout" : MessageLookupByLibrary.simpleMessage("Logout"),
 		"userRegisteredWithDiffCredential" : MessageLookupByLibrary.simpleMessage("You are already registered using different credential!"),
+		"cancel_button" : MessageLookupByLibrary.simpleMessage("CANCEL"),
+		"new_password_sent" : MessageLookupByLibrary.simpleMessage("A new password has been sent to your email address!"),
+		"emailNotFound" : MessageLookupByLibrary.simpleMessage("Email not found!"),
 
   };
 }

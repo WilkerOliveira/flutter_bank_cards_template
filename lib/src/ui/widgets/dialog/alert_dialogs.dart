@@ -26,6 +26,8 @@ class AlertDialogs {
         return S.of(context).invalid_email_or_password;
       case ExceptionMessages.userRegisteredWithDiffCredential:
         return S.of(context).userRegisteredWithDiffCredential;
+      case ExceptionMessages.emailNotFound:
+        return S.of(context).emailNotFound;
       default:
         return S.of(context).default_error;
     }
@@ -90,9 +92,9 @@ class AlertDialogs {
     showDialog(
       barrierDismissible: false,
       context: context,
-      builder: (BuildContext context) => ResetPasswordDialog(),
-    ).then((val) {
-      if (callbackFunction != null) callbackFunction();
-    });
+      builder: (BuildContext context) => ResetPasswordDialog(
+        onResetPassword: callbackFunction,
+      ),
+    );
   }
 }

@@ -309,7 +309,7 @@ class _LoginScreenState extends State<LoginScreen>
             SizedBox(height: 25.0),
             GestureDetector(
               onTap: () {
-                _forgotPassword();
+                _forgotPassword(model);
               },
               child: new Text(
                 S.of(context).forgot_password,
@@ -333,8 +333,26 @@ class _LoginScreenState extends State<LoginScreen>
     );
   }
 
-  _forgotPassword() {
-    AlertDialogs.showResetPassword(context, () {});
+  _forgotPassword(LoginViewModel model) {
+    AlertDialogs.showResetPassword(context, (email) async {
+
+      await model.sendPasswordResetEmail(email);
+
+      if (model.isError) {
+        AlertDialogs.showErrorDialog(
+            context, S.of(context).error_title, model.errorMessage);
+      } else if (model.errorMessage != null &&
+          model.errorMessage.toString().isNotEmpty) {
+        AlertDialogs.showInfoDialog(
+            context, S.of(context).info_title, model.errorMessage);
+      } else {
+        AlertDialogs.showSuccessDialog(
+            context, S.of(context).info_title, S.of(context).new_password_sent, () {
+
+        });
+      }
+
+    });
   }
 
   _signIn(LoginViewModel model) async {

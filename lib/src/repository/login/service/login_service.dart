@@ -19,11 +19,11 @@ class LoginService {
   static Future<FirebaseUser> signInWithFacebook(
       FacebookAccessToken myToken) async {
     AuthCredential credential =
-    FacebookAuthProvider.getCredential(accessToken: myToken.token);
+        FacebookAuthProvider.getCredential(accessToken: myToken.token);
 
     // this line do auth in firebase with your facebook credential.
     AuthResult authResult =
-    await FirebaseAuth.instance.signInWithCredential(credential);
+        await FirebaseAuth.instance.signInWithCredential(credential);
 
     return authResult.user;
   }
@@ -37,7 +37,7 @@ class LoginService {
 
     // this line do auth in firebase with your facebook credential.
     AuthResult authResult =
-    await FirebaseAuth.instance.signInWithCredential(credential);
+        await FirebaseAuth.instance.signInWithCredential(credential);
 
     return authResult.user;
   }
@@ -57,6 +57,10 @@ class LoginService {
     return user;
   }
 
+  static Future<void> sendPasswordResetEmail(email) async {
+    await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+  }
+
   static void addUser(User user) async {
     print("user ${user.firstName} ${user.email} added");
     Firestore.instance.document("users/${user.userID}").setData(user.toJson());
@@ -64,10 +68,11 @@ class LoginService {
 
   static Future<bool> checkEmailExist(String email) async {
     QuerySnapshot query =
-    await Firestore.instance.collection("users").getDocuments();
+        await Firestore.instance.collection("users").getDocuments();
 
     for (DocumentSnapshot document in query.documents) {
-      if (document.data.containsKey("email") && document.data.containsValue(email)) {
+      if (document.data.containsKey("email") &&
+          document.data.containsValue(email)) {
         return true;
       }
     }
@@ -77,10 +82,11 @@ class LoginService {
 
   static Future<bool> checkNickNameExist(String nickName) async {
     QuerySnapshot query =
-    await Firestore.instance.collection("users").getDocuments();
+        await Firestore.instance.collection("users").getDocuments();
 
     for (DocumentSnapshot document in query.documents) {
-      if (document.data.containsKey("nickName") && document.data.containsValue(nickName)) {
+      if (document.data.containsKey("nickName") &&
+          document.data.containsValue(nickName)) {
         return true;
       }
     }

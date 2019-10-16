@@ -3,12 +3,34 @@ import 'package:bank_cards/src/ui/resources/custom_colors.dart';
 import 'package:bank_cards/src/ui/resources/decorations.dart';
 import 'package:bank_cards/src/ui/resources/dimens.dart';
 import 'package:bank_cards/src/ui/resources/styles.dart';
+import 'package:bank_cards/src/ui/validation/common_form_validation.dart';
 import 'package:flutter/material.dart';
 
-class ResetPasswordDialog extends StatelessWidget {
+class ResetPasswordDialog extends StatefulWidget {
+  final Function onResetPassword;
+
+  ResetPasswordDialog({Key key, @required this.onResetPassword});
+
+  @override
+  _ResetPasswordDialogState createState() =>
+      _ResetPasswordDialogState(this.onResetPassword);
+}
+
+class _ResetPasswordDialogState extends State<ResetPasswordDialog>
+    with CommonFormValidation {
   static const double padding = 16.0;
   static const double avatarRadius = 36.0;
   static const double iconSize = 32.0;
+  final Function _onResetPassword;
+  final _formKey = GlobalKey<FormState>();
+
+  _ResetPasswordDialogState(this._onResetPassword);
+
+  @override
+  void initState() {
+    super.initState();
+    this.commonValidationContext = context;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,18 +45,18 @@ class ResetPasswordDialog extends StatelessWidget {
   }
 
   dialogContent(BuildContext context) {
-    String _email;
+    String email;
 
     final emailField = TextFormField(
       keyboardType: TextInputType.emailAddress,
       maxLength: 100,
       obscureText: false,
-      style: formTextStyle(
-          CustomColors.DARK_BLUE, Dimens.form_text_size),
+      validator: emailValidation,
+      style: formTextStyle(CustomColors.DARK_BLUE, Dimens.form_text_size),
       decoration: Decorations.formInputDecoration(
           S.of(context).email, CustomColors.login_error_color),
       onSaved: (String value) {
-        _email = value.trim();
+        email = value.trim();
       },
     );
 
@@ -60,31 +82,49 @@ class ResetPasswordDialog extends StatelessWidget {
               ),
             ],
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min, // To make the card compact
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(bottom: 10, left: 5),
-                child: Text(
-                  S.of(context).email,
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.white,
+          child: Form(
+            key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min, // To make the card compact
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.only(bottom: 10, left: 5),
+                  child: Text(
+                    S.of(context).email,
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
-              ),
-              emailField,
-              Align(
-                alignment: Alignment.bottomRight,
-                child: FlatButton(
-                  onPressed: () {
-                    Navigator.of(context).pop(); // To close the dialog
-                  },
-                  child: Text(S.of(context).reset_button),
+                emailField,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+
+                    FlatButton(
+                      onPressed: () {
+                        Navigator.of(context).pop(); // To close the dialog
+                      },
+                      child: Text(S.of(context).cancel_button),
+                    ),
+
+                    FlatButton(
+                      onPressed: () {
+                        if (_formKey.currentState.validate()) {
+                          _formKey.currentState.save();
+                          this._onResetPassword(email);
+                          Navigator.of(context).pop(); // To close the dialog
+                        }
+                      },
+                      child: Text(S.of(context).reset_button),
+                    ),
+
+                  ],
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
         Positioned(

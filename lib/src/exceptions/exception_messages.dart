@@ -8,5 +8,6 @@ enum ExceptionMessages {
   passwordNotMatch,
   noInternetConnection,
   invalidEmailOrPassword,
-  userRegisteredWithDiffCredential
+  userRegisteredWithDiffCredential,
+  emailNotFound
 }
