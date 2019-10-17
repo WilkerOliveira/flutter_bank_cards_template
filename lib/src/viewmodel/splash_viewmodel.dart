@@ -12,10 +12,15 @@ class SplashViewModel extends BaseViewModel {
   Future<User> getCurrentUser() async {
     try {
       FirebaseUser fireBaseUser =
-          await this._loginRepository.getCurrentFirebaseUser();
+      await this._loginRepository.getCurrentFirebaseUser();
 
       if (fireBaseUser != null) {
-        User user = await this._loginRepository.getUser(fireBaseUser.uid);
+        User user = new User(
+          firstName: fireBaseUser.displayName,
+          userID: fireBaseUser.uid,
+          email: fireBaseUser.email ?? '',
+          profilePictureURL: fireBaseUser.photoUrl ?? '',
+        );
 
         this.error = false;
 

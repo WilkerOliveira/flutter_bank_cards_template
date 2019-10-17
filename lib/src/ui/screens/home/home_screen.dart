@@ -1,5 +1,4 @@
 import 'package:bank_cards/generated/i18n.dart';
-import 'package:bank_cards/src/ui/resources/custom_colors.dart';
 import 'package:bank_cards/src/ui/screens/home/bank_screen.dart';
 import 'package:bank_cards/src/ui/screens/home/user_screen.dart';
 import 'package:bank_cards/src/ui/widgets/common/custom_bottom_navigation_bar.dart';
@@ -7,12 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:bank_cards/src/ui/screens/card/card_screen.dart';
 import 'package:bank_cards/src/ui/widgets/common/custom_appbar.dart';
 
-class HomePage extends StatefulWidget {
+class HomeScreen extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
 
   final List<Widget> _widgetOptions = <Widget>[

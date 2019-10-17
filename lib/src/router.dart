@@ -21,9 +21,9 @@ class Router {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case '/':
-        return MaterialPageRoute(builder: (_) => HomePage());
+        return MaterialPageRoute(builder: (_) => HomeScreen());
       case HOME:
-        return MaterialPageRoute(builder: (_) => HomePage());
+        return MaterialPageRoute(builder: (_) => HomeScreen());
       case CARD_STATEMENT:
         return MaterialPageRoute(
             builder: (_) => StatementCardScreen(settings.arguments));

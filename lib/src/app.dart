@@ -1,5 +1,4 @@
 import 'package:bank_cards/provider_setup.dart';
-import 'package:bank_cards/src/ui/resources/custom_colors.dart';
 import 'package:bank_cards/src/ui/resources/styles.dart';
 import 'package:bank_cards/src/ui/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
