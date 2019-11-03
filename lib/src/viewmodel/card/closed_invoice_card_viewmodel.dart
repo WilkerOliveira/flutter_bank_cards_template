@@ -33,7 +33,7 @@ class ClosedInvoiceCardViewModel extends BaseViewModel {
           //TODO: must be refactored after backend correction
           result.invoiceCard.creditCards.forEach((item) {
             item.transactions.forEach((itemTransactions) {
-              itemTransactions.icon = Constants.STATEMENT_IMAGE_DEBIT;
+              itemTransactions.icon = Constants.statementImageDebit;
             });
           });
         }
@@ -56,7 +56,7 @@ class ClosedInvoiceCardViewModel extends BaseViewModel {
 
   String toCurrency(double value, String type) {
     //TODO: must be refactored to get from String.xml
-    var signal = type == Constants.STATEMENT_TYPE_DEBIT ? "- R\$ " : "R\$ ";
+    var signal = type == Constants.statementTypeDebit ? "- R\$ " : "R\$ ";
 
     return signal +
         customFormatter.Formatter.toCurrency(value, Intl.defaultLocale);

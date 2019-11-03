@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 ThemeData defaultThemeData() {
   return ThemeData(
     brightness: Brightness.light,
-    primaryColor: CustomColors.GREEN,
+    primaryColor: CustomColors.green,
   );
 }
 
@@ -43,7 +43,7 @@ TextStyle balanceAmountStyle(amount) {
   return TextStyle(
     fontWeight: FontWeight.bold,
     fontSize: 20,
-    color: amount <= 0 ? Colors.red : CustomColors.GREEN,
+    color: amount <= 0 ? Colors.red : CustomColors.green,
   );
 }
 
@@ -51,7 +51,7 @@ TextStyle titleDetailStyle() {
   return TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.bold,
-    color: CustomColors.GREEN,
+    color: CustomColors.green,
   );
 }
 

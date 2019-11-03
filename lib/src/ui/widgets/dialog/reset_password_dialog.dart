@@ -1,8 +1,9 @@
 import 'package:bank_cards/generated/i18n.dart';
 import 'package:bank_cards/src/ui/resources/custom_colors.dart';
 import 'package:bank_cards/src/ui/resources/decorations.dart';
-import 'package:bank_cards/src/ui/resources/dimens.dart';
+import 'package:bank_cards/src/ui/resources/app_dimen.dart';
 import 'package:bank_cards/src/ui/resources/styles.dart';
+import 'package:bank_cards/src/ui/screens/base/base_screen.dart';
 import 'package:bank_cards/src/ui/validation/common_form_validation.dart';
 import 'package:flutter/material.dart';
 
@@ -52,9 +53,9 @@ class _ResetPasswordDialogState extends State<ResetPasswordDialog>
       maxLength: 100,
       obscureText: false,
       validator: emailValidation,
-      style: formTextStyle(CustomColors.DARK_BLUE, Dimens.form_text_size),
-      decoration: Decorations.formInputDecoration(
-          S.of(context).email, CustomColors.login_error_color),
+      style: formTextStyle(CustomColors.darkBlue, AppDimen.formTextSize),
+      decoration: Decorations.formInputDecoration(BaseScreen.screenUtil,
+          S.of(context).email, CustomColors.loginErrorColor),
       onSaved: (String value) {
         email = value.trim();
       },
@@ -71,7 +72,7 @@ class _ResetPasswordDialogState extends State<ResetPasswordDialog>
           ),
           margin: EdgeInsets.only(top: avatarRadius),
           decoration: new BoxDecoration(
-            color: CustomColors.TOP_HEAD,
+            color: CustomColors.topHead,
             shape: BoxShape.rectangle,
             borderRadius: BorderRadius.circular(padding),
             boxShadow: [

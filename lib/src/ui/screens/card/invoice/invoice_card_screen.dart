@@ -69,7 +69,7 @@ class _InvoiceCardScreenState extends State<InvoiceCardScreen> {
             arguments: cardDto);
       },
       child: Card(
-        color: CustomColors.GREEN,
+        color: CustomColors.green,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
         ),

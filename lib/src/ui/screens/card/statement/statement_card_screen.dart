@@ -90,7 +90,7 @@ class _StatementCardScreenState extends State<StatementCardScreen> {
                                 ? _statementResponse.filterMonth
                                 : " - "),
                             style: TextStyle(
-                              color: CustomColors.GREEN,
+                              color: CustomColors.green,
                             ),
                           ),
                         ],

@@ -1,5 +1,5 @@
 import 'package:bank_cards/src/ui/resources/custom_colors.dart';
-import 'package:bank_cards/src/ui/resources/dimens.dart';
+import 'package:bank_cards/src/ui/resources/app_dimen.dart';
 import 'package:bank_cards/src/ui/resources/styles.dart';
 import 'package:bank_cards/src/viewmodel/base/base_viewmodel.dart';
 import 'package:flutter/material.dart';
@@ -8,8 +8,8 @@ class Buttons {
   static Widget defaultButton(
       mainContext, BaseViewModel model, textButton, onPress) {
     return ButtonTheme(
-      minWidth: Dimens.DEFAULT_BOTTOM_WIDTH,
-      height: Dimens.DEFAULT_BOTTOM_HEIGHT,
+      minWidth: AppDimen.defaultBottomWidth,
+      height: AppDimen.defaultBottomHeight,
       child: RaisedButton(
         shape: new RoundedRectangleBorder(
             borderRadius: new BorderRadius.circular(10.0)),
@@ -17,7 +17,7 @@ class Buttons {
           textButton,
           style: defaultTextStyle(),
         ),
-        color: CustomColors.login_button_background,
+        color: CustomColors.loginButtonBackground,
         elevation: 4.0,
         splashColor: Colors.blue,
         onPressed: () {
@@ -52,8 +52,8 @@ class Buttons {
   static Widget outlineButton(
       mainContext, BaseViewModel model, textButton, onPress) {
     return ButtonTheme(
-      minWidth: Dimens.MIN_BOTTOM_WIDTH,
-      height: Dimens.MIN_BOTTOM_HEIGHT,
+      minWidth: AppDimen.minBottomWidth,
+      height: AppDimen.minBottomHeight,
       child: OutlineButton(
         borderSide: BorderSide(
           color: Colors.pinkAccent, //Color of the border

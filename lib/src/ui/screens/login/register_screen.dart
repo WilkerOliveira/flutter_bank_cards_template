@@ -2,8 +2,9 @@ import 'package:bank_cards/generated/i18n.dart';
 import 'package:bank_cards/src/models/user.dart';
 import 'package:bank_cards/src/ui/resources/custom_colors.dart';
 import 'package:bank_cards/src/ui/resources/decorations.dart';
-import 'package:bank_cards/src/ui/resources/dimens.dart';
+import 'package:bank_cards/src/ui/resources/app_dimen.dart';
 import 'package:bank_cards/src/ui/resources/styles.dart';
+import 'package:bank_cards/src/ui/screens/base/base_screen.dart';
 import 'package:bank_cards/src/ui/screens/base/base_widget.dart';
 import 'package:bank_cards/src/ui/utility/screen_utility.dart';
 import 'package:bank_cards/src/ui/validation/common_form_validation.dart';
@@ -34,7 +35,6 @@ class _RegisterScreenState extends State<RegisterScreen>
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     _nameFocus = FocusNode();
@@ -58,16 +58,20 @@ class _RegisterScreenState extends State<RegisterScreen>
 
   @override
   Widget build(BuildContext context) {
+    BaseScreen.initScreenUtil(context: context);
     this.commonValidationContext = context;
     this.registerValidationContext = context;
 
     return Scaffold(
       body: Container(
-        color: CustomColors.DARK_BLUE,
+        color: CustomColors.darkBlue,
         child: NestedScrollView(
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return <Widget>[
-              CustomAppBar(appBarType: AppBarType.silverAppBar , title: S.of(context).app_name).build(context),
+              CustomAppBar(
+                      appBarType: AppBarType.silverAppBar,
+                      title: S.of(context).app_name)
+                  .build(context),
             ];
           },
           body: SingleChildScrollView(child: _body()),
@@ -81,7 +85,7 @@ class _RegisterScreenState extends State<RegisterScreen>
       model: RegisterViewModel(),
       onModelReady: (model) async {},
       builder: (mainContext, model, child) => Container(
-        color: CustomColors.DARK_BLUE,
+        color: CustomColors.darkBlue,
         width: MediaQuery.of(context).size.width,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -91,7 +95,9 @@ class _RegisterScreenState extends State<RegisterScreen>
                 ? CustomCircularProgressIndicator()
                 : submitButton(model),
             SizedBox(
-              height: Dimens.sized_box_space,
+              height: BaseScreen.screenUtil.setHeight(
+                AppDimen.sizedBoxSpace,
+              ),
             ),
           ],
         ),
@@ -101,19 +107,26 @@ class _RegisterScreenState extends State<RegisterScreen>
 
   Widget submitButton(RegisterViewModel model) {
     return Material(
-      elevation: 5.0,
-      borderRadius: BorderRadius.circular(Dimens.border_button),
-      color: CustomColors.login_button_background,
+      elevation: BaseScreen.screenUtil.setWidth(5.0),
+      borderRadius: BorderRadius.circular(
+        BaseScreen.screenUtil.setWidth(AppDimen.borderButton),
+      ),
+      color: CustomColors.loginButtonBackground,
       child: MaterialButton(
-        minWidth: Dimens.button_default_width,
-        padding: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
+        minWidth: BaseScreen.screenUtil.setWidth(AppDimen.buttonDefaultWidth),
+        padding: EdgeInsets.fromLTRB(
+          BaseScreen.screenUtil.setWidth(20.0),
+          BaseScreen.screenUtil.setWidth(20.0),
+          BaseScreen.screenUtil.setWidth(20.0),
+          BaseScreen.screenUtil.setWidth(20.0),
+        ),
         onPressed: () async {
           _doRegister(model);
         },
         child: Text(
           S.of(context).btn_register,
           textAlign: TextAlign.center,
-          style: formTextStyle(CustomColors.DARK_BLUE, Dimens.form_text_size)
+          style: formTextStyle(CustomColors.darkBlue, BaseScreen.screenUtil.setSp(AppDimen.formTextSize))
               .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
         ),
       ),
@@ -142,14 +155,14 @@ class _RegisterScreenState extends State<RegisterScreen>
 
   Widget registerForm(RegisterViewModel model) {
     TextStyle style =
-        formTextStyle(CustomColors.DARK_BLUE, Dimens.form_text_size);
+        formTextStyle(CustomColors.darkBlue, BaseScreen.screenUtil.setSp(AppDimen.formTextSize));
 
     final nameField = TextFormField(
       obscureText: false,
       maxLength: 50,
       style: style,
-      decoration: Decorations.formInputDecoration(
-          S.of(context).name, CustomColors.login_error_color),
+      decoration: Decorations.formInputDecoration(BaseScreen.screenUtil,
+          S.of(context).name, CustomColors.loginErrorColor),
       onSaved: (String value) {
         newUser.firstName = value.trim();
       },
@@ -165,8 +178,8 @@ class _RegisterScreenState extends State<RegisterScreen>
       obscureText: false,
       maxLength: 20,
       style: style,
-      decoration: Decorations.formInputDecoration(
-          S.of(context).nick_name, CustomColors.login_error_color),
+      decoration: Decorations.formInputDecoration(BaseScreen.screenUtil,
+          S.of(context).nick_name, CustomColors.loginErrorColor),
       onSaved: (String value) {
         newUser.nickName = value.trim();
       },
@@ -183,8 +196,8 @@ class _RegisterScreenState extends State<RegisterScreen>
       maxLength: 100,
       obscureText: false,
       style: style,
-      decoration: Decorations.formInputDecoration(
-          S.of(context).email, CustomColors.login_error_color),
+      decoration: Decorations.formInputDecoration(BaseScreen.screenUtil,
+          S.of(context).email, CustomColors.loginErrorColor),
       onSaved: (String value) {
         newUser.email = value.trim();
       },
@@ -201,8 +214,8 @@ class _RegisterScreenState extends State<RegisterScreen>
       obscureText: true,
       maxLength: 8,
       style: style,
-      decoration: Decorations.formInputDecoration(
-          S.of(context).password, CustomColors.login_error_color),
+      decoration: Decorations.formInputDecoration(BaseScreen.screenUtil,
+          S.of(context).password, CustomColors.loginErrorColor),
       onSaved: (String value) {
         newUser.password = value.trim();
       },
@@ -218,8 +231,8 @@ class _RegisterScreenState extends State<RegisterScreen>
       obscureText: true,
       maxLength: 8,
       style: style,
-      decoration: Decorations.formInputDecoration(
-          S.of(context).confirm_password, CustomColors.login_error_color),
+      decoration: Decorations.formInputDecoration(BaseScreen.screenUtil,
+          S.of(context).confirm_password, CustomColors.loginErrorColor),
       onSaved: (String value) {
         newUser.confirmPassword = value.trim();
       },
@@ -239,86 +252,87 @@ class _RegisterScreenState extends State<RegisterScreen>
     return Form(
       key: _formKey,
       child: Padding(
-        padding: EdgeInsets.only(top: 30),
+        padding: EdgeInsets.only(top: BaseScreen.screenUtil.setWidth(30)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(bottom: 10, left: 5),
+              padding: EdgeInsets.only(bottom: BaseScreen.screenUtil.setWidth(10), left: BaseScreen.screenUtil.setWidth(5)),
               child: Text(
                 S.of(context).name,
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: BaseScreen.screenUtil.setSp(16),
                   color: Colors.white,
                 ),
               ),
             ),
             SizedBox(
-              width: Dimens.form_field_width,
+              width: BaseScreen.screenUtil.setWidth(AppDimen.formFieldWidth),
               child: nameField,
             ),
-            SizedBox(height: 5.0),
+            SizedBox(height: BaseScreen.screenUtil.setHeight(5.0)),
             Padding(
-              padding: EdgeInsets.only(bottom: 10, left: 5),
+              padding: EdgeInsets.only(bottom: BaseScreen.screenUtil.setWidth(10), left:
+    BaseScreen.screenUtil.setWidth(5),),
               child: Text(
                 S.of(context).nick_name,
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: BaseScreen.screenUtil.setSp(16),
                   color: Colors.white,
                 ),
               ),
             ),
             SizedBox(
-              width: Dimens.form_field_width,
+              width: BaseScreen.screenUtil.setWidth(AppDimen.formFieldWidth),
               child: nickName,
             ),
-            SizedBox(height: 5.0),
+            SizedBox(height: BaseScreen.screenUtil.setHeight(5.0)),
             Padding(
-              padding: EdgeInsets.only(bottom: 10, left: 5),
+              padding: EdgeInsets.only(bottom: BaseScreen.screenUtil.setWidth(10), left: BaseScreen.screenUtil.setWidth(5),),
               child: Text(
                 S.of(context).email,
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: BaseScreen.screenUtil.setSp(16),
                   color: Colors.white,
                 ),
               ),
             ),
             SizedBox(
-              width: Dimens.form_field_width,
+              width: BaseScreen.screenUtil.setWidth(AppDimen.formFieldWidth),
               child: emailField,
             ),
-            SizedBox(height: 5.0),
+            SizedBox(height: BaseScreen.screenUtil.setHeight(5.0)),
             Padding(
-              padding: EdgeInsets.only(bottom: 10, left: 5),
+              padding: EdgeInsets.only(bottom: BaseScreen.screenUtil.setWidth(10), left: BaseScreen.screenUtil.setWidth(5),),
               child: Text(
                 S.of(context).password,
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: BaseScreen.screenUtil.setSp(16),
                   color: Colors.white,
                 ),
               ),
             ),
             SizedBox(
-              width: Dimens.form_field_width,
+              width: BaseScreen.screenUtil.setWidth(AppDimen.formFieldWidth),
               child: passwordField,
             ),
-            SizedBox(height: 5.0),
+            SizedBox(height: BaseScreen.screenUtil.setHeight(5.0)),
             Padding(
-              padding: EdgeInsets.only(bottom: 10, left: 5),
+              padding: EdgeInsets.only(bottom: BaseScreen.screenUtil.setWidth(10), left: BaseScreen.screenUtil.setWidth(5),),
               child: Text(
                 S.of(context).confirm_password,
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: BaseScreen.screenUtil.setSp(16),
                   color: Colors.white,
                 ),
               ),
             ),
             SizedBox(
-              width: Dimens.form_field_width,
+              width: BaseScreen.screenUtil.setWidth(AppDimen.formFieldWidth),
               child: confirmPassword,
             ),
             SizedBox(
-              height: 30,
+              height: BaseScreen.screenUtil.setHeight(30),
             ),
           ],
         ),

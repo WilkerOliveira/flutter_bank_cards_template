@@ -170,7 +170,7 @@ class _ClosedInvoiceCardScreenState extends State<ClosedInvoiceCardScreen> {
               height: 40,
               child: Text(
                 model.toCurrency(
-                    statement.amount, Constants.STATEMENT_TYPE_DEBIT),
+                    statement.amount, Constants.statementTypeDebit),
                 style: TextStyle(
                     color: Color(0xFFB34747),
                     fontSize: 16,

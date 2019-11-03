@@ -1,4 +1,5 @@
 import 'package:bank_cards/generated/i18n.dart';
+import 'package:bank_cards/src/ui/screens/base/base_screen.dart';
 import 'package:bank_cards/src/ui/screens/home/bank_screen.dart';
 import 'package:bank_cards/src/ui/screens/home/user_screen.dart';
 import 'package:bank_cards/src/ui/widgets/common/custom_bottom_navigation_bar.dart';
@@ -25,6 +26,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    BaseScreen.initScreenUtil(context: context);
+
     return Scaffold(
       appBar: CustomAppBar(
               appBarType: AppBarType.simple, title: S.of(context).app_name)

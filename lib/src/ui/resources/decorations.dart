@@ -1,6 +1,7 @@
 import 'package:bank_cards/src/ui/resources/custom_colors.dart';
-import 'package:bank_cards/src/ui/resources/dimens.dart';
+import 'package:bank_cards/src/ui/resources/app_dimen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Decorations {
   static BoxDecoration defaultBorderBoxDecoration() {
@@ -28,14 +29,23 @@ class Decorations {
     );
   }
 
-  static InputDecoration formInputDecoration(String hint, Color errorColor) {
+  static InputDecoration formInputDecoration(
+      ScreenUtil screenUtil, String hint, Color errorColor) {
     return InputDecoration(
       filled: true,
       fillColor: Colors.white,
-      contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+      contentPadding: EdgeInsets.fromLTRB(
+        screenUtil.setWidth(20.0),
+        screenUtil.setWidth(15.0),
+        screenUtil.setWidth(20.0),
+        screenUtil.setWidth(15.0),
+      ),
       hintText: hint,
+      counterStyle: TextStyle(
+        color: Colors.white,
+      ),
       border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(10.0),
+        borderRadius: BorderRadius.circular(screenUtil.setWidth(10.0)),
       ),
       errorStyle: TextStyle(color: errorColor),
     );
@@ -43,11 +53,11 @@ class Decorations {
 
   static BoxDecoration headerDecoration() {
     return new BoxDecoration(
-      color: CustomColors.DARK_BLUE,
+      color: CustomColors.darkBlue,
       gradient: Decorations.gradientDecoration(),
       borderRadius: new BorderRadius.only(
-        bottomRight: const Radius.circular(Dimens.border_container),
-        bottomLeft: const Radius.circular(Dimens.border_container),
+        bottomRight: const Radius.circular(AppDimen.borderContainer),
+        bottomLeft: const Radius.circular(AppDimen.borderContainer),
       ),
     );
   }
@@ -56,23 +66,23 @@ class Decorations {
     return LinearGradient(
       begin: Alignment.topLeft,
       end: Alignment.bottomRight,
-      colors: [CustomColors.DARK_BLUE, CustomColors.TOP_HEAD],
+      colors: [CustomColors.darkBlue, CustomColors.topHead],
     );
   }
 
   static BoxDecoration balanceDecoration() {
     return new BoxDecoration(
-      color: CustomColors.DARK_BLUE,
+      color: CustomColors.darkBlue,
       gradient: Decorations.gradientDecoration(),
       borderRadius: new BorderRadius.all(
-        const Radius.circular(Dimens.border_container),
+        const Radius.circular(AppDimen.borderContainer),
       ),
     );
   }
 
   static BoxDecoration listItemDecoration() {
     return new BoxDecoration(
-      color: CustomColors.DARK_BLUE,
+      color: CustomColors.darkBlue,
       gradient: Decorations.gradientDecoration(),
     );
   }

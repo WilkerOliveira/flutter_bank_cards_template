@@ -39,7 +39,7 @@ class CommonWidgets {
       height: 90,
       width: 112,
       decoration: new BoxDecoration(
-        border: new Border.all(color: CustomColors.GREEN),
+        border: new Border.all(color: CustomColors.green),
         borderRadius: new BorderRadius.only(
           bottomLeft: const Radius.circular(15.0),
           bottomRight: const Radius.circular(15.0),
@@ -89,7 +89,7 @@ class CommonWidgets {
                   model.toCurrency(
                       statement.amount, statement.type),
                   style: TextStyle(
-                      color: statement.type == Constants.STATEMENT_TYPE_DEBIT ? Color(0xFFB34747) : CustomColors.GREEN,
+                      color: statement.type == Constants.statementTypeDebit ? Color(0xFFB34747) : CustomColors.green,
                       fontSize: 16,
                       fontWeight: FontWeight.bold),
                 ),

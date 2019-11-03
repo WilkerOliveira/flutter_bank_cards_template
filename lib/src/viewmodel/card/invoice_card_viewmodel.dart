@@ -49,7 +49,7 @@ class InvoiceCardViewModel extends BaseViewModel {
 
   String toCurrency(double value, String type) {
     //TODO: must be refactored to get from String.xml
-    var signal = type == Constants.STATEMENT_TYPE_DEBIT ? "- R\$ " : "R\$ ";
+    var signal = type == Constants.statementTypeDebit ? "- R\$ " : "R\$ ";
 
     return signal +
         customFormatter.Formatter.toCurrency(value, Intl.defaultLocale);

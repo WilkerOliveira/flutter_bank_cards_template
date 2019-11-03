@@ -42,6 +42,8 @@ dependencies:
   sprintf: ^4.0.2
   brasil_fields: ^0.0.7+2
   intl: ^0.15.8
+  flutter_screenutil:
+  flutter_spinkit:
 
   firebase_core: ^0.4.0+9
   firebase_auth: ^0.14.0+5

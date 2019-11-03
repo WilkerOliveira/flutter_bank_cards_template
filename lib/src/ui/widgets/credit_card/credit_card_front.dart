@@ -1,6 +1,6 @@
 import 'package:bank_cards/src/ui/resources/app_images.dart';
 import 'package:bank_cards/src/ui/resources/custom_colors.dart';
-import 'package:bank_cards/src/ui/resources/dimens.dart';
+import 'package:bank_cards/src/ui/resources/app_dimen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -17,14 +17,14 @@ class _CreditCardFrontState extends State<CreditCardFront> {
       height: 126,
       width: 390,
       decoration: BoxDecoration(
-        color: CustomColors.DARK_BLUE,
+        color: CustomColors.darkBlue,
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [Color(0xFFbdc3c7), Color(0xFF2c3e50)],
         ),
         borderRadius: new BorderRadius.all(
-            const Radius.circular(Dimens.border_container)),
+            const Radius.circular(AppDimen.borderContainer)),
       ),
       child: Padding(
         padding: EdgeInsets.all(8.0),
@@ -32,7 +32,7 @@ class _CreditCardFrontState extends State<CreditCardFront> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             SvgPicture.asset(
-              AppImages.VISA,
+              AppImages.visa,
               width: 64,
               height: 64,
             ),
@@ -44,7 +44,7 @@ class _CreditCardFrontState extends State<CreditCardFront> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Image.asset(AppImages.CHIP),
+                  Image.asset(AppImages.chip),
                   Text(
                     "1234  5678  9012  3456",
                     style: TextStyle(

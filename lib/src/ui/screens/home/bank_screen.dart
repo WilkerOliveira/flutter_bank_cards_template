@@ -3,7 +3,7 @@ import 'package:bank_cards/src/ui/widgets/common/common_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:bank_cards/src/ui/widgets/common/account_header.dart';
 import 'package:bank_cards/generated/i18n.dart';
-import 'package:bank_cards/src/ui/resources/dimens.dart';
+import 'package:bank_cards/src/ui/resources/app_dimen.dart';
 import 'package:bank_cards/src/ui/resources/styles.dart';
 import 'package:bank_cards/src/utils/formatter.dart';
 import 'package:bank_cards/src/ui/resources/custom_colors.dart';
@@ -55,15 +55,15 @@ class _BankPageState extends State<BankPage> with TickerProviderStateMixin {
       children: <Widget>[
         Container(
           decoration: Decorations.balanceDecoration(),
-          padding: EdgeInsets.only(top: Dimens.BALANCE_MARGIN_TOP),
-          height: Dimens.BALANCE_BODY_HEIGHT,
-          width: Dimens.BALANCE_BODY_WIDTH,
+          padding: EdgeInsets.only(top: AppDimen.balanceMarginTop),
+          height: AppDimen.balanceBodyHeight,
+          width: AppDimen.balanceBodyWidth,
           child: Padding(
             padding: EdgeInsets.fromLTRB(
-              Dimens.BALANCE_BODY_LEFT_PADDING,
-              Dimens.BALANCE_BODY_TOP_PADDING,
-              Dimens.BALANCE_BODY_RIGHT_PADDING,
-              Dimens.BALANCE_BODY_BOTTOM_PADDING,
+              AppDimen.balanceBodyLeftPadding,
+              AppDimen.balanceBodyTopPadding,
+              AppDimen.balanceBodyRightPadding,
+              AppDimen.balanceBodyBottomPadding,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,10 +73,10 @@ class _BankPageState extends State<BankPage> with TickerProviderStateMixin {
                   textAlign: TextAlign.start,
                   style: balanceTitleStyle(),
                 ),
-                SizedBox(width: Dimens.BALANCE_SIZED_BOX),
+                SizedBox(width: AppDimen.balanceSizedBox),
                 Padding(
                   padding:
-                      EdgeInsets.only(top: Dimens.BALANCE_AMOUNT_TOP_PADDING),
+                      EdgeInsets.only(top: AppDimen.balanceAmountTopPadding),
                   child: Text(
                     Formatter.moneyFormatter(-400),
                     textAlign: TextAlign.start,
@@ -89,15 +89,15 @@ class _BankPageState extends State<BankPage> with TickerProviderStateMixin {
         ),
         Container(
           decoration: Decorations.balanceDecoration(),
-          padding: EdgeInsets.only(top: Dimens.BALANCE_MARGIN_TOP),
-          height: Dimens.BALANCE_BODY_HEIGHT,
-          width: Dimens.BALANCE_BODY_WIDTH,
+          padding: EdgeInsets.only(top: AppDimen.balanceMarginTop),
+          height: AppDimen.balanceBodyHeight,
+          width: AppDimen.balanceBodyWidth,
           child: Padding(
             padding: EdgeInsets.fromLTRB(
-              Dimens.BALANCE_BODY_LEFT_PADDING,
-              Dimens.BALANCE_BODY_TOP_PADDING,
-              Dimens.BALANCE_BODY_RIGHT_PADDING,
-              Dimens.BALANCE_BODY_BOTTOM_PADDING,
+              AppDimen.balanceBodyLeftPadding,
+              AppDimen.balanceBodyTopPadding,
+              AppDimen.balanceBodyRightPadding,
+              AppDimen.balanceBodyBottomPadding,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -107,10 +107,10 @@ class _BankPageState extends State<BankPage> with TickerProviderStateMixin {
                   textAlign: TextAlign.start,
                   style: balanceTitleStyle(),
                 ),
-                SizedBox(width: Dimens.BALANCE_SIZED_BOX),
+                SizedBox(width: AppDimen.balanceSizedBox),
                 Padding(
                   padding:
-                      EdgeInsets.only(top: Dimens.BALANCE_AMOUNT_TOP_PADDING),
+                      EdgeInsets.only(top: AppDimen.balanceAmountTopPadding),
                   child: Text(
                     Formatter.moneyFormatter(300),
                     textAlign: TextAlign.start,
@@ -204,7 +204,7 @@ class FunkyOverlayState extends State<FunkyOverlay>
       height: 90,
       width: 112,
       decoration: new BoxDecoration(
-        border: new Border.all(color: CustomColors.GREEN),
+        border: new Border.all(color: CustomColors.green),
         borderRadius: new BorderRadius.only(
           bottomLeft: const Radius.circular(15.0),
           bottomRight: const Radius.circular(15.0),
@@ -222,7 +222,7 @@ class FunkyOverlayState extends State<FunkyOverlay>
               text,
               style: TextStyle(
                 fontSize: 12,
-                color: CustomColors.BLUE,
+                color: CustomColors.blue,
               ),
             ),
           ),

@@ -78,7 +78,7 @@ class CustomDialog extends StatelessWidget {
           ),
           margin: EdgeInsets.only(top: avatarRadius),
           decoration: new BoxDecoration(
-            color: CustomColors.TOP_HEAD,
+            color: CustomColors.topHead,
             shape: BoxShape.rectangle,
             borderRadius: BorderRadius.circular(padding),
             boxShadow: [
@@ -95,6 +95,7 @@ class CustomDialog extends StatelessWidget {
               Text(
                 title,
                 style: TextStyle(
+                  color: Colors.white,
                   fontSize: 24.0,
                   fontWeight: FontWeight.w700,
                 ),
@@ -104,6 +105,7 @@ class CustomDialog extends StatelessWidget {
                 description,
                 textAlign: TextAlign.center,
                 style: TextStyle(
+                  color: Colors.white,
                   fontSize: 16.0,
                 ),
               ),
@@ -114,7 +116,12 @@ class CustomDialog extends StatelessWidget {
                   onPressed: () {
                     Navigator.of(context).pop(); // To close the dialog
                   },
-                  child: Text(buttonText),
+                  child: Text(
+                    buttonText,
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
                 ),
               ),
             ],

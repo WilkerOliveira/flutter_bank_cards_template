@@ -1,12 +1,12 @@
 import 'package:bank_cards/src/ui/resources/custom_colors.dart';
-import 'package:bank_cards/src/ui/resources/dimens.dart';
+import 'package:bank_cards/src/ui/resources/app_dimen.dart';
 import 'package:flutter/material.dart';
 
 class AccountHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(Dimens.MARGIN_ACCOUNT_HEADER),
+      margin: EdgeInsets.all(AppDimen.marginAccountHeader),
       width: MediaQuery.of(context).size.width,
       child: Center(
         child: Stack(

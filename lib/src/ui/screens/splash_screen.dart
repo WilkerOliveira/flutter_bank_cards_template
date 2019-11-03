@@ -5,6 +5,7 @@ import 'package:bank_cards/src/models/user.dart';
 import 'package:bank_cards/src/ui/resources/app_images.dart';
 import 'package:bank_cards/src/ui/resources/custom_colors.dart';
 import 'package:bank_cards/src/ui/resources/decorations.dart';
+import 'package:bank_cards/src/ui/screens/base/base_screen.dart';
 import 'package:bank_cards/src/ui/screens/base/base_widget.dart';
 import 'package:bank_cards/src/ui/screens/home/home_screen.dart';
 import 'package:bank_cards/src/ui/screens/login/login_screen.dart';
@@ -45,6 +46,8 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
+    BaseScreen.initScreenUtil(context: context);
+
     return Scaffold(
       body: BaseWidget<SplashViewModel>(
         model: SplashViewModel(Provider.of(context)),
@@ -61,26 +64,26 @@ class _SplashScreenState extends State<SplashScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.all(5),
+                padding: EdgeInsets.all(BaseScreen.screenUtil.setWidth(5)),
                 child: SvgPicture.asset(
-                  AppImages.LOGO,
-                  width: 150,
-                  height: 150,
+                  AppImages.logo,
+                  width: BaseScreen.screenUtil.setWidth(150),
+                  height: BaseScreen.screenUtil.setHeight(150),
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(30),
+                padding: EdgeInsets.all(BaseScreen.screenUtil.setWidth(30)),
                 child: Text(
                   S.of(context).app_name,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 26,
+                    fontSize: BaseScreen.screenUtil.setSp(26),
                   ),
                 ),
               ),
               CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(CustomColors.GREEN),
+                valueColor: AlwaysStoppedAnimation<Color>(CustomColors.green),
               ),
             ],
           ),

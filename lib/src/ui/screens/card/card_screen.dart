@@ -1,7 +1,7 @@
 import 'package:bank_cards/generated/i18n.dart';
 import 'package:bank_cards/src/router.dart';
 import 'package:bank_cards/src/ui/resources/decorations.dart';
-import 'package:bank_cards/src/ui/resources/dimens.dart';
+import 'package:bank_cards/src/ui/resources/app_dimen.dart';
 import 'package:bank_cards/src/ui/resources/styles.dart';
 import 'package:bank_cards/src/ui/screens/base/base_widget.dart';
 import 'package:bank_cards/src/ui/widgets/common/common_widgets.dart';
@@ -60,7 +60,7 @@ class _CardPageState extends State<CardPage> {
             children: <Widget>[
               model.state != ViewState.Busy
                   ? SizedBox(
-                      height: Dimens.CARDS_HEIGHT,
+                      height: AppDimen.cardsHeight,
                       child: new Swiper(
                         itemBuilder: (BuildContext context, int index) {
                           return CreditCardFront();
@@ -80,7 +80,7 @@ class _CardPageState extends State<CardPage> {
                       ),
                     )
                   : Container(
-                      height: Dimens.CARDS_HEIGHT,
+                      height: AppDimen.cardsHeight,
                       width: 80.0,
                       padding: EdgeInsets.all(10),
                       child: Center(
@@ -103,7 +103,7 @@ class _CardPageState extends State<CardPage> {
   Widget cardDetails(CardViewModel model) {
     return Container(
       margin: EdgeInsets.only(
-          left: Dimens.MARGIN_CARD_DETAIL, right: Dimens.MARGIN_CARD_DETAIL),
+          left: AppDimen.marginCardDetail, right: AppDimen.marginCardDetail),
       child: Card(
         color: Colors.transparent,
         child: Column(
@@ -114,7 +114,7 @@ class _CardPageState extends State<CardPage> {
                 SizedBox(
                   width: 100,
                   child: Padding(
-                    padding: EdgeInsets.all(Dimens.PADDING_CARD_DETAIL),
+                    padding: EdgeInsets.all(AppDimen.paddingCardDetail),
                     child: Text(
                       S.of(context).due_date,
                       style: titleDetailStyle(),
@@ -122,7 +122,7 @@ class _CardPageState extends State<CardPage> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.all(Dimens.PADDING_CARD_DETAIL),
+                  padding: EdgeInsets.all(AppDimen.paddingCardDetail),
                   child: Text(
                     model.state != ViewState.Busy && _privateCard != null
                         ? _privateCard.dueDate.toString()
@@ -141,7 +141,7 @@ class _CardPageState extends State<CardPage> {
                 SizedBox(
                   width: 100,
                   child: Padding(
-                    padding: EdgeInsets.all(Dimens.PADDING_CARD_DETAIL),
+                    padding: EdgeInsets.all(AppDimen.paddingCardDetail),
                     child: Text(
                       S.of(context).limit,
                       style: titleDetailStyle(),
@@ -149,7 +149,7 @@ class _CardPageState extends State<CardPage> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.all(Dimens.PADDING_CARD_DETAIL),
+                  padding: EdgeInsets.all(AppDimen.paddingCardDetail),
                   child: Text(
                     model.state != ViewState.Busy && _privateCard != null
                         ? Formatter.moneyFormatter(_privateCard.limit)
@@ -170,7 +170,7 @@ class _CardPageState extends State<CardPage> {
                 SizedBox(
                   width: 100,
                   child: Padding(
-                    padding: EdgeInsets.all(Dimens.PADDING_CARD_DETAIL),
+                    padding: EdgeInsets.all(AppDimen.paddingCardDetail),
                     child: Text(
                       S.of(context).available,
                       style: titleDetailStyle(),
@@ -178,7 +178,7 @@ class _CardPageState extends State<CardPage> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.all(Dimens.PADDING_CARD_DETAIL),
+                  padding: EdgeInsets.all(AppDimen.paddingCardDetail),
                   child: Text(
                     model.state != ViewState.Busy && _privateCard != null
                         ? Formatter.moneyFormatter(_privateCard.limitAvailable)

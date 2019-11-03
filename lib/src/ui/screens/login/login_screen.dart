@@ -4,17 +4,18 @@ import 'package:bank_cards/src/router.dart';
 import 'package:bank_cards/src/ui/resources/app_images.dart';
 import 'package:bank_cards/src/ui/resources/custom_colors.dart';
 import 'package:bank_cards/src/ui/resources/decorations.dart';
-import 'package:bank_cards/src/ui/resources/dimens.dart';
+import 'package:bank_cards/src/ui/resources/app_dimen.dart';
 import 'package:bank_cards/src/ui/resources/styles.dart';
+import 'package:bank_cards/src/ui/screens/base/base_screen.dart';
 import 'package:bank_cards/src/ui/screens/base/base_widget.dart';
 import 'package:bank_cards/src/ui/utility/screen_utility.dart';
 import 'package:bank_cards/src/ui/validation/common_form_validation.dart';
 import 'package:bank_cards/src/ui/validation/register_form_validation.dart';
-import 'package:bank_cards/src/ui/widgets/custom_circular_progress_indicator.dart';
 import 'package:bank_cards/src/ui/widgets/dialog/alert_dialogs.dart';
 import 'package:bank_cards/src/viewmodel/base/base_viewmodel.dart';
 import 'package:bank_cards/src/viewmodel/login_viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
@@ -54,9 +55,11 @@ class _LoginScreenState extends State<LoginScreen>
 
   @override
   Widget build(BuildContext context) {
+    BaseScreen.initScreenUtil(context: context);
+
     return Scaffold(
       body: Container(
-        color: CustomColors.DARK_BLUE,
+        color: CustomColors.darkBlue,
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: SingleChildScrollView(
@@ -77,24 +80,32 @@ class _LoginScreenState extends State<LoginScreen>
     return Container(
       decoration: Decorations.headerDecoration(),
       width: MediaQuery.of(context).size.width,
-      height: Dimens.login_header_height,
+      height: BaseScreen.screenUtil.setHeight(AppDimen.loginHeaderHeight),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.only(top: 25.0),
+            padding: EdgeInsets.only(
+              top: BaseScreen.screenUtil.setWidth(50.0),
+            ),
             child: SvgPicture.asset(
-              AppImages.LOGO,
-              width: 100,
-              height: 100,
+              AppImages.logo,
+              width: BaseScreen.screenUtil.setWidth(100),
+              height: BaseScreen.screenUtil.setHeight(100),
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: 25, bottom: 15),
+            padding: EdgeInsets.only(
+              top: BaseScreen.screenUtil.setWidth(25),
+              bottom: BaseScreen.screenUtil.setWidth(15),
+            ),
             child: Text(
               S.of(context).app_name,
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 26),
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: BaseScreen.screenUtil.setSp(26),
+              ),
             ),
           )
         ],
@@ -107,7 +118,6 @@ class _LoginScreenState extends State<LoginScreen>
       model: LoginViewModel(Provider.of(context)),
       onModelReady: (model) async {},
       builder: (mainContext, model, child) => Container(
-        width: MediaQuery.of(context).size.width,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
@@ -121,15 +131,18 @@ class _LoginScreenState extends State<LoginScreen>
                     _checkLogin(model);
                   },
                   child: new Container(
-                    width: Dimens.button_alt_login_width,
-                    height: Dimens.button_alt_login_height,
+                    width: BaseScreen.screenUtil
+                        .setWidth(AppDimen.buttonAltLoginWidth),
+                    height: BaseScreen.screenUtil
+                        .setHeight(AppDimen.buttonAltLoginHeight),
                     decoration: Decorations.buttonBoxDecoration(Colors.white),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Padding(
-                          child: Image.asset(AppImages.GOOGLE),
-                          padding: EdgeInsets.only(left: 1),
+                          child: Image.asset(AppImages.google),
+                          padding: EdgeInsets.only(
+                              left: BaseScreen.screenUtil.setWidth(1)),
                         ),
                       ],
                     ),
@@ -141,16 +154,19 @@ class _LoginScreenState extends State<LoginScreen>
                     _checkLogin(model);
                   },
                   child: new Container(
-                    width: Dimens.button_alt_login_width,
-                    height: Dimens.button_alt_login_height,
+                    width: BaseScreen.screenUtil
+                        .setWidth(AppDimen.buttonAltLoginWidth),
+                    height: BaseScreen.screenUtil
+                        .setHeight(AppDimen.buttonAltLoginHeight),
                     decoration: Decorations.buttonBoxDecoration(
-                        CustomColors.facebook_login_background),
+                        CustomColors.facebookLoginBackground),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Padding(
-                          child: Image.asset(AppImages.FACEBOOK),
-                          padding: EdgeInsets.only(left: 1),
+                          child: Image.asset(AppImages.facebook),
+                          padding: EdgeInsets.only(
+                              left: BaseScreen.screenUtil.setWidth(1)),
                         ),
                       ],
                     ),
@@ -159,15 +175,17 @@ class _LoginScreenState extends State<LoginScreen>
               ],
             ),
             SizedBox(
-              height: Dimens.sized_box_space,
+              height: BaseScreen.screenUtil.setHeight(AppDimen.sizedBoxSpace),
             ),
             GestureDetector(
               onTap: () async {
                 Navigator.pushNamed(context, Router.SIGN_UP);
               },
               child: Container(
-                width: Dimens.button_default_width,
-                height: Dimens.button_default_height,
+                width:
+                    BaseScreen.screenUtil.setWidth(AppDimen.buttonDefaultWidth),
+                height: BaseScreen.screenUtil
+                    .setHeight(AppDimen.buttonDefaultHeight),
                 decoration: Decorations.transparentButtonBoxDecoration(),
                 child: Center(
                   child: RichText(
@@ -175,19 +193,23 @@ class _LoginScreenState extends State<LoginScreen>
                     new TextSpan(
                       text: S.of(context).dont_have_account,
                       style: buttonTextStyle(
-                          Colors.white, Dimens.button_text_size),
+                        Colors.white,
+                        BaseScreen.screenUtil.setSp(AppDimen.buttonTextSize),
+                      ),
                     ),
                     new TextSpan(
                       text: S.of(context).sign_up_now,
-                      style: buttonTextStyle(CustomColors.mark_text_color,
-                          Dimens.button_text_size),
+                      style: buttonTextStyle(
+                        CustomColors.markTextColor,
+                        BaseScreen.screenUtil.setSp(AppDimen.buttonTextSize),
+                      ),
                     ),
                   ])),
                 ),
               ),
             ),
             SizedBox(
-              height: Dimens.sized_box_space,
+              height: BaseScreen.screenUtil.setHeight(AppDimen.sizedBoxSpace),
             ),
           ],
         ),
@@ -209,16 +231,16 @@ class _LoginScreenState extends State<LoginScreen>
   }
 
   Widget loginForm(LoginViewModel model) {
-    TextStyle style =
-        formTextStyle(CustomColors.DARK_BLUE, Dimens.form_text_size);
+    TextStyle style = formTextStyle(CustomColors.darkBlue,
+        BaseScreen.screenUtil.setSp(AppDimen.formTextSize));
 
     final emailField = TextFormField(
       keyboardType: TextInputType.emailAddress,
       maxLength: 100,
       obscureText: false,
       style: style,
-      decoration: Decorations.formInputDecoration(
-          S.of(context).email, CustomColors.login_error_color),
+      decoration: Decorations.formInputDecoration(BaseScreen.screenUtil,
+          S.of(context).email, CustomColors.loginErrorColor),
       onSaved: (String value) {
         currentUser.email = value.trim();
       },
@@ -234,8 +256,8 @@ class _LoginScreenState extends State<LoginScreen>
       obscureText: true,
       maxLength: 8,
       style: style,
-      decoration: Decorations.formInputDecoration(
-          S.of(context).password, CustomColors.login_error_color),
+      decoration: Decorations.formInputDecoration(BaseScreen.screenUtil,
+          S.of(context).password, CustomColors.loginErrorColor),
       onSaved: (String value) {
         currentUser.password = value.trim();
       },
@@ -248,12 +270,19 @@ class _LoginScreenState extends State<LoginScreen>
     );
 
     final loginButton = Material(
-      elevation: 5.0,
-      borderRadius: BorderRadius.circular(Dimens.border_button),
-      color: CustomColors.login_button_background,
+      elevation: BaseScreen.screenUtil.setWidth(5.0),
+      borderRadius: BorderRadius.circular(
+        BaseScreen.screenUtil.setWidth(AppDimen.borderButton),
+      ),
+      color: CustomColors.loginButtonBackground,
       child: MaterialButton(
-        minWidth: Dimens.button_default_width,
-        padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+        minWidth: BaseScreen.screenUtil.setWidth(AppDimen.buttonDefaultWidth),
+        padding: EdgeInsets.fromLTRB(
+          BaseScreen.screenUtil.setWidth(20.0),
+          BaseScreen.screenUtil.setWidth(15.0),
+          BaseScreen.screenUtil.setWidth(20.0),
+          BaseScreen.screenUtil.setWidth(15.0),
+        ),
         onPressed: () {
           _signIn(model);
         },
@@ -269,44 +298,57 @@ class _LoginScreenState extends State<LoginScreen>
     return Form(
       key: _formKey,
       child: Padding(
-        padding: EdgeInsets.only(top: 30),
+        padding: EdgeInsets.only(top: BaseScreen.screenUtil.setWidth(30)),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(bottom: 10, left: 5),
-              child: Text(
-                S.of(context).email,
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.white,
+              padding: EdgeInsets.only(
+                  bottom: BaseScreen.screenUtil.setWidth(10),
+                  left: BaseScreen.screenUtil.setWidth(32)),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  S.of(context).email,
+                  style: TextStyle(
+                    fontSize: BaseScreen.screenUtil.setSp(16),
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
             SizedBox(
-              width: Dimens.form_field_width,
+              width: BaseScreen.screenUtil.setWidth(AppDimen.formFieldWidth),
               child: emailField,
             ),
-            SizedBox(height: 10.0),
+            SizedBox(height: BaseScreen.screenUtil.setHeight(10.0)),
             Padding(
-              padding: EdgeInsets.only(bottom: 10, left: 5),
-              child: Text(
-                S.of(context).password,
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.white,
+              padding: EdgeInsets.only(
+                  bottom: BaseScreen.screenUtil.setWidth(10),
+                  left: BaseScreen.screenUtil.setWidth(32)),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  S.of(context).password,
+                  style: TextStyle(
+                    fontSize: BaseScreen.screenUtil.setSp(16),
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
             SizedBox(
-              width: Dimens.form_field_width,
+              width: BaseScreen.screenUtil.setWidth(AppDimen.formFieldWidth),
               child: passwordField,
             ),
-            SizedBox(height: 25.0),
+            SizedBox(height: BaseScreen.screenUtil.setHeight(25.0)),
             model.state == ViewState.Busy
-                ? CustomCircularProgressIndicator()
+                ? SpinKitThreeBounce(
+                    color: Colors.white,
+                    size: BaseScreen.screenUtil.setWidth(20),
+                  )
                 : loginButton,
-            SizedBox(height: 25.0),
+            SizedBox(height: BaseScreen.screenUtil.setHeight(25.0)),
             GestureDetector(
               onTap: () {
                 _forgotPassword(model);
@@ -318,14 +360,15 @@ class _LoginScreenState extends State<LoginScreen>
                   fontFamily: 'Roboto',
                   color: Colors.white,
                   decoration: TextDecoration.underline,
-                  fontSize: Dimens.button_text_size,
+                  fontSize:
+                      BaseScreen.screenUtil.setSp(AppDimen.buttonTextSize),
                   fontWeight: FontWeight.w400,
                   fontStyle: FontStyle.normal,
                 ),
               ),
             ),
             SizedBox(
-              height: 35.0,
+              height: BaseScreen.screenUtil.setHeight(35.0),
             ),
           ],
         ),
@@ -335,7 +378,6 @@ class _LoginScreenState extends State<LoginScreen>
 
   _forgotPassword(LoginViewModel model) {
     AlertDialogs.showResetPassword(context, (email) async {
-
       await model.sendPasswordResetEmail(email);
 
       if (model.isError) {
@@ -346,12 +388,9 @@ class _LoginScreenState extends State<LoginScreen>
         AlertDialogs.showInfoDialog(
             context, S.of(context).info_title, model.errorMessage);
       } else {
-        AlertDialogs.showSuccessDialog(
-            context, S.of(context).info_title, S.of(context).new_password_sent, () {
-
-        });
+        AlertDialogs.showSuccessDialog(context, S.of(context).info_title,
+            S.of(context).new_password_sent, () {});
       }
-
     });
   }
 

@@ -37,7 +37,7 @@ class StatementCardViewModel extends BaseViewModel {
           result.statement.isNotEmpty) {
         //TODO: must be refactored after backend correction
         result.statement.forEach((item) {
-          item.icon = item.type == "D" ? Constants.STATEMENT_IMAGE_DEBIT : Constants.STATEMENT_IMAGE_CREDIT;
+          item.icon = item.type == "D" ? Constants.statementImageDebit : Constants.statementImageCredit;
           item.additionalInfo = this.toDateString(item.effectiveDate);
         });
 
@@ -61,7 +61,7 @@ class StatementCardViewModel extends BaseViewModel {
 
   String toCurrency(double value, String type) {
 
-    var signal = type == Constants.STATEMENT_TYPE_DEBIT ? "- " : " ";
+    var signal = type == Constants.statementTypeDebit ? "- " : " ";
 
     return signal + Formatter.toCurrency(value, Intl.defaultLocale);
   }
