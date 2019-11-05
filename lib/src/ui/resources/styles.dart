@@ -1,5 +1,6 @@
 import 'package:bank_cards/src/ui/resources/custom_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 ThemeData defaultThemeData() {
   return ThemeData(
@@ -16,10 +17,11 @@ TextStyle defaultTitleStyle() {
       height: 1.4);
 }
 
-TextStyle defaultTextStyle() {
+TextStyle defaultTextStyle(ScreenUtil screenUtil) {
   return TextStyle(
+    fontFamily: 'Roboto',
     color: Colors.white,
-    fontSize: 16,
+    fontSize: screenUtil.setSp(16),
     height: 1.4,
   );
 }

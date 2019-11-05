@@ -4,6 +4,7 @@ import 'package:bank_cards/src/ui/resources/app_dimen.dart';
 import 'package:bank_cards/src/ui/screens/base/base_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:bank_cards/src/ui/resources/custom_colors.dart';
+import 'package:flutter_svg/svg.dart';
 
 enum AppBarType { simple, silverAppBar }
 
@@ -53,13 +54,15 @@ class CustomAppBar {
           bottomRight: Radius.circular(50),
         ),
       ),
-      expandedHeight: AppDimen.loginHeaderHeight,
+      expandedHeight:
+          BaseScreen.screenUtil.setHeight(AppDimen.loginHeaderHeight),
       floating: false,
       pinned: true,
       elevation: 2.0,
       leading: IconButton(
           icon: Icon(
-            Icons.arrow_back, color: Colors.white,
+            Icons.arrow_back,
+            color: Colors.white,
           ),
           onPressed: () {
             Navigator.of(context).pop();
@@ -74,10 +77,19 @@ class CustomAppBar {
             color: Colors.white,
           ),
         ),
-        background: Stack(fit: StackFit.expand, children: <Widget>[
-          DecoratedBox(decoration: Decorations.headerDecoration()),
-          Image.asset(AppImages.logoImage),
-        ]),
+        background: Stack(
+          fit: StackFit.expand,
+          children: <Widget>[
+            DecoratedBox(
+              decoration: Decorations.headerDecoration(),
+            ),
+//            SvgPicture.asset(
+//              AppImages.logo,
+//              width: 1,
+//              height: 1,
+//            ),
+          ],
+        ),
       ),
     );
   }

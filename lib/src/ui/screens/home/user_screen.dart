@@ -2,6 +2,7 @@ import 'package:bank_cards/generated/i18n.dart';
 import 'package:bank_cards/src/models/user.dart';
 import 'package:bank_cards/src/router.dart';
 import 'package:bank_cards/src/ui/resources/decorations.dart';
+import 'package:bank_cards/src/ui/screens/base/base_screen.dart';
 import 'package:bank_cards/src/ui/screens/base/base_widget.dart';
 import 'package:bank_cards/src/ui/widgets/common/buttons.dart';
 import 'package:bank_cards/src/viewmodel/user_viewmodel.dart';
@@ -48,6 +49,7 @@ class _UserPageState extends State<UserPage> {
                   await model.logout();
                   Navigator.pushNamed(context, Router.SIGN_IN, arguments: null);
                 },
+                BaseScreen.screenUtil,
               ),
             ),
           ],

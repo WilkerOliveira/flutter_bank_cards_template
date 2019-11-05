@@ -12,6 +12,7 @@ import 'package:bank_cards/src/ui/utility/screen_utility.dart';
 import 'package:bank_cards/src/ui/validation/common_form_validation.dart';
 import 'package:bank_cards/src/ui/validation/register_form_validation.dart';
 import 'package:bank_cards/src/ui/widgets/dialog/alert_dialogs.dart';
+import 'package:bank_cards/src/ui/widgets/header/logo_header.dart';
 import 'package:bank_cards/src/viewmodel/base/base_viewmodel.dart';
 import 'package:bank_cards/src/viewmodel/login_viewmodel.dart';
 import 'package:flutter/material.dart';
@@ -66,49 +67,12 @@ class _LoginScreenState extends State<LoginScreen>
           child: Column(
             children: <Widget>[
               //Header
-              _header(),
+              LogoHeader(),
 
               _body(),
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _header() {
-    return Container(
-      decoration: Decorations.headerDecoration(),
-      width: MediaQuery.of(context).size.width,
-      height: BaseScreen.screenUtil.setHeight(AppDimen.loginHeaderHeight),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.only(
-              top: BaseScreen.screenUtil.setWidth(50.0),
-            ),
-            child: SvgPicture.asset(
-              AppImages.logo,
-              width: BaseScreen.screenUtil.setWidth(100),
-              height: BaseScreen.screenUtil.setHeight(100),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(
-              top: BaseScreen.screenUtil.setWidth(25),
-              bottom: BaseScreen.screenUtil.setWidth(15),
-            ),
-            child: Text(
-              S.of(context).app_name,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: BaseScreen.screenUtil.setSp(26),
-              ),
-            ),
-          )
-        ],
       ),
     );
   }
@@ -277,12 +241,6 @@ class _LoginScreenState extends State<LoginScreen>
       color: CustomColors.loginButtonBackground,
       child: MaterialButton(
         minWidth: BaseScreen.screenUtil.setWidth(AppDimen.buttonDefaultWidth),
-        padding: EdgeInsets.fromLTRB(
-          BaseScreen.screenUtil.setWidth(20.0),
-          BaseScreen.screenUtil.setWidth(15.0),
-          BaseScreen.screenUtil.setWidth(20.0),
-          BaseScreen.screenUtil.setWidth(15.0),
-        ),
         onPressed: () {
           _signIn(model);
         },
@@ -298,57 +256,55 @@ class _LoginScreenState extends State<LoginScreen>
     return Form(
       key: _formKey,
       child: Padding(
-        padding: EdgeInsets.only(top: BaseScreen.screenUtil.setWidth(30)),
+        padding: EdgeInsets.only(
+          top: BaseScreen.screenUtil.setWidth(AppDimen.defaultMargin),
+          left: BaseScreen.screenUtil.setWidth(AppDimen.defaultMargin),
+          right: BaseScreen.screenUtil.setWidth(AppDimen.defaultMargin),
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Padding(
               padding: EdgeInsets.only(
-                  bottom: BaseScreen.screenUtil.setWidth(10),
-                  left: BaseScreen.screenUtil.setWidth(32)),
+                bottom: BaseScreen.screenUtil.setWidth(AppDimen.defaultMargin),
+              ),
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
                   S.of(context).email,
-                  style: TextStyle(
-                    fontSize: BaseScreen.screenUtil.setSp(16),
-                    color: Colors.white,
-                  ),
+                  style: defaultTextStyle(BaseScreen.screenUtil),
                 ),
               ),
             ),
+            emailField,
             SizedBox(
-              width: BaseScreen.screenUtil.setWidth(AppDimen.formFieldWidth),
-              child: emailField,
+              height: BaseScreen.screenUtil.setHeight(AppDimen.defaultMargin),
             ),
-            SizedBox(height: BaseScreen.screenUtil.setHeight(10.0)),
             Padding(
               padding: EdgeInsets.only(
-                  bottom: BaseScreen.screenUtil.setWidth(10),
-                  left: BaseScreen.screenUtil.setWidth(32)),
+                bottom: BaseScreen.screenUtil.setWidth(AppDimen.defaultMargin),
+              ),
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
                   S.of(context).password,
-                  style: TextStyle(
-                    fontSize: BaseScreen.screenUtil.setSp(16),
-                    color: Colors.white,
-                  ),
+                  style: defaultTextStyle(BaseScreen.screenUtil),
                 ),
               ),
             ),
+            passwordField,
             SizedBox(
-              width: BaseScreen.screenUtil.setWidth(AppDimen.formFieldWidth),
-              child: passwordField,
+              height: BaseScreen.screenUtil.setHeight(AppDimen.extraMargin),
             ),
-            SizedBox(height: BaseScreen.screenUtil.setHeight(25.0)),
             model.state == ViewState.Busy
                 ? SpinKitThreeBounce(
                     color: Colors.white,
-                    size: BaseScreen.screenUtil.setWidth(20),
+                    size: BaseScreen.screenUtil.setWidth(AppDimen.loadingSize),
                   )
                 : loginButton,
-            SizedBox(height: BaseScreen.screenUtil.setHeight(25.0)),
+            SizedBox(
+              height: BaseScreen.screenUtil.setHeight(AppDimen.extraMargin),
+            ),
             GestureDetector(
               onTap: () {
                 _forgotPassword(model);
@@ -356,19 +312,15 @@ class _LoginScreenState extends State<LoginScreen>
               child: new Text(
                 S.of(context).forgot_password,
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontFamily: 'Roboto',
-                  color: Colors.white,
+                style: defaultTextStyle(BaseScreen.screenUtil).copyWith(
                   decoration: TextDecoration.underline,
                   fontSize:
                       BaseScreen.screenUtil.setSp(AppDimen.buttonTextSize),
-                  fontWeight: FontWeight.w400,
-                  fontStyle: FontStyle.normal,
                 ),
               ),
             ),
             SizedBox(
-              height: BaseScreen.screenUtil.setHeight(35.0),
+              height: BaseScreen.screenUtil.setHeight(AppDimen.extraMargin),
             ),
           ],
         ),

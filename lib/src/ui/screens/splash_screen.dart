@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bank_cards/generated/i18n.dart';
 import 'package:bank_cards/src/models/user.dart';
+import 'package:bank_cards/src/ui/resources/app_dimen.dart';
 import 'package:bank_cards/src/ui/resources/app_images.dart';
 import 'package:bank_cards/src/ui/resources/custom_colors.dart';
 import 'package:bank_cards/src/ui/resources/decorations.dart';
@@ -20,21 +21,17 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
   Future<Timer> loadData(SplashViewModel model) async {
-
     return new Timer(Duration(seconds: 3), () async {
-
       User currentUser = await model.getCurrentUser();
 
-      if(currentUser != null){
+      if (currentUser != null) {
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
             builder: (context) => HomeScreen(),
           ),
         );
-      }
-      else{
+      } else {
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
             builder: (context) => LoginScreen(),
@@ -64,21 +61,30 @@ class _SplashScreenState extends State<SplashScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.all(BaseScreen.screenUtil.setWidth(5)),
+                padding: EdgeInsets.all(
+                  BaseScreen.screenUtil
+                      .setWidth(AppDimen.imageSplashScreenPadding),
+                ),
                 child: SvgPicture.asset(
                   AppImages.logo,
-                  width: BaseScreen.screenUtil.setWidth(150),
-                  height: BaseScreen.screenUtil.setHeight(150),
+                  width: BaseScreen.screenUtil
+                      .setWidth(AppDimen.imageSplashScreenWidth),
+                  height: BaseScreen.screenUtil
+                      .setHeight(AppDimen.imageSplashScreenHeight),
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(BaseScreen.screenUtil.setWidth(30)),
+                padding: EdgeInsets.all(
+                  BaseScreen.screenUtil
+                      .setWidth(AppDimen.labelSplashScreenPadding),
+                ),
                 child: Text(
                   S.of(context).app_name,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: BaseScreen.screenUtil.setSp(26),
+                    fontSize: BaseScreen.screenUtil
+                        .setSp(AppDimen.labelSplashScreenSize),
                   ),
                 ),
               ),

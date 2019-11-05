@@ -1,32 +1,39 @@
 class AppDimen {
 
+  static const double defaultMargin = 16.0;
+  static const double defaultFormMarginLeft = 32.0;
+  static const double labelFormDefaultSize = 16.0;
+
+  static const double extraMargin = 32.0;
+  static const double loadingSize = 20.0;
+
   static const double baseScreenWidth= 410.0;
   static const double baseScreenHeight= 800.0;
 
-  static const defaultBottomWidth = 300.0;
-  static const defaultBottomHeight = 50.0;
+  static const double defaultBottomWidth = 300.0;
+  static const double defaultBottomHeight = 50.0;
 
-  static const minBottomWidth = 50.0;
-  static const minBottomHeight = 40.0;
+  static const double minBottomWidth = 50.0;
+  static const double minBottomHeight = 40.0;
 
-  static const headerPreferredSize = 100.0;
-  static const headerSize = 150.0;
+  static const double headerPreferredSize = 100.0;
+  static const double headerSize = 150.0;
 
-  static const balanceMarginTop = 13.0;
-  static const balanceBodyHeight = 100.0;
-  static const balanceBodyWidth = 170.0;
-  static const balanceBodyLeftPadding = 25.0;
-  static const balanceBodyTopPadding = 10.0;
-  static const balanceBodyRightPadding = 20.0;
-  static const balanceBodyBottomPadding = 10.0;
-  static const balanceSizedBox = 10.0;
-  static const balanceAmountTopPadding = 10.0;
+  static const double balanceMarginTop = 13.0;
+  static const double balanceBodyHeight = 100.0;
+  static const double balanceBodyWidth = 170.0;
+  static const double balanceBodyLeftPadding = 25.0;
+  static const double balanceBodyTopPadding = 10.0;
+  static const double balanceBodyRightPadding = 20.0;
+  static const double balanceBodyBottomPadding = 10.0;
+  static const double balanceSizedBox = 10.0;
+  static const double balanceAmountTopPadding = 10.0;
 
-  static const cardsHeight = 230.0;
-  static const marginCardDetail = 20.0;
-  static const paddingCardDetail = 8.0;
+  static const double cardsHeight = 230.0;
+  static const double marginCardDetail = 20.0;
+  static const double paddingCardDetail = 8.0;
 
-  static const marginAccountHeader = 20.0;
+  static const double marginAccountHeader = 20.0;
 
   static const double borderContainer = 20.0;
   static const double loginHeaderHeight = 250.0;
@@ -42,4 +49,16 @@ class AppDimen {
   static const double formTextSize = 18.0;
   static const double menuTextSize = 18.0;
   static const double formFieldWidth = 350.0;
+
+  static const double labelSplashScreenSize = 26.0;
+  static const double labelSplashScreenPadding = 30.0;
+  static const double imageSplashScreenWidth = 150.0;
+  static const double imageSplashScreenHeight = 150.0;
+  static const double imageSplashScreenPadding = 5.0;
+
+  static const double logoLoginMarginTop = 50.0;
+  static const double logoLoginWidth = 100.0;
+  static const double logoLoginHeight = 100.0;
+  static const double labelLogoLoginMarginTop = 25.0;
+  static const double labelLogoLoginMarginBottom = 15.0;
 }
