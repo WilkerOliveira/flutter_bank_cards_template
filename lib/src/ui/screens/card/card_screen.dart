@@ -2,7 +2,8 @@ import 'package:bank_cards/generated/i18n.dart';
 import 'package:bank_cards/src/router.dart';
 import 'package:bank_cards/src/ui/resources/decorations.dart';
 import 'package:bank_cards/src/ui/resources/app_dimen.dart';
-import 'package:bank_cards/src/ui/resources/styles.dart';
+import 'package:bank_cards/src/ui/resources/app_styles.dart';
+import 'package:bank_cards/src/ui/screens/base/base_screen.dart';
 import 'package:bank_cards/src/ui/screens/base/base_widget.dart';
 import 'package:bank_cards/src/ui/widgets/common/common_widgets.dart';
 import 'package:bank_cards/src/ui/widgets/credit_card/credit_card_front.dart';
@@ -41,6 +42,8 @@ class _CardPageState extends State<CardPage> {
 
   @override
   Widget build(BuildContext context) {
+    BaseScreen.initScreenUtil(context: context);
+
     return BaseWidget<CardViewModel>(
       model: CardViewModel(repository: Provider.of(context)),
       onModelReady: (model) async {
@@ -58,9 +61,19 @@ class _CardPageState extends State<CardPage> {
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(
+                  top: BaseScreen.screenUtil.setWidth(AppDimen.defaultMargin),
+                ),
+                child: Text(
+                  S.of(context).my_cards_title.toUpperCase(),
+                  style: AppStyles.defaultTitleStyle(BaseScreen.screenUtil),
+                ),
+              ),
               model.state != ViewState.Busy
                   ? SizedBox(
-                      height: AppDimen.cardsHeight,
+                      height:
+                          BaseScreen.screenUtil.setHeight(AppDimen.cardsHeight),
                       child: new Swiper(
                         itemBuilder: (BuildContext context, int index) {
                           return CreditCardFront();
@@ -80,9 +93,13 @@ class _CardPageState extends State<CardPage> {
                       ),
                     )
                   : Container(
-                      height: AppDimen.cardsHeight,
-                      width: 80.0,
-                      padding: EdgeInsets.all(10),
+                      height:
+                          BaseScreen.screenUtil.setHeight(AppDimen.cardsHeight),
+                      width:
+                          BaseScreen.screenUtil.setWidth(AppDimen.cardsWidth),
+                      padding: EdgeInsets.all(
+                        BaseScreen.screenUtil.setWidth(10),
+                      ),
                       child: Center(
                         child: CustomCircularProgressIndicator(),
                       ),
@@ -103,21 +120,28 @@ class _CardPageState extends State<CardPage> {
   Widget cardDetails(CardViewModel model) {
     return Container(
       margin: EdgeInsets.only(
-          left: AppDimen.marginCardDetail, right: AppDimen.marginCardDetail),
-      child: Card(
+        left: BaseScreen.screenUtil.setWidth(AppDimen.marginCardDetail),
+        right: BaseScreen.screenUtil.setWidth(AppDimen.marginCardDetail),
+      ),
+      child: Container(
         color: Colors.transparent,
+        margin: EdgeInsets.all(
+          BaseScreen.screenUtil.setWidth(AppDimen.defaultMargin),
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 SizedBox(
-                  width: 100,
+                  width:
+                      BaseScreen.screenUtil.setWidth(AppDimen.cardDetailWidth),
                   child: Padding(
                     padding: EdgeInsets.all(AppDimen.paddingCardDetail),
                     child: Text(
                       S.of(context).due_date,
-                      style: titleDetailStyle(),
+                      style: AppStyles.titleDetailStyle(BaseScreen.screenUtil),
                     ),
                   ),
                 ),
@@ -127,24 +151,27 @@ class _CardPageState extends State<CardPage> {
                     model.state != ViewState.Busy && _privateCard != null
                         ? _privateCard.dueDate.toString()
                         : " - ",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: AppStyles.valueDetailStyle(
+                        BaseScreen.screenUtil, Colors.white),
                   ),
                 ),
               ],
             ),
+            Container(
+              height: BaseScreen.screenUtil.setHeight(1),
+              color: Colors.green,
+            ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 SizedBox(
-                  width: 100,
+                  width:
+                      BaseScreen.screenUtil.setWidth(AppDimen.cardDetailWidth),
                   child: Padding(
                     padding: EdgeInsets.all(AppDimen.paddingCardDetail),
                     child: Text(
                       S.of(context).limit,
-                      style: titleDetailStyle(),
+                      style: AppStyles.titleDetailStyle(BaseScreen.screenUtil),
                     ),
                   ),
                 ),
@@ -154,26 +181,30 @@ class _CardPageState extends State<CardPage> {
                     model.state != ViewState.Busy && _privateCard != null
                         ? Formatter.moneyFormatter(_privateCard.limit)
                         : " - ",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: getAmountColor(
+                    style: AppStyles.valueDetailStyle(
+                      BaseScreen.screenUtil,
+                      getAmountColor(
                           _privateCard == null ? 0 : _privateCard.limit),
                     ),
                   ),
                 ),
               ],
             ),
+            Container(
+              height: BaseScreen.screenUtil.setHeight(1),
+              color: Colors.green,
+            ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 SizedBox(
-                  width: 100,
+                  width:
+                      BaseScreen.screenUtil.setWidth(AppDimen.cardDetailWidth),
                   child: Padding(
                     padding: EdgeInsets.all(AppDimen.paddingCardDetail),
                     child: Text(
                       S.of(context).available,
-                      style: titleDetailStyle(),
+                      style: AppStyles.titleDetailStyle(BaseScreen.screenUtil),
                     ),
                   ),
                 ),
@@ -183,10 +214,9 @@ class _CardPageState extends State<CardPage> {
                     model.state != ViewState.Busy && _privateCard != null
                         ? Formatter.moneyFormatter(_privateCard.limitAvailable)
                         : " - ",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: getAmountColor(_privateCard == null
+                    style: AppStyles.valueDetailStyle(
+                      BaseScreen.screenUtil,
+                      getAmountColor(_privateCard == null
                           ? 0
                           : _privateCard.limitAvailable),
                     ),
@@ -206,10 +236,12 @@ class _CardPageState extends State<CardPage> {
 
   Widget menu(model) {
     return Container(
-      height: 300.0,
+      height: BaseScreen.screenUtil.setHeight(AppDimen.menuCardHeight),
       child: GridView.count(
         primary: false,
-        padding: const EdgeInsets.all(20.0),
+        padding: EdgeInsets.all(
+          BaseScreen.screenUtil.setWidth(20.0),
+        ),
         crossAxisSpacing: 10.0,
         mainAxisSpacing: 10.0,
         crossAxisCount: 3,

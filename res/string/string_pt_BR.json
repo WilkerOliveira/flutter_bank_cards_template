@@ -10,9 +10,9 @@
   "app_name": "Mobile Bank",
   "cvv": "CVV",
   "password": "Senha",
-  "due_date": "Vencimento: ",
-  "limit": "Limite: ",
-  "available": "Disponível: ",
+  "due_date": "Vencimento",
+  "limit": "Limite",
+  "available": "Disponível",
   "investments": "Investimentos",
   "login_with_google": "Google",
   "login_with_facebook": "Facebook",
@@ -51,5 +51,6 @@
   "userRegisteredWithDiffCredential" : "Você já está registrado com uma credencial diferente!",
   "cancel_button": "CANCELAR",
   "new_password_sent": "Uma nova senha foi enviado para seu e-mail!",
-  "emailNotFound": "E-mail não encontrado!"
+  "emailNotFound": "E-mail não encontrado!",
+  "my_cards_title": "Meus Cartões"
 }

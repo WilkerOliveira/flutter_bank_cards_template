@@ -130,7 +130,7 @@ class LoginRepository extends BaseRepository {
       String uid = await LoginService.signIn(email, password);
 
       if (uid != null) {
-        return this.getUser(uid);
+        return await this.getUser(uid);
       }
     } on PlatformException catch (ex) {
       if (ex.code == "ERROR_WRONG_PASSWORD" ||

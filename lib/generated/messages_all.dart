@@ -24,9 +24,9 @@ class $pt_BR extends MessageLookupByLibrary {
 		"app_name" : MessageLookupByLibrary.simpleMessage("Mobile Bank"),
 		"cvv" : MessageLookupByLibrary.simpleMessage("CVV"),
 		"password" : MessageLookupByLibrary.simpleMessage("Senha"),
-		"due_date" : MessageLookupByLibrary.simpleMessage("Vencimento: "),
-		"limit" : MessageLookupByLibrary.simpleMessage("Limite: "),
-		"available" : MessageLookupByLibrary.simpleMessage("Disponível: "),
+		"due_date" : MessageLookupByLibrary.simpleMessage("Vencimento"),
+		"limit" : MessageLookupByLibrary.simpleMessage("Limite"),
+		"available" : MessageLookupByLibrary.simpleMessage("Disponível"),
 		"investments" : MessageLookupByLibrary.simpleMessage("Investimentos"),
 		"login_with_google" : MessageLookupByLibrary.simpleMessage("Google"),
 		"login_with_facebook" : MessageLookupByLibrary.simpleMessage("Facebook"),
@@ -66,6 +66,7 @@ class $pt_BR extends MessageLookupByLibrary {
 		"cancel_button" : MessageLookupByLibrary.simpleMessage("CANCELAR"),
 		"new_password_sent" : MessageLookupByLibrary.simpleMessage("Uma nova senha foi enviado para seu e-mail!"),
 		"emailNotFound" : MessageLookupByLibrary.simpleMessage("E-mail não encontrado!"),
+		"my_cards_title" : MessageLookupByLibrary.simpleMessage("Meus Cartões"),
 
   };
 }
@@ -86,9 +87,9 @@ class $en_US extends MessageLookupByLibrary {
 		"statement" : MessageLookupByLibrary.simpleMessage("Statement"),
 		"app_name" : MessageLookupByLibrary.simpleMessage("Mobile Bank"),
 		"cvv" : MessageLookupByLibrary.simpleMessage("CVV"),
-		"due_date" : MessageLookupByLibrary.simpleMessage("Due Date: "),
-		"limit" : MessageLookupByLibrary.simpleMessage("Limit: "),
-		"available" : MessageLookupByLibrary.simpleMessage("Available: "),
+		"due_date" : MessageLookupByLibrary.simpleMessage("Due Date"),
+		"limit" : MessageLookupByLibrary.simpleMessage("Limit"),
+		"available" : MessageLookupByLibrary.simpleMessage("Available"),
 		"investments" : MessageLookupByLibrary.simpleMessage("Investments"),
 		"login_with_google" : MessageLookupByLibrary.simpleMessage("Google"),
 		"login_with_facebook" : MessageLookupByLibrary.simpleMessage("Facebook"),
@@ -129,6 +130,7 @@ class $en_US extends MessageLookupByLibrary {
 		"cancel_button" : MessageLookupByLibrary.simpleMessage("CANCEL"),
 		"new_password_sent" : MessageLookupByLibrary.simpleMessage("A new password has been sent to your email address!"),
 		"emailNotFound" : MessageLookupByLibrary.simpleMessage("Email not found!"),
+		"my_cards_title" : MessageLookupByLibrary.simpleMessage("My Cards"),
 
   };
 }

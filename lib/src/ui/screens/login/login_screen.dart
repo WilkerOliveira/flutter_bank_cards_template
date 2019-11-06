@@ -5,7 +5,7 @@ import 'package:bank_cards/src/ui/resources/app_images.dart';
 import 'package:bank_cards/src/ui/resources/custom_colors.dart';
 import 'package:bank_cards/src/ui/resources/decorations.dart';
 import 'package:bank_cards/src/ui/resources/app_dimen.dart';
-import 'package:bank_cards/src/ui/resources/styles.dart';
+import 'package:bank_cards/src/ui/resources/app_styles.dart';
 import 'package:bank_cards/src/ui/screens/base/base_screen.dart';
 import 'package:bank_cards/src/ui/screens/base/base_widget.dart';
 import 'package:bank_cards/src/ui/utility/screen_utility.dart';
@@ -156,14 +156,14 @@ class _LoginScreenState extends State<LoginScreen>
                       text: new TextSpan(children: [
                     new TextSpan(
                       text: S.of(context).dont_have_account,
-                      style: buttonTextStyle(
+                      style: AppStyles.buttonTextStyle(
                         Colors.white,
                         BaseScreen.screenUtil.setSp(AppDimen.buttonTextSize),
                       ),
                     ),
                     new TextSpan(
                       text: S.of(context).sign_up_now,
-                      style: buttonTextStyle(
+                      style: AppStyles.buttonTextStyle(
                         CustomColors.markTextColor,
                         BaseScreen.screenUtil.setSp(AppDimen.buttonTextSize),
                       ),
@@ -195,7 +195,7 @@ class _LoginScreenState extends State<LoginScreen>
   }
 
   Widget loginForm(LoginViewModel model) {
-    TextStyle style = formTextStyle(CustomColors.darkBlue,
+    TextStyle style = AppStyles.formTextStyle(CustomColors.darkBlue,
         BaseScreen.screenUtil.setSp(AppDimen.formTextSize));
 
     final emailField = TextFormField(
@@ -272,7 +272,7 @@ class _LoginScreenState extends State<LoginScreen>
                 alignment: Alignment.centerLeft,
                 child: Text(
                   S.of(context).email,
-                  style: defaultTextStyle(BaseScreen.screenUtil),
+                  style: AppStyles.defaultTextStyle(BaseScreen.screenUtil),
                 ),
               ),
             ),
@@ -288,7 +288,7 @@ class _LoginScreenState extends State<LoginScreen>
                 alignment: Alignment.centerLeft,
                 child: Text(
                   S.of(context).password,
-                  style: defaultTextStyle(BaseScreen.screenUtil),
+                  style: AppStyles.defaultTextStyle(BaseScreen.screenUtil),
                 ),
               ),
             ),
@@ -312,7 +312,8 @@ class _LoginScreenState extends State<LoginScreen>
               child: new Text(
                 S.of(context).forgot_password,
                 textAlign: TextAlign.center,
-                style: defaultTextStyle(BaseScreen.screenUtil).copyWith(
+                style:
+                    AppStyles.defaultTextStyle(BaseScreen.screenUtil).copyWith(
                   decoration: TextDecoration.underline,
                   fontSize:
                       BaseScreen.screenUtil.setSp(AppDimen.buttonTextSize),

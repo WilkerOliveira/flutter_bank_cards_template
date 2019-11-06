@@ -2,7 +2,7 @@ import 'package:bank_cards/generated/i18n.dart';
 import 'package:bank_cards/src/ui/resources/custom_colors.dart';
 import 'package:bank_cards/src/ui/resources/decorations.dart';
 import 'package:bank_cards/src/ui/resources/app_dimen.dart';
-import 'package:bank_cards/src/ui/resources/styles.dart';
+import 'package:bank_cards/src/ui/resources/app_styles.dart';
 import 'package:bank_cards/src/ui/screens/base/base_screen.dart';
 import 'package:bank_cards/src/ui/validation/common_form_validation.dart';
 import 'package:flutter/material.dart';
@@ -53,7 +53,8 @@ class _ResetPasswordDialogState extends State<ResetPasswordDialog>
       maxLength: 100,
       obscureText: false,
       validator: emailValidation,
-      style: formTextStyle(CustomColors.darkBlue, AppDimen.formTextSize),
+      style:
+          AppStyles.formTextStyle(CustomColors.darkBlue, AppDimen.formTextSize),
       decoration: Decorations.formInputDecoration(BaseScreen.screenUtil,
           S.of(context).email, CustomColors.loginErrorColor),
       onSaved: (String value) {
@@ -103,14 +104,12 @@ class _ResetPasswordDialogState extends State<ResetPasswordDialog>
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-
                     FlatButton(
                       onPressed: () {
                         Navigator.of(context).pop(); // To close the dialog
                       },
                       child: Text(S.of(context).cancel_button),
                     ),
-
                     FlatButton(
                       onPressed: () {
                         if (_formKey.currentState.validate()) {
@@ -121,7 +120,6 @@ class _ResetPasswordDialogState extends State<ResetPasswordDialog>
                       },
                       child: Text(S.of(context).reset_button),
                     ),
-
                   ],
                 ),
               ],

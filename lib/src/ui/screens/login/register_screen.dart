@@ -3,7 +3,7 @@ import 'package:bank_cards/src/models/user.dart';
 import 'package:bank_cards/src/ui/resources/custom_colors.dart';
 import 'package:bank_cards/src/ui/resources/decorations.dart';
 import 'package:bank_cards/src/ui/resources/app_dimen.dart';
-import 'package:bank_cards/src/ui/resources/styles.dart';
+import 'package:bank_cards/src/ui/resources/app_styles.dart';
 import 'package:bank_cards/src/ui/screens/base/base_screen.dart';
 import 'package:bank_cards/src/ui/screens/base/base_widget.dart';
 import 'package:bank_cards/src/ui/utility/screen_utility.dart';
@@ -126,7 +126,8 @@ class _RegisterScreenState extends State<RegisterScreen>
         child: Text(
           S.of(context).btn_register,
           textAlign: TextAlign.center,
-          style: formTextStyle(CustomColors.darkBlue, BaseScreen.screenUtil.setSp(AppDimen.formTextSize))
+          style: AppStyles.formTextStyle(CustomColors.darkBlue,
+                  BaseScreen.screenUtil.setSp(AppDimen.formTextSize))
               .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
         ),
       ),
@@ -154,8 +155,8 @@ class _RegisterScreenState extends State<RegisterScreen>
   }
 
   Widget registerForm(RegisterViewModel model) {
-    TextStyle style =
-        formTextStyle(CustomColors.darkBlue, BaseScreen.screenUtil.setSp(AppDimen.formTextSize));
+    TextStyle style = AppStyles.formTextStyle(CustomColors.darkBlue,
+        BaseScreen.screenUtil.setSp(AppDimen.formTextSize));
 
     final nameField = TextFormField(
       obscureText: false,
@@ -257,7 +258,9 @@ class _RegisterScreenState extends State<RegisterScreen>
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(bottom: BaseScreen.screenUtil.setWidth(10), left: BaseScreen.screenUtil.setWidth(5)),
+              padding: EdgeInsets.only(
+                  bottom: BaseScreen.screenUtil.setWidth(10),
+                  left: BaseScreen.screenUtil.setWidth(5)),
               child: Text(
                 S.of(context).name,
                 style: TextStyle(
@@ -272,8 +275,10 @@ class _RegisterScreenState extends State<RegisterScreen>
             ),
             SizedBox(height: BaseScreen.screenUtil.setHeight(5.0)),
             Padding(
-              padding: EdgeInsets.only(bottom: BaseScreen.screenUtil.setWidth(10), left:
-    BaseScreen.screenUtil.setWidth(5),),
+              padding: EdgeInsets.only(
+                bottom: BaseScreen.screenUtil.setWidth(10),
+                left: BaseScreen.screenUtil.setWidth(5),
+              ),
               child: Text(
                 S.of(context).nick_name,
                 style: TextStyle(
@@ -288,7 +293,10 @@ class _RegisterScreenState extends State<RegisterScreen>
             ),
             SizedBox(height: BaseScreen.screenUtil.setHeight(5.0)),
             Padding(
-              padding: EdgeInsets.only(bottom: BaseScreen.screenUtil.setWidth(10), left: BaseScreen.screenUtil.setWidth(5),),
+              padding: EdgeInsets.only(
+                bottom: BaseScreen.screenUtil.setWidth(10),
+                left: BaseScreen.screenUtil.setWidth(5),
+              ),
               child: Text(
                 S.of(context).email,
                 style: TextStyle(
@@ -303,7 +311,10 @@ class _RegisterScreenState extends State<RegisterScreen>
             ),
             SizedBox(height: BaseScreen.screenUtil.setHeight(5.0)),
             Padding(
-              padding: EdgeInsets.only(bottom: BaseScreen.screenUtil.setWidth(10), left: BaseScreen.screenUtil.setWidth(5),),
+              padding: EdgeInsets.only(
+                bottom: BaseScreen.screenUtil.setWidth(10),
+                left: BaseScreen.screenUtil.setWidth(5),
+              ),
               child: Text(
                 S.of(context).password,
                 style: TextStyle(
@@ -318,7 +329,10 @@ class _RegisterScreenState extends State<RegisterScreen>
             ),
             SizedBox(height: BaseScreen.screenUtil.setHeight(5.0)),
             Padding(
-              padding: EdgeInsets.only(bottom: BaseScreen.screenUtil.setWidth(10), left: BaseScreen.screenUtil.setWidth(5),),
+              padding: EdgeInsets.only(
+                bottom: BaseScreen.screenUtil.setWidth(10),
+                left: BaseScreen.screenUtil.setWidth(5),
+              ),
               child: Text(
                 S.of(context).confirm_password,
                 style: TextStyle(

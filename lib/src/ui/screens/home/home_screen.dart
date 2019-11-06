@@ -30,8 +30,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       appBar: CustomAppBar(
-              appBarType: AppBarType.simple, title: S.of(context).app_name)
-          .build(context),
+        appBarType: AppBarType.simple,
+        title: S.of(context).app_name,
+        showBackArrow: false,
+      ).build(context),
       //drawer: CustomDrawer(),
       body: _widgetOptions.elementAt(_currentIndex),
       bottomNavigationBar: CustomBottomNavigationBar(

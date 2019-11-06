@@ -1,18 +1,17 @@
-import 'package:bank_cards/src/ui/resources/app_images.dart';
 import 'package:bank_cards/src/ui/resources/decorations.dart';
 import 'package:bank_cards/src/ui/resources/app_dimen.dart';
 import 'package:bank_cards/src/ui/screens/base/base_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:bank_cards/src/ui/resources/custom_colors.dart';
-import 'package:flutter_svg/svg.dart';
 
 enum AppBarType { simple, silverAppBar }
 
 class CustomAppBar {
   final AppBarType appBarType;
   final String title;
+  final bool showBackArrow;
 
-  CustomAppBar({Key key, @required this.appBarType, @required this.title});
+  CustomAppBar({Key key, @required this.appBarType, @required this.title, this.showBackArrow = true});
 
   Widget build(BuildContext context) {
     BaseScreen.initScreenUtil(context: context);
@@ -33,6 +32,7 @@ class CustomAppBar {
         title,
         style: TextStyle(color: Colors.white),
       ),
+      automaticallyImplyLeading: this.showBackArrow,
       iconTheme: new IconThemeData(color: CustomColors.green),
       actions: <Widget>[
         // action button

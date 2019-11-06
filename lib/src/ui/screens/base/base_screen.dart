@@ -7,8 +7,9 @@ class BaseScreen {
 
   static void initScreenUtil({@required BuildContext context}) {
     ScreenUtil.instance = ScreenUtil(
-        width: AppDimen.baseScreenWidth, height: AppDimen.baseScreenHeight)
-      ..init(context);
+      width: AppDimen.baseScreenWidth,
+      height: AppDimen.baseScreenHeight,
+    )..init(context);
 
     screenUtil = ScreenUtil.getInstance();
   }

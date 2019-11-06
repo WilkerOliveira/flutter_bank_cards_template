@@ -9,9 +9,9 @@
   "statement": "Statement",
   "app_name": "Mobile Bank",
   "cvv": "CVV",
-  "due_date": "Due Date: ",
-  "limit":"Limit: ",
-  "available": "Available: ",
+  "due_date": "Due Date",
+  "limit":"Limit",
+  "available": "Available",
   "investments": "Investments",
   "login_with_google": "Google",
   "login_with_facebook": "Facebook",
@@ -51,5 +51,6 @@
   "userRegisteredWithDiffCredential" : "You are already registered using different credential!",
   "cancel_button": "CANCEL",
   "new_password_sent": "A new password has been sent to your email address!",
-  "emailNotFound": "Email not found!"
+  "emailNotFound": "Email not found!",
+  "my_cards_title": "My Cards"
 }

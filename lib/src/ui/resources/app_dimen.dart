@@ -1,14 +1,15 @@
 class AppDimen {
-
   static const double defaultMargin = 16.0;
   static const double defaultFormMarginLeft = 32.0;
   static const double labelFormDefaultSize = 16.0;
+  static const double valueLabelSize = 18.0;
+  static const double defaultTitleSize = 18.0;
 
   static const double extraMargin = 32.0;
   static const double loadingSize = 20.0;
 
-  static const double baseScreenWidth= 410.0;
-  static const double baseScreenHeight= 800.0;
+  static const double baseScreenWidth = 410.0;
+  static const double baseScreenHeight = 800.0;
 
   static const double defaultBottomWidth = 300.0;
   static const double defaultBottomHeight = 50.0;
@@ -30,6 +31,7 @@ class AppDimen {
   static const double balanceAmountTopPadding = 10.0;
 
   static const double cardsHeight = 230.0;
+  static const double cardsWidth = 80.0;
   static const double marginCardDetail = 20.0;
   static const double paddingCardDetail = 8.0;
 
@@ -61,4 +63,8 @@ class AppDimen {
   static const double logoLoginHeight = 100.0;
   static const double labelLogoLoginMarginTop = 25.0;
   static const double labelLogoLoginMarginBottom = 15.0;
+
+  static const double cardDetailWidth = 100.0;
+
+  static const double menuCardHeight = 300.0;
 }

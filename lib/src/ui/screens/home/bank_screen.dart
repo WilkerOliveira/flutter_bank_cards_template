@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:bank_cards/src/ui/widgets/common/account_header.dart';
 import 'package:bank_cards/generated/i18n.dart';
 import 'package:bank_cards/src/ui/resources/app_dimen.dart';
-import 'package:bank_cards/src/ui/resources/styles.dart';
+import 'package:bank_cards/src/ui/resources/app_styles.dart';
 import 'package:bank_cards/src/utils/formatter.dart';
 import 'package:bank_cards/src/ui/resources/custom_colors.dart';
 
@@ -71,7 +71,7 @@ class _BankPageState extends State<BankPage> with TickerProviderStateMixin {
                 Text(
                   S.of(context).current_balance,
                   textAlign: TextAlign.start,
-                  style: balanceTitleStyle(),
+                  style: AppStyles.balanceTitleStyle(),
                 ),
                 SizedBox(width: AppDimen.balanceSizedBox),
                 Padding(
@@ -80,7 +80,7 @@ class _BankPageState extends State<BankPage> with TickerProviderStateMixin {
                   child: Text(
                     Formatter.moneyFormatter(-400),
                     textAlign: TextAlign.start,
-                    style: balanceAmountStyle(-400),
+                    style: AppStyles.balanceAmountStyle(-400),
                   ),
                 )
               ],
@@ -105,7 +105,7 @@ class _BankPageState extends State<BankPage> with TickerProviderStateMixin {
                 Text(
                   S.of(context).investments,
                   textAlign: TextAlign.start,
-                  style: balanceTitleStyle(),
+                  style: AppStyles.balanceTitleStyle(),
                 ),
                 SizedBox(width: AppDimen.balanceSizedBox),
                 Padding(
@@ -114,7 +114,7 @@ class _BankPageState extends State<BankPage> with TickerProviderStateMixin {
                   child: Text(
                     Formatter.moneyFormatter(300),
                     textAlign: TextAlign.start,
-                    style: balanceAmountStyle(300),
+                    style: AppStyles.balanceAmountStyle(300),
                   ),
                 )
               ],

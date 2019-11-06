@@ -1,13 +1,13 @@
 import 'package:bank_cards/src/ui/resources/custom_colors.dart';
 import 'package:bank_cards/src/ui/resources/app_dimen.dart';
-import 'package:bank_cards/src/ui/resources/styles.dart';
+import 'package:bank_cards/src/ui/resources/app_styles.dart';
 import 'package:bank_cards/src/viewmodel/base/base_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Buttons {
-  static Widget defaultButton(
-      mainContext, BaseViewModel model, textButton, onPress, ScreenUtil screenUtil) {
+  static Widget defaultButton(mainContext, BaseViewModel model, textButton,
+      onPress, ScreenUtil screenUtil) {
     return ButtonTheme(
       minWidth: AppDimen.defaultBottomWidth,
       height: AppDimen.defaultBottomHeight,
@@ -16,7 +16,7 @@ class Buttons {
             borderRadius: new BorderRadius.circular(10.0)),
         child: Text(
           textButton,
-          style: defaultTextStyle(screenUtil),
+          style: AppStyles.defaultTextStyle(screenUtil),
         ),
         color: CustomColors.loginButtonBackground,
         elevation: 4.0,
@@ -38,7 +38,7 @@ class Buttons {
             borderRadius: new BorderRadius.circular(10.0)),
         child: Text(
           textButton,
-          style: customTextStyle(),
+          style: AppStyles.customTextStyle(),
         ),
         color: color,
         elevation: 4.0,
