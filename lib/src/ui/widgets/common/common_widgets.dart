@@ -36,6 +36,7 @@ class CommonWidgets {
 
   static Widget menuItem(img, text) {
     return Container(
+      margin: EdgeInsets.all(8),
       height: 90,
       width: 112,
       decoration: new BoxDecoration(

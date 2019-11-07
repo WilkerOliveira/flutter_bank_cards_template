@@ -1,5 +1,7 @@
 import 'package:bank_cards/src/ui/resources/decorations.dart';
+import 'package:bank_cards/src/ui/screens/base/base_screen.dart';
 import 'package:bank_cards/src/ui/widgets/common/common_widgets.dart';
+import 'package:bank_cards/src/ui/widgets/menu/horizontal_menu_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:bank_cards/src/ui/widgets/common/account_header.dart';
 import 'package:bank_cards/generated/i18n.dart';
@@ -32,6 +34,8 @@ class _BankPageState extends State<BankPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    BaseScreen.initScreenUtil(context: context);
+
     return new Container(
       decoration: BoxDecoration(
         gradient: Decorations.gradientDecoration(),
@@ -42,7 +46,12 @@ class _BankPageState extends State<BankPage> with TickerProviderStateMixin {
         children: <Widget>[
           AccountHeader(),
           this.balance(context),
-          SingleChildScrollView(child: this.menu()),
+          SingleChildScrollView(
+            child: HorizontalMenuWidget(
+              screenUtil: BaseScreen.screenUtil,
+              menuItems: this._menuItems,
+            ),
+          ),
           //this.lastTransactions(),
         ],
       ),
@@ -122,21 +131,6 @@ class _BankPageState extends State<BankPage> with TickerProviderStateMixin {
           ),
         ),
       ],
-    );
-  }
-
-  Widget menu() {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 20.0),
-      height: 300.0,
-      child: GridView.count(
-        primary: false,
-        padding: const EdgeInsets.all(20.0),
-        crossAxisSpacing: 10.0,
-        mainAxisSpacing: 10.0,
-        crossAxisCount: 3,
-        children: this._menuItems,
-      ),
     );
   }
 

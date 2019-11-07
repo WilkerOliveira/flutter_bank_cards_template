@@ -1,21 +1,22 @@
 import 'package:bank_cards/generated/i18n.dart';
+import 'package:bank_cards/src/models/card/card.dart' as model;
+import 'package:bank_cards/src/repository/card/service/card/card_response.dart';
 import 'package:bank_cards/src/router.dart';
-import 'package:bank_cards/src/ui/resources/decorations.dart';
 import 'package:bank_cards/src/ui/resources/app_dimen.dart';
 import 'package:bank_cards/src/ui/resources/app_styles.dart';
+import 'package:bank_cards/src/ui/resources/decorations.dart';
 import 'package:bank_cards/src/ui/screens/base/base_screen.dart';
 import 'package:bank_cards/src/ui/screens/base/base_widget.dart';
 import 'package:bank_cards/src/ui/widgets/common/common_widgets.dart';
 import 'package:bank_cards/src/ui/widgets/credit_card/credit_card_front.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
-import 'package:provider/provider.dart';
-import 'package:bank_cards/src/models/card/card.dart' as model;
 import 'package:bank_cards/src/ui/widgets/custom_circular_progress_indicator.dart';
+import 'package:bank_cards/src/ui/widgets/menu/horizontal_menu_widget.dart';
 import 'package:bank_cards/src/utils/formatter.dart';
 import 'package:bank_cards/src/viewmodel/base/base_viewmodel.dart';
 import 'package:bank_cards/src/viewmodel/card/card_viewmodel.dart';
-import 'package:bank_cards/src/repository/card/service/card/card_response.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:provider/provider.dart';
 
 class CardPage extends StatefulWidget {
   @override
@@ -107,7 +108,11 @@ class _CardPageState extends State<CardPage> {
               Column(
                 children: <Widget>[
                   this.cardDetails(model),
-                  this.menu(model),
+                  //this.menu(model),
+                  HorizontalMenuWidget(
+                    screenUtil: BaseScreen.screenUtil,
+                    menuItems: this._menuItems,
+                  ),
                 ],
               ),
             ],
@@ -232,22 +237,6 @@ class _CardPageState extends State<CardPage> {
 
   Color getAmountColor(amount) {
     return amount <= 0 ? Colors.red : Colors.green;
-  }
-
-  Widget menu(model) {
-    return Container(
-      height: BaseScreen.screenUtil.setHeight(AppDimen.menuCardHeight),
-      child: GridView.count(
-        primary: false,
-        padding: EdgeInsets.all(
-          BaseScreen.screenUtil.setWidth(20.0),
-        ),
-        crossAxisSpacing: 10.0,
-        mainAxisSpacing: 10.0,
-        crossAxisCount: 3,
-        children: this._menuItems,
-      ),
-    );
   }
 
   Widget createNewItem(img, text, position) {

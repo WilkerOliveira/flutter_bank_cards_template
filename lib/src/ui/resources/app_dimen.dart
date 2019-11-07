@@ -66,5 +66,5 @@ class AppDimen {
 
   static const double cardDetailWidth = 100.0;
 
-  static const double menuCardHeight = 300.0;
+  static const double menuCardHeight = 150.0;
 }
