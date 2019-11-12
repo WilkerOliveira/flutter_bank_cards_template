@@ -30,4 +30,4 @@ flutter pub run build_runner watch --delete-conflicting-outputs
 flutter pub run gen_lang:generate
 ```
 
-#### P.S.: I am not a designer
+#### P.S.: I am not a designer :)
