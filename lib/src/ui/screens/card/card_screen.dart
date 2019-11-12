@@ -5,7 +5,6 @@ import 'package:bank_cards/src/router.dart';
 import 'package:bank_cards/src/ui/resources/app_dimen.dart';
 import 'package:bank_cards/src/ui/resources/app_styles.dart';
 import 'package:bank_cards/src/ui/resources/decorations.dart';
-import 'package:bank_cards/src/ui/screens/base/base_screen.dart';
 import 'package:bank_cards/src/ui/screens/base/base_widget.dart';
 import 'package:bank_cards/src/ui/widgets/common/common_widgets.dart';
 import 'package:bank_cards/src/ui/widgets/credit_card/credit_card_front.dart';
@@ -15,6 +14,7 @@ import 'package:bank_cards/src/utils/formatter.dart';
 import 'package:bank_cards/src/viewmodel/base/base_viewmodel.dart';
 import 'package:bank_cards/src/viewmodel/card/card_viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:provider/provider.dart';
 
@@ -43,7 +43,8 @@ class _CardPageState extends State<CardPage> {
 
   @override
   Widget build(BuildContext context) {
-    BaseScreen.initScreenUtil(context: context);
+
+    Size screenSize = MediaQuery.of(context).size;
 
     return BaseWidget<CardViewModel>(
       model: CardViewModel(repository: Provider.of(context)),
@@ -57,24 +58,24 @@ class _CardPageState extends State<CardPage> {
         decoration: BoxDecoration(
           gradient: Decorations.gradientDecoration(),
         ),
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
+        width: screenSize.width,
+        height: screenSize.height,
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
               Padding(
                 padding: EdgeInsets.only(
-                  top: BaseScreen.screenUtil.setWidth(AppDimen.defaultMargin),
+                  top: ScreenUtil.instance.setWidth(AppDimen.defaultMargin),
                 ),
                 child: Text(
                   S.of(context).my_cards_title.toUpperCase(),
-                  style: AppStyles.defaultTitleStyle(BaseScreen.screenUtil),
+                  style: AppStyles.defaultTitleStyle(),
                 ),
               ),
               model.state != ViewState.Busy
                   ? SizedBox(
                       height:
-                          BaseScreen.screenUtil.setHeight(AppDimen.cardsHeight),
+                          ScreenUtil.instance.setHeight(AppDimen.cardsHeight),
                       child: new Swiper(
                         itemBuilder: (BuildContext context, int index) {
                           return CreditCardFront();
@@ -95,11 +96,10 @@ class _CardPageState extends State<CardPage> {
                     )
                   : Container(
                       height:
-                          BaseScreen.screenUtil.setHeight(AppDimen.cardsHeight),
-                      width:
-                          BaseScreen.screenUtil.setWidth(AppDimen.cardsWidth),
+                          ScreenUtil.instance.setHeight(AppDimen.cardsHeight),
+                      width: ScreenUtil.instance.setWidth(AppDimen.cardsWidth),
                       padding: EdgeInsets.all(
-                        BaseScreen.screenUtil.setWidth(10),
+                        ScreenUtil.instance.setWidth(10),
                       ),
                       child: Center(
                         child: CustomCircularProgressIndicator(),
@@ -110,7 +110,6 @@ class _CardPageState extends State<CardPage> {
                   this.cardDetails(model),
                   //this.menu(model),
                   HorizontalMenuWidget(
-                    screenUtil: BaseScreen.screenUtil,
                     menuItems: this._menuItems,
                   ),
                 ],
@@ -125,13 +124,13 @@ class _CardPageState extends State<CardPage> {
   Widget cardDetails(CardViewModel model) {
     return Container(
       margin: EdgeInsets.only(
-        left: BaseScreen.screenUtil.setWidth(AppDimen.marginCardDetail),
-        right: BaseScreen.screenUtil.setWidth(AppDimen.marginCardDetail),
+        left: ScreenUtil.instance.setWidth(AppDimen.marginCardDetail),
+        right: ScreenUtil.instance.setWidth(AppDimen.marginCardDetail),
       ),
       child: Container(
         color: Colors.transparent,
         margin: EdgeInsets.all(
-          BaseScreen.screenUtil.setWidth(AppDimen.defaultMargin),
+          ScreenUtil.instance.setWidth(AppDimen.defaultMargin),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -140,13 +139,12 @@ class _CardPageState extends State<CardPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 SizedBox(
-                  width:
-                      BaseScreen.screenUtil.setWidth(AppDimen.cardDetailWidth),
+                  width: ScreenUtil.instance.setWidth(AppDimen.cardDetailWidth),
                   child: Padding(
                     padding: EdgeInsets.all(AppDimen.paddingCardDetail),
                     child: Text(
                       S.of(context).due_date,
-                      style: AppStyles.titleDetailStyle(BaseScreen.screenUtil),
+                      style: AppStyles.titleDetailStyle(),
                     ),
                   ),
                 ),
@@ -156,27 +154,25 @@ class _CardPageState extends State<CardPage> {
                     model.state != ViewState.Busy && _privateCard != null
                         ? _privateCard.dueDate.toString()
                         : " - ",
-                    style: AppStyles.valueDetailStyle(
-                        BaseScreen.screenUtil, Colors.white),
+                    style: AppStyles.valueDetailStyle(Colors.white),
                   ),
                 ),
               ],
             ),
             Container(
-              height: BaseScreen.screenUtil.setHeight(1),
+              height: ScreenUtil.instance.setHeight(1),
               color: Colors.green,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 SizedBox(
-                  width:
-                      BaseScreen.screenUtil.setWidth(AppDimen.cardDetailWidth),
+                  width: ScreenUtil.instance.setWidth(AppDimen.cardDetailWidth),
                   child: Padding(
                     padding: EdgeInsets.all(AppDimen.paddingCardDetail),
                     child: Text(
                       S.of(context).limit,
-                      style: AppStyles.titleDetailStyle(BaseScreen.screenUtil),
+                      style: AppStyles.titleDetailStyle(),
                     ),
                   ),
                 ),
@@ -187,7 +183,6 @@ class _CardPageState extends State<CardPage> {
                         ? Formatter.moneyFormatter(_privateCard.limit)
                         : " - ",
                     style: AppStyles.valueDetailStyle(
-                      BaseScreen.screenUtil,
                       getAmountColor(
                           _privateCard == null ? 0 : _privateCard.limit),
                     ),
@@ -196,20 +191,19 @@ class _CardPageState extends State<CardPage> {
               ],
             ),
             Container(
-              height: BaseScreen.screenUtil.setHeight(1),
+              height: ScreenUtil.instance.setHeight(1),
               color: Colors.green,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 SizedBox(
-                  width:
-                      BaseScreen.screenUtil.setWidth(AppDimen.cardDetailWidth),
+                  width: ScreenUtil.instance.setWidth(AppDimen.cardDetailWidth),
                   child: Padding(
                     padding: EdgeInsets.all(AppDimen.paddingCardDetail),
                     child: Text(
                       S.of(context).available,
-                      style: AppStyles.titleDetailStyle(BaseScreen.screenUtil),
+                      style: AppStyles.titleDetailStyle(),
                     ),
                   ),
                 ),
@@ -220,7 +214,6 @@ class _CardPageState extends State<CardPage> {
                         ? Formatter.moneyFormatter(_privateCard.limitAvailable)
                         : " - ",
                     style: AppStyles.valueDetailStyle(
-                      BaseScreen.screenUtil,
                       getAmountColor(_privateCard == null
                           ? 0
                           : _privateCard.limitAvailable),

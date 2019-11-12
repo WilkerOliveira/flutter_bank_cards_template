@@ -2,8 +2,8 @@ import 'package:bank_cards/generated/i18n.dart';
 import 'package:bank_cards/src/ui/resources/app_dimen.dart';
 import 'package:bank_cards/src/ui/resources/app_images.dart';
 import 'package:bank_cards/src/ui/resources/decorations.dart';
-import 'package:bank_cards/src/ui/screens/base/base_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class LogoHeader extends StatelessWidget {
@@ -12,25 +12,25 @@ class LogoHeader extends StatelessWidget {
     return Container(
       decoration: Decorations.headerDecoration(),
       width: MediaQuery.of(context).size.width,
-      height: BaseScreen.screenUtil.setHeight(AppDimen.loginHeaderHeight),
+      height: ScreenUtil.instance.setHeight(AppDimen.loginHeaderHeight),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Padding(
             padding: EdgeInsets.only(
-              top: BaseScreen.screenUtil.setWidth(AppDimen.logoLoginMarginTop),
+              top: ScreenUtil.instance.setWidth(AppDimen.logoLoginMarginTop),
             ),
             child: SvgPicture.asset(
               AppImages.logo,
-              width: BaseScreen.screenUtil.setWidth(AppDimen.logoLoginWidth),
-              height: BaseScreen.screenUtil.setHeight(AppDimen.logoLoginHeight),
+              width: ScreenUtil.instance.setWidth(AppDimen.logoLoginWidth),
+              height: ScreenUtil.instance.setHeight(AppDimen.logoLoginHeight),
             ),
           ),
           Padding(
             padding: EdgeInsets.only(
-              top: BaseScreen.screenUtil
+              top: ScreenUtil.instance
                   .setWidth(AppDimen.labelLogoLoginMarginTop),
-              bottom: BaseScreen.screenUtil
+              bottom: ScreenUtil.instance
                   .setWidth(AppDimen.labelLogoLoginMarginBottom),
             ),
             child: Text(
@@ -39,7 +39,7 @@ class LogoHeader extends StatelessWidget {
               style: TextStyle(
                 color: Colors.white,
                 fontSize:
-                    BaseScreen.screenUtil.setSp(AppDimen.labelSplashScreenSize),
+                    ScreenUtil.instance.setSp(AppDimen.labelSplashScreenSize),
               ),
             ),
           )

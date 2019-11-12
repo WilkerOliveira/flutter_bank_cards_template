@@ -4,7 +4,7 @@ import 'package:bank_cards/generated/i18n.dart';
 import 'package:bank_cards/src/models/user.dart';
 import 'package:bank_cards/src/ui/resources/app_dimen.dart';
 import 'package:bank_cards/src/ui/resources/app_images.dart';
-import 'package:bank_cards/src/ui/resources/custom_colors.dart';
+import 'package:bank_cards/src/ui/resources/app_color.dart';
 import 'package:bank_cards/src/ui/resources/decorations.dart';
 import 'package:bank_cards/src/ui/screens/base/base_screen.dart';
 import 'package:bank_cards/src/ui/screens/base/base_widget.dart';
@@ -12,6 +12,7 @@ import 'package:bank_cards/src/ui/screens/home/home_screen.dart';
 import 'package:bank_cards/src/ui/screens/login/login_screen.dart';
 import 'package:bank_cards/src/viewmodel/splash_viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
@@ -45,6 +46,8 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     BaseScreen.initScreenUtil(context: context);
 
+    Size size = MediaQuery.of(context).size;
+
     return Scaffold(
       body: BaseWidget<SplashViewModel>(
         model: SplashViewModel(Provider.of(context)),
@@ -52,8 +55,8 @@ class _SplashScreenState extends State<SplashScreen> {
           loadData(model);
         },
         builder: (mainContext, model, child) => Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
+          height: size.height,
+          width: size.width,
           decoration: BoxDecoration(
             gradient: Decorations.gradientDecoration(),
           ),
@@ -62,20 +65,20 @@ class _SplashScreenState extends State<SplashScreen> {
             children: <Widget>[
               Padding(
                 padding: EdgeInsets.all(
-                  BaseScreen.screenUtil
+                  ScreenUtil.instance
                       .setWidth(AppDimen.imageSplashScreenPadding),
                 ),
                 child: SvgPicture.asset(
                   AppImages.logo,
-                  width: BaseScreen.screenUtil
+                  width: ScreenUtil.instance
                       .setWidth(AppDimen.imageSplashScreenWidth),
-                  height: BaseScreen.screenUtil
+                  height: ScreenUtil.instance
                       .setHeight(AppDimen.imageSplashScreenHeight),
                 ),
               ),
               Padding(
                 padding: EdgeInsets.all(
-                  BaseScreen.screenUtil
+                  ScreenUtil.instance
                       .setWidth(AppDimen.labelSplashScreenPadding),
                 ),
                 child: Text(
@@ -83,13 +86,13 @@ class _SplashScreenState extends State<SplashScreen> {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: BaseScreen.screenUtil
+                    fontSize: ScreenUtil.instance
                         .setSp(AppDimen.labelSplashScreenSize),
                   ),
                 ),
               ),
               CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(CustomColors.green),
+                valueColor: AlwaysStoppedAnimation<Color>(AppColor.green),
               ),
             ],
           ),

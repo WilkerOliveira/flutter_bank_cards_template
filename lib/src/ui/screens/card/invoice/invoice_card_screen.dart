@@ -7,7 +7,7 @@ import 'package:bank_cards/src/models/card/card_dto.dart';
 import 'package:bank_cards/src/models/card/invoice_months.dart';
 import 'package:bank_cards/src/models/card/card.dart' as model;
 import 'package:bank_cards/src/repository/card/service/invoice/invoice_response.dart';
-import 'package:bank_cards/src/ui/resources/custom_colors.dart';
+import 'package:bank_cards/src/ui/resources/app_color.dart';
 import 'package:bank_cards/src/router.dart';
 import 'package:bank_cards/src/ui/widgets/common/custom_appbar.dart';
 import 'package:bank_cards/src/ui/widgets/custom_circular_progress_indicator.dart';
@@ -69,7 +69,7 @@ class _InvoiceCardScreenState extends State<InvoiceCardScreen> {
             arguments: cardDto);
       },
       child: Card(
-        color: CustomColors.green,
+        color: AppColor.green,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
         ),

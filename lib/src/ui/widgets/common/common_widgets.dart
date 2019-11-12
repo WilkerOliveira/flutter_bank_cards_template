@@ -1,5 +1,5 @@
 
-import 'package:bank_cards/src/ui/resources/custom_colors.dart';
+import 'package:bank_cards/src/ui/resources/app_color.dart';
 import 'package:bank_cards/src/ui/resources/decorations.dart';
 import 'package:bank_cards/src/utils/constants.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +40,7 @@ class CommonWidgets {
       height: 90,
       width: 112,
       decoration: new BoxDecoration(
-        border: new Border.all(color: CustomColors.green),
+        border: new Border.all(color: AppColor.green),
         borderRadius: new BorderRadius.only(
           bottomLeft: const Radius.circular(15.0),
           bottomRight: const Radius.circular(15.0),
@@ -90,7 +90,7 @@ class CommonWidgets {
                   model.toCurrency(
                       statement.amount, statement.type),
                   style: TextStyle(
-                      color: statement.type == Constants.statementTypeDebit ? Color(0xFFB34747) : CustomColors.green,
+                      color: statement.type == Constants.statementTypeDebit ? Color(0xFFB34747) : AppColor.green,
                       fontSize: 16,
                       fontWeight: FontWeight.bold),
                 ),

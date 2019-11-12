@@ -1,5 +1,4 @@
 import 'package:bank_cards/src/ui/resources/decorations.dart';
-import 'package:bank_cards/src/ui/screens/base/base_screen.dart';
 import 'package:bank_cards/src/ui/widgets/common/common_widgets.dart';
 import 'package:bank_cards/src/ui/widgets/menu/horizontal_menu_widget.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +7,7 @@ import 'package:bank_cards/generated/i18n.dart';
 import 'package:bank_cards/src/ui/resources/app_dimen.dart';
 import 'package:bank_cards/src/ui/resources/app_styles.dart';
 import 'package:bank_cards/src/utils/formatter.dart';
-import 'package:bank_cards/src/ui/resources/custom_colors.dart';
+import 'package:bank_cards/src/ui/resources/app_color.dart';
 
 class BankPage extends StatefulWidget {
   @override
@@ -34,7 +33,6 @@ class _BankPageState extends State<BankPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    BaseScreen.initScreenUtil(context: context);
 
     return new Container(
       decoration: BoxDecoration(
@@ -48,7 +46,6 @@ class _BankPageState extends State<BankPage> with TickerProviderStateMixin {
           this.balance(context),
           SingleChildScrollView(
             child: HorizontalMenuWidget(
-              screenUtil: BaseScreen.screenUtil,
               menuItems: this._menuItems,
             ),
           ),
@@ -198,7 +195,7 @@ class FunkyOverlayState extends State<FunkyOverlay>
       height: 90,
       width: 112,
       decoration: new BoxDecoration(
-        border: new Border.all(color: CustomColors.green),
+        border: new Border.all(color: AppColor.green),
         borderRadius: new BorderRadius.only(
           bottomLeft: const Radius.circular(15.0),
           bottomRight: const Radius.circular(15.0),
@@ -216,7 +213,7 @@ class FunkyOverlayState extends State<FunkyOverlay>
               text,
               style: TextStyle(
                 fontSize: 12,
-                color: CustomColors.blue,
+                color: AppColor.blue,
               ),
             ),
           ),

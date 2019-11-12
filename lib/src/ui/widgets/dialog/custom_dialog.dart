@@ -1,4 +1,4 @@
-import 'package:bank_cards/src/ui/resources/custom_colors.dart';
+import 'package:bank_cards/src/ui/resources/app_color.dart';
 import 'package:flutter/material.dart';
 
 enum DialogType { success, error, info, warning }
@@ -78,7 +78,7 @@ class CustomDialog extends StatelessWidget {
           ),
           margin: EdgeInsets.only(top: avatarRadius),
           decoration: new BoxDecoration(
-            color: CustomColors.topHead,
+            color: AppColor.topHead,
             shape: BoxShape.rectangle,
             borderRadius: BorderRadius.circular(padding),
             boxShadow: [

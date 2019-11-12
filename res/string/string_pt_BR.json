@@ -52,5 +52,6 @@
   "cancel_button": "CANCELAR",
   "new_password_sent": "Uma nova senha foi enviado para seu e-mail!",
   "emailNotFound": "E-mail não encontrado!",
-  "my_cards_title": "Meus Cartões"
+  "my_cards_title": "Meus Cartões",
+  "valid_thru": "VÁLIDO ATÉ"
 }

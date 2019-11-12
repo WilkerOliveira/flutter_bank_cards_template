@@ -1,12 +1,11 @@
 import 'package:bank_cards/generated/i18n.dart';
 import 'package:bank_cards/src/models/user.dart';
 import 'package:bank_cards/src/router.dart';
-import 'package:bank_cards/src/ui/resources/app_images.dart';
-import 'package:bank_cards/src/ui/resources/custom_colors.dart';
-import 'package:bank_cards/src/ui/resources/decorations.dart';
 import 'package:bank_cards/src/ui/resources/app_dimen.dart';
+import 'package:bank_cards/src/ui/resources/app_images.dart';
 import 'package:bank_cards/src/ui/resources/app_styles.dart';
-import 'package:bank_cards/src/ui/screens/base/base_screen.dart';
+import 'package:bank_cards/src/ui/resources/app_color.dart';
+import 'package:bank_cards/src/ui/resources/decorations.dart';
 import 'package:bank_cards/src/ui/screens/base/base_widget.dart';
 import 'package:bank_cards/src/ui/utility/screen_utility.dart';
 import 'package:bank_cards/src/ui/validation/common_form_validation.dart';
@@ -16,8 +15,8 @@ import 'package:bank_cards/src/ui/widgets/header/logo_header.dart';
 import 'package:bank_cards/src/viewmodel/base/base_viewmodel.dart';
 import 'package:bank_cards/src/viewmodel/login_viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -33,6 +32,7 @@ class _LoginScreenState extends State<LoginScreen>
   FocusNode _password;
 
   User currentUser = User();
+  Size _size;
 
   @override
   void initState() {
@@ -56,13 +56,13 @@ class _LoginScreenState extends State<LoginScreen>
 
   @override
   Widget build(BuildContext context) {
-    BaseScreen.initScreenUtil(context: context);
+    this._size = MediaQuery.of(context).size;
 
     return Scaffold(
       body: Container(
-        color: CustomColors.darkBlue,
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
+        color: AppColor.darkBlue,
+        width: this._size.width,
+        height: this._size.height,
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
@@ -95,9 +95,9 @@ class _LoginScreenState extends State<LoginScreen>
                     _checkLogin(model);
                   },
                   child: new Container(
-                    width: BaseScreen.screenUtil
+                    width: ScreenUtil.instance
                         .setWidth(AppDimen.buttonAltLoginWidth),
-                    height: BaseScreen.screenUtil
+                    height: ScreenUtil.instance
                         .setHeight(AppDimen.buttonAltLoginHeight),
                     decoration: Decorations.buttonBoxDecoration(Colors.white),
                     child: Row(
@@ -106,7 +106,7 @@ class _LoginScreenState extends State<LoginScreen>
                         Padding(
                           child: Image.asset(AppImages.google),
                           padding: EdgeInsets.only(
-                              left: BaseScreen.screenUtil.setWidth(1)),
+                              left: ScreenUtil.instance.setWidth(1)),
                         ),
                       ],
                     ),
@@ -118,19 +118,19 @@ class _LoginScreenState extends State<LoginScreen>
                     _checkLogin(model);
                   },
                   child: new Container(
-                    width: BaseScreen.screenUtil
+                    width: ScreenUtil.instance
                         .setWidth(AppDimen.buttonAltLoginWidth),
-                    height: BaseScreen.screenUtil
+                    height: ScreenUtil.instance
                         .setHeight(AppDimen.buttonAltLoginHeight),
                     decoration: Decorations.buttonBoxDecoration(
-                        CustomColors.facebookLoginBackground),
+                        AppColor.facebookLoginBackground),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Padding(
                           child: Image.asset(AppImages.facebook),
                           padding: EdgeInsets.only(
-                              left: BaseScreen.screenUtil.setWidth(1)),
+                              left: ScreenUtil.instance.setWidth(1)),
                         ),
                       ],
                     ),
@@ -139,7 +139,7 @@ class _LoginScreenState extends State<LoginScreen>
               ],
             ),
             SizedBox(
-              height: BaseScreen.screenUtil.setHeight(AppDimen.sizedBoxSpace),
+              height: ScreenUtil.instance.setHeight(AppDimen.sizedBoxSpace),
             ),
             GestureDetector(
               onTap: () async {
@@ -147,9 +147,9 @@ class _LoginScreenState extends State<LoginScreen>
               },
               child: Container(
                 width:
-                    BaseScreen.screenUtil.setWidth(AppDimen.buttonDefaultWidth),
-                height: BaseScreen.screenUtil
-                    .setHeight(AppDimen.buttonDefaultHeight),
+                    ScreenUtil.instance.setWidth(AppDimen.buttonDefaultWidth),
+                height:
+                    ScreenUtil.instance.setHeight(AppDimen.buttonDefaultHeight),
                 decoration: Decorations.transparentButtonBoxDecoration(),
                 child: Center(
                   child: RichText(
@@ -158,14 +158,14 @@ class _LoginScreenState extends State<LoginScreen>
                       text: S.of(context).dont_have_account,
                       style: AppStyles.buttonTextStyle(
                         Colors.white,
-                        BaseScreen.screenUtil.setSp(AppDimen.buttonTextSize),
+                        ScreenUtil.instance.setSp(AppDimen.buttonTextSize),
                       ),
                     ),
                     new TextSpan(
                       text: S.of(context).sign_up_now,
                       style: AppStyles.buttonTextStyle(
-                        CustomColors.markTextColor,
-                        BaseScreen.screenUtil.setSp(AppDimen.buttonTextSize),
+                        AppColor.markTextColor,
+                        ScreenUtil.instance.setSp(AppDimen.buttonTextSize),
                       ),
                     ),
                   ])),
@@ -173,7 +173,7 @@ class _LoginScreenState extends State<LoginScreen>
               ),
             ),
             SizedBox(
-              height: BaseScreen.screenUtil.setHeight(AppDimen.sizedBoxSpace),
+              height: ScreenUtil.instance.setHeight(AppDimen.sizedBoxSpace),
             ),
           ],
         ),
@@ -195,16 +195,16 @@ class _LoginScreenState extends State<LoginScreen>
   }
 
   Widget loginForm(LoginViewModel model) {
-    TextStyle style = AppStyles.formTextStyle(CustomColors.darkBlue,
-        BaseScreen.screenUtil.setSp(AppDimen.formTextSize));
+    TextStyle style = AppStyles.formTextStyle(AppColor.darkBlue,
+        ScreenUtil.instance.setSp(AppDimen.formTextSize));
 
     final emailField = TextFormField(
       keyboardType: TextInputType.emailAddress,
       maxLength: 100,
       obscureText: false,
       style: style,
-      decoration: Decorations.formInputDecoration(BaseScreen.screenUtil,
-          S.of(context).email, CustomColors.loginErrorColor),
+      decoration: Decorations.formInputDecoration(
+          S.of(context).email, AppColor.loginErrorColor),
       onSaved: (String value) {
         currentUser.email = value.trim();
       },
@@ -220,8 +220,8 @@ class _LoginScreenState extends State<LoginScreen>
       obscureText: true,
       maxLength: 8,
       style: style,
-      decoration: Decorations.formInputDecoration(BaseScreen.screenUtil,
-          S.of(context).password, CustomColors.loginErrorColor),
+      decoration: Decorations.formInputDecoration(
+          S.of(context).password, AppColor.loginErrorColor),
       onSaved: (String value) {
         currentUser.password = value.trim();
       },
@@ -234,13 +234,13 @@ class _LoginScreenState extends State<LoginScreen>
     );
 
     final loginButton = Material(
-      elevation: BaseScreen.screenUtil.setWidth(5.0),
+      elevation: ScreenUtil.instance.setWidth(5.0),
       borderRadius: BorderRadius.circular(
-        BaseScreen.screenUtil.setWidth(AppDimen.borderButton),
+        ScreenUtil.instance.setWidth(AppDimen.borderButton),
       ),
-      color: CustomColors.loginButtonBackground,
+      color: AppColor.loginButtonBackground,
       child: MaterialButton(
-        minWidth: BaseScreen.screenUtil.setWidth(AppDimen.buttonDefaultWidth),
+        minWidth: ScreenUtil.instance.setWidth(this._size.width),
         onPressed: () {
           _signIn(model);
         },
@@ -257,53 +257,53 @@ class _LoginScreenState extends State<LoginScreen>
       key: _formKey,
       child: Padding(
         padding: EdgeInsets.only(
-          top: BaseScreen.screenUtil.setWidth(AppDimen.defaultMargin),
-          left: BaseScreen.screenUtil.setWidth(AppDimen.defaultMargin),
-          right: BaseScreen.screenUtil.setWidth(AppDimen.defaultMargin),
+          top: ScreenUtil.instance.setWidth(AppDimen.defaultMargin),
+          left: ScreenUtil.instance.setWidth(AppDimen.defaultMargin),
+          right: ScreenUtil.instance.setWidth(AppDimen.defaultMargin),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Padding(
               padding: EdgeInsets.only(
-                bottom: BaseScreen.screenUtil.setWidth(AppDimen.defaultMargin),
+                bottom: ScreenUtil.instance.setWidth(AppDimen.defaultMargin),
               ),
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
                   S.of(context).email,
-                  style: AppStyles.defaultTextStyle(BaseScreen.screenUtil),
+                  style: AppStyles.defaultTextStyle(),
                 ),
               ),
             ),
             emailField,
             SizedBox(
-              height: BaseScreen.screenUtil.setHeight(AppDimen.defaultMargin),
+              height: ScreenUtil.instance.setHeight(AppDimen.defaultMargin),
             ),
             Padding(
               padding: EdgeInsets.only(
-                bottom: BaseScreen.screenUtil.setWidth(AppDimen.defaultMargin),
+                bottom: ScreenUtil.instance.setWidth(AppDimen.defaultMargin),
               ),
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
                   S.of(context).password,
-                  style: AppStyles.defaultTextStyle(BaseScreen.screenUtil),
+                  style: AppStyles.defaultTextStyle(),
                 ),
               ),
             ),
             passwordField,
             SizedBox(
-              height: BaseScreen.screenUtil.setHeight(AppDimen.extraMargin),
+              height: ScreenUtil.instance.setHeight(AppDimen.extraMargin),
             ),
             model.state == ViewState.Busy
                 ? SpinKitThreeBounce(
                     color: Colors.white,
-                    size: BaseScreen.screenUtil.setWidth(AppDimen.loadingSize),
+                    size: ScreenUtil.instance.setWidth(AppDimen.loadingSize),
                   )
                 : loginButton,
             SizedBox(
-              height: BaseScreen.screenUtil.setHeight(AppDimen.extraMargin),
+              height: ScreenUtil.instance.setHeight(AppDimen.extraMargin),
             ),
             GestureDetector(
               onTap: () {
@@ -312,16 +312,14 @@ class _LoginScreenState extends State<LoginScreen>
               child: new Text(
                 S.of(context).forgot_password,
                 textAlign: TextAlign.center,
-                style:
-                    AppStyles.defaultTextStyle(BaseScreen.screenUtil).copyWith(
+                style: AppStyles.defaultTextStyle().copyWith(
                   decoration: TextDecoration.underline,
-                  fontSize:
-                      BaseScreen.screenUtil.setSp(AppDimen.buttonTextSize),
+                  fontSize: ScreenUtil.instance.setSp(AppDimen.buttonTextSize),
                 ),
               ),
             ),
             SizedBox(
-              height: BaseScreen.screenUtil.setHeight(AppDimen.extraMargin),
+              height: ScreenUtil.instance.setHeight(AppDimen.extraMargin),
             ),
           ],
         ),

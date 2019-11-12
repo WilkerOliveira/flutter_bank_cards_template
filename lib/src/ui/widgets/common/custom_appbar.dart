@@ -1,8 +1,8 @@
 import 'package:bank_cards/src/ui/resources/decorations.dart';
 import 'package:bank_cards/src/ui/resources/app_dimen.dart';
-import 'package:bank_cards/src/ui/screens/base/base_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:bank_cards/src/ui/resources/custom_colors.dart';
+import 'package:bank_cards/src/ui/resources/app_color.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 enum AppBarType { simple, silverAppBar }
 
@@ -14,7 +14,6 @@ class CustomAppBar {
   CustomAppBar({Key key, @required this.appBarType, @required this.title, this.showBackArrow = true});
 
   Widget build(BuildContext context) {
-    BaseScreen.initScreenUtil(context: context);
 
     if (this.appBarType == AppBarType.simple)
       return this._mainAppHeader(context, title);
@@ -33,7 +32,7 @@ class CustomAppBar {
         style: TextStyle(color: Colors.white),
       ),
       automaticallyImplyLeading: this.showBackArrow,
-      iconTheme: new IconThemeData(color: CustomColors.green),
+      iconTheme: new IconThemeData(color: AppColor.green),
       actions: <Widget>[
         // action button
         IconButton(
@@ -47,7 +46,7 @@ class CustomAppBar {
 
   Widget _silverAppbar(context, title) {
     return SliverAppBar(
-      backgroundColor: CustomColors.topHead,
+      backgroundColor: AppColor.topHead,
       shape: ContinuousRectangleBorder(
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(50),
@@ -55,7 +54,7 @@ class CustomAppBar {
         ),
       ),
       expandedHeight:
-          BaseScreen.screenUtil.setHeight(AppDimen.loginHeaderHeight),
+          ScreenUtil.instance.setHeight(AppDimen.loginHeaderHeight),
       floating: false,
       pinned: true,
       elevation: 2.0,
@@ -73,7 +72,7 @@ class CustomAppBar {
           title,
           textAlign: TextAlign.center,
           style: TextStyle(
-            fontSize: BaseScreen.screenUtil.setSp(26),
+            fontSize: ScreenUtil.instance.setSp(26),
             color: Colors.white,
           ),
         ),

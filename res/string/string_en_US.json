@@ -52,5 +52,6 @@
   "cancel_button": "CANCEL",
   "new_password_sent": "A new password has been sent to your email address!",
   "emailNotFound": "Email not found!",
-  "my_cards_title": "My Cards"
+  "my_cards_title": "My Cards",
+  "valid_thru": "VALID THRU"
 }

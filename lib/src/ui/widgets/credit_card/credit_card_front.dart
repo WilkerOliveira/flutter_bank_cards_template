@@ -1,7 +1,10 @@
-import 'package:bank_cards/src/ui/resources/app_images.dart';
-import 'package:bank_cards/src/ui/resources/custom_colors.dart';
+import 'package:bank_cards/generated/i18n.dart';
+import 'package:bank_cards/src/ui/resources/app_color.dart';
 import 'package:bank_cards/src/ui/resources/app_dimen.dart';
+import 'package:bank_cards/src/ui/resources/app_images.dart';
+import 'package:bank_cards/src/ui/resources/app_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class CreditCardFront extends StatefulWidget {
@@ -13,44 +16,57 @@ class _CreditCardFrontState extends State<CreditCardFront> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(10.0),
-      height: 126,
-      width: 390,
+      margin: EdgeInsets.all(
+        ScreenUtil.instance.setWidth(AppDimen.defaultMargin),
+      ),
+      height: ScreenUtil.instance.setHeight(AppDimen.creditCardHeight),
+      width: ScreenUtil.instance.setWidth(AppDimen.creditCardWidth),
       decoration: BoxDecoration(
-        color: CustomColors.darkBlue,
+        color: AppColor.darkBlue,
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [Color(0xFFbdc3c7), Color(0xFF2c3e50)],
+          colors: [
+            AppColor.creditCardFirstColor,
+            AppColor.creditCardSecondColor,
+          ],
         ),
         borderRadius: new BorderRadius.all(
             const Radius.circular(AppDimen.borderContainer)),
       ),
       child: Padding(
-        padding: EdgeInsets.all(8.0),
+        padding: EdgeInsets.all(
+          ScreenUtil.instance.setWidth(AppDimen.simpleMargin),
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             SvgPicture.asset(
               AppImages.visa,
-              width: 64,
-              height: 64,
+              width: ScreenUtil.instance.setWidth(AppDimen.creditCardLogoWidth),
+              height:
+                  ScreenUtil.instance.setHeight(AppDimen.creditCardLogoHeight),
             ),
             SizedBox(
               height: 10,
             ),
             Padding(
-              padding: EdgeInsets.only(left: 8.0, right: 8.0),
+              padding: EdgeInsets.only(
+                left: ScreenUtil.instance.setWidth(AppDimen.simpleMargin),
+                right: ScreenUtil.instance.setWidth(AppDimen.simpleMargin),
+              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Image.asset(AppImages.chip),
                   Text(
                     "1234  5678  9012  3456",
-                    style: TextStyle(
-                        fontSize: 22,
-                        fontFamily: "Roboto",
-                        fontWeight: FontWeight.bold),
+                    style: AppStyles.formTextStyle(
+                      Colors.white,
+                      AppDimen.creditCardNumberSize,
+                    ).copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ],
               ),
@@ -59,22 +75,38 @@ class _CreditCardFrontState extends State<CreditCardFront> {
               height: 10,
             ),
             Padding(
-              padding: EdgeInsets.only(left: 8.0, top: 15, right: 8.0),
+              padding: EdgeInsets.only(
+                left: ScreenUtil.instance.setWidth(AppDimen.simpleMargin),
+                top: ScreenUtil.instance.setWidth(AppDimen.defaultMargin),
+                right: ScreenUtil.instance.setWidth(AppDimen.simpleMargin),
+              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Column(
                     children: <Widget>[
-                      Text("VALID THRU  "),
+                      Text(
+                        S.of(context).valid_thru,
+                        style: AppStyles.formTextStyle(
+                          Colors.white,
+                          AppDimen.labelFormDefaultSize,
+                        ),
+                      ),
                       Text(
                         "10/26",
-                        style: TextStyle(fontSize: 18),
+                        style: AppStyles.formTextStyle(
+                          Colors.white,
+                          AppDimen.labelFormDefaultSize,
+                        ),
                       ),
                     ],
                   ),
                   Text(
                     "CARDHOLDER NAME",
-                    style: TextStyle(fontSize: 18),
+                    style: AppStyles.formTextStyle(
+                      Colors.white,
+                      AppDimen.labelFormDefaultSize,
+                    ),
                   ),
                 ],
               ),

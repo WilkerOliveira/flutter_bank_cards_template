@@ -1,4 +1,4 @@
-import 'package:bank_cards/src/ui/resources/custom_colors.dart';
+import 'package:bank_cards/src/ui/resources/app_color.dart';
 import 'package:bank_cards/src/ui/resources/app_dimen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -29,23 +29,22 @@ class Decorations {
     );
   }
 
-  static InputDecoration formInputDecoration(
-      ScreenUtil screenUtil, String hint, Color errorColor) {
+  static InputDecoration formInputDecoration(String hint, Color errorColor) {
     return InputDecoration(
       filled: true,
       fillColor: Colors.white,
       contentPadding: EdgeInsets.fromLTRB(
-        screenUtil.setWidth(20.0),
-        screenUtil.setWidth(15.0),
-        screenUtil.setWidth(20.0),
-        screenUtil.setWidth(15.0),
+        ScreenUtil.instance.setWidth(20.0),
+        ScreenUtil.instance.setWidth(15.0),
+        ScreenUtil.instance.setWidth(20.0),
+        ScreenUtil.instance.setWidth(15.0),
       ),
       hintText: hint,
       counterStyle: TextStyle(
         color: Colors.white,
       ),
       border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(screenUtil.setWidth(10.0)),
+        borderRadius: BorderRadius.circular(ScreenUtil.instance.setWidth(10.0)),
       ),
       errorStyle: TextStyle(color: errorColor),
     );
@@ -53,7 +52,7 @@ class Decorations {
 
   static BoxDecoration headerDecoration() {
     return new BoxDecoration(
-      color: CustomColors.darkBlue,
+      color: AppColor.darkBlue,
       gradient: Decorations.gradientDecoration(),
       borderRadius: new BorderRadius.only(
         bottomRight: const Radius.circular(AppDimen.borderContainer),
@@ -66,13 +65,13 @@ class Decorations {
     return LinearGradient(
       begin: Alignment.topLeft,
       end: Alignment.bottomRight,
-      colors: [CustomColors.darkBlue, CustomColors.topHead],
+      colors: [AppColor.darkBlue, AppColor.topHead],
     );
   }
 
   static BoxDecoration balanceDecoration() {
     return new BoxDecoration(
-      color: CustomColors.darkBlue,
+      color: AppColor.darkBlue,
       gradient: Decorations.gradientDecoration(),
       borderRadius: new BorderRadius.all(
         const Radius.circular(AppDimen.borderContainer),
@@ -82,7 +81,7 @@ class Decorations {
 
   static BoxDecoration listItemDecoration() {
     return new BoxDecoration(
-      color: CustomColors.darkBlue,
+      color: AppColor.darkBlue,
       gradient: Decorations.gradientDecoration(),
     );
   }

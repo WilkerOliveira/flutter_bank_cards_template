@@ -242,6 +242,10 @@ class S {
     return Intl.message("Meus Cartões", name: 'my_cards_title');
   }
 
+  String get valid_thru {
+    return Intl.message("VÁLIDO ATÉ", name: 'valid_thru');
+  }
+
 
 }
 

@@ -67,6 +67,7 @@ class $pt_BR extends MessageLookupByLibrary {
 		"new_password_sent" : MessageLookupByLibrary.simpleMessage("Uma nova senha foi enviado para seu e-mail!"),
 		"emailNotFound" : MessageLookupByLibrary.simpleMessage("E-mail não encontrado!"),
 		"my_cards_title" : MessageLookupByLibrary.simpleMessage("Meus Cartões"),
+		"valid_thru" : MessageLookupByLibrary.simpleMessage("VÁLIDO ATÉ"),
 
   };
 }
@@ -131,6 +132,7 @@ class $en_US extends MessageLookupByLibrary {
 		"new_password_sent" : MessageLookupByLibrary.simpleMessage("A new password has been sent to your email address!"),
 		"emailNotFound" : MessageLookupByLibrary.simpleMessage("Email not found!"),
 		"my_cards_title" : MessageLookupByLibrary.simpleMessage("My Cards"),
+		"valid_thru" : MessageLookupByLibrary.simpleMessage("VALID THRU"),
 
   };
 }

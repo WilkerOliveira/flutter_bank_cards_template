@@ -1,4 +1,5 @@
 class AppDimen {
+  static const double simpleMargin = 8.0;
   static const double defaultMargin = 16.0;
   static const double defaultFormMarginLeft = 32.0;
   static const double labelFormDefaultSize = 16.0;
@@ -67,4 +68,10 @@ class AppDimen {
   static const double cardDetailWidth = 100.0;
 
   static const double menuCardHeight = 150.0;
+
+  static const double creditCardHeight = 126.0;
+  static const double creditCardWidth = 390.0;
+  static const double creditCardLogoWidth = 64.0;
+  static const double creditCardLogoHeight = 64.0;
+  static const double creditCardNumberSize = 22.0;
 }

@@ -1,4 +1,4 @@
-import 'package:bank_cards/src/ui/resources/custom_colors.dart';
+import 'package:bank_cards/src/ui/resources/app_color.dart';
 import 'package:bank_cards/src/ui/resources/app_dimen.dart';
 import 'package:flutter/material.dart';
 

@@ -1,4 +1,4 @@
-import 'package:bank_cards/src/ui/resources/custom_colors.dart';
+import 'package:bank_cards/src/ui/resources/app_color.dart';
 import 'package:flutter/material.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
@@ -12,12 +12,18 @@ class CustomBottomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return BottomNavigationBar(
-      backgroundColor: CustomColors.topHead,
-      items: this.items,
-      currentIndex: this.currentIndex,
-      selectedItemColor: CustomColors.green,
-      onTap: this.onItemTapped,
+    return ClipRRect(
+      borderRadius: BorderRadius.only(
+        topRight: Radius.circular(20),
+        topLeft: Radius.circular(20),
+      ),
+      child: BottomNavigationBar(
+        backgroundColor: AppColor.topHead,
+        items: this.items,
+        currentIndex: this.currentIndex,
+        selectedItemColor: AppColor.green,
+        onTap: this.onItemTapped,
+      ),
     );
   }
 

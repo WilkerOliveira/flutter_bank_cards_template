@@ -1,5 +1,5 @@
 import 'package:bank_cards/generated/i18n.dart';
-import 'package:bank_cards/src/ui/resources/custom_colors.dart';
+import 'package:bank_cards/src/ui/resources/app_color.dart';
 import 'package:bank_cards/src/ui/resources/decorations.dart';
 import 'package:bank_cards/src/ui/screens/base/base_widget.dart';
 import 'package:bank_cards/src/ui/widgets/common/common_widgets.dart';
@@ -90,7 +90,7 @@ class _StatementCardScreenState extends State<StatementCardScreen> {
                                 ? _statementResponse.filterMonth
                                 : " - "),
                             style: TextStyle(
-                              color: CustomColors.green,
+                              color: AppColor.green,
                             ),
                           ),
                         ],

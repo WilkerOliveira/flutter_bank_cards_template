@@ -1,5 +1,5 @@
+import 'package:bank_cards/src/ui/resources/app_color.dart';
 import 'package:bank_cards/src/ui/resources/app_dimen.dart';
-import 'package:bank_cards/src/ui/resources/custom_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -7,38 +7,30 @@ class AppStyles {
   static ThemeData defaultThemeData() {
     return ThemeData(
       brightness: Brightness.light,
-      primaryColor: CustomColors.green,
+      primaryColor: AppColor.green,
     );
   }
 
-  static TextStyle defaultTitleStyle(ScreenUtil screenUtil) {
+  static TextStyle defaultTitleStyle() {
     return TextStyle(
         fontWeight: FontWeight.bold,
         color: Colors.white,
-        fontSize: screenUtil.setSp(AppDimen.defaultTitleSize),
-        height: 1.4);
+        fontSize: ScreenUtil.instance.setSp(AppDimen.defaultTitleSize),
+        height: ScreenUtil.instance.setHeight(1.4));
   }
 
-  static TextStyle defaultTextStyle(ScreenUtil screenUtil) {
+  static TextStyle defaultTextStyle() {
     return TextStyle(
       fontFamily: 'Roboto',
       color: Colors.white,
-      fontSize: screenUtil.setSp(16),
-      height: 1.4,
-    );
-  }
-
-  static TextStyle customTextStyle() {
-    return TextStyle(
-      color: Colors.white,
-      fontSize: 14,
-      height: 1.0,
+      fontSize: ScreenUtil.instance.setSp(16),
+      height: ScreenUtil.instance.setHeight(1.4),
     );
   }
 
   static TextStyle balanceTitleStyle() {
     return TextStyle(
-      fontSize: 15,
+      fontSize: ScreenUtil.instance.setSp(15),
       color: Colors.white,
     );
   }
@@ -46,22 +38,22 @@ class AppStyles {
   static TextStyle balanceAmountStyle(amount) {
     return TextStyle(
       fontWeight: FontWeight.bold,
-      fontSize: 20,
-      color: amount <= 0 ? Colors.red : CustomColors.green,
+      fontSize: ScreenUtil.instance.setSp(20),
+      color: amount <= 0 ? Colors.red : AppColor.green,
     );
   }
 
-  static TextStyle titleDetailStyle(ScreenUtil instance) {
+  static TextStyle titleDetailStyle() {
     return TextStyle(
-      fontSize: instance.setSp(AppDimen.labelFormDefaultSize),
+      fontSize: ScreenUtil.instance.setSp(AppDimen.labelFormDefaultSize),
       fontWeight: FontWeight.bold,
-      color: CustomColors.green,
+      color: AppColor.green,
     );
   }
 
-  static TextStyle valueDetailStyle(ScreenUtil instance, Color color) {
+  static TextStyle valueDetailStyle(Color color) {
     return TextStyle(
-      fontSize: instance.setSp(AppDimen.valueLabelSize),
+      fontSize: ScreenUtil.instance.setSp(AppDimen.valueLabelSize),
       fontWeight: FontWeight.bold,
       color: color,
     );
@@ -69,14 +61,14 @@ class AppStyles {
 
   static TextStyle formTextStyle(Color color, double fontSize) => TextStyle(
         fontFamily: 'Roboto',
-        fontSize: fontSize,
+        fontSize: ScreenUtil.instance.setSp(fontSize),
         color: color,
       );
 
   static TextStyle buttonTextStyle(Color color, double fontSize) => TextStyle(
         fontFamily: 'Roboto',
         color: color,
-        fontSize: fontSize,
+        fontSize: ScreenUtil.instance.setSp(fontSize),
         fontWeight: FontWeight.w700,
         fontStyle: FontStyle.normal,
         letterSpacing: 0.15000000596046448,

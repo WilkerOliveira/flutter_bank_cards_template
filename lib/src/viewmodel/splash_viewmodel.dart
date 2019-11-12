@@ -22,6 +22,8 @@ class SplashViewModel extends BaseViewModel {
           profilePictureURL: fireBaseUser.photoUrl ?? '',
         );
 
+        await this._loginRepository.addUser(user);
+
         this.error = false;
 
         return user;
