@@ -2,9 +2,11 @@ class AppDimen {
   static const double simpleMargin = 8.0;
   static const double defaultMargin = 16.0;
   static const double defaultFormMarginLeft = 32.0;
-  static const double labelFormDefaultSize = 16.0;
+  static const double defaultLabelFormSize = 16.0;
+  static const double defaultLabelSubTitleSize = 14.0;
   static const double valueLabelSize = 18.0;
   static const double defaultTitleSize = 18.0;
+  static const double defaultDividerHeight = 2.0;
 
   static const double extraMargin = 32.0;
   static const double loadingSize = 20.0;
@@ -20,6 +22,8 @@ class AppDimen {
 
   static const double headerPreferredSize = 100.0;
   static const double headerSize = 150.0;
+
+  static const double filterHeight = 50.0;
 
   static const double balanceMarginTop = 13.0;
   static const double balanceBodyHeight = 100.0;

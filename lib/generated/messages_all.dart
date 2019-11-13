@@ -68,6 +68,7 @@ class $pt_BR extends MessageLookupByLibrary {
 		"emailNotFound" : MessageLookupByLibrary.simpleMessage("E-mail não encontrado!"),
 		"my_cards_title" : MessageLookupByLibrary.simpleMessage("Meus Cartões"),
 		"valid_thru" : MessageLookupByLibrary.simpleMessage("VÁLIDO ATÉ"),
+		"statement_date" : MessageLookupByLibrary.simpleMessage("Data do Extrato:"),
 
   };
 }
@@ -133,6 +134,7 @@ class $en_US extends MessageLookupByLibrary {
 		"emailNotFound" : MessageLookupByLibrary.simpleMessage("Email not found!"),
 		"my_cards_title" : MessageLookupByLibrary.simpleMessage("My Cards"),
 		"valid_thru" : MessageLookupByLibrary.simpleMessage("VALID THRU"),
+		"statement_date" : MessageLookupByLibrary.simpleMessage("Statement date:"),
 
   };
 }

@@ -45,7 +45,7 @@ class AppStyles {
 
   static TextStyle titleDetailStyle() {
     return TextStyle(
-      fontSize: ScreenUtil.instance.setSp(AppDimen.labelFormDefaultSize),
+      fontSize: ScreenUtil.instance.setSp(AppDimen.defaultLabelFormSize),
       fontWeight: FontWeight.bold,
       color: AppColor.green,
     );

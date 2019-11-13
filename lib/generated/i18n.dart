@@ -246,6 +246,10 @@ class S {
     return Intl.message("VÁLIDO ATÉ", name: 'valid_thru');
   }
 
+  String get statement_date {
+    return Intl.message("Data do Extrato:", name: 'statement_date');
+  }
+
 
 }
 

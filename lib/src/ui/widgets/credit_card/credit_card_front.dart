@@ -89,14 +89,14 @@ class _CreditCardFrontState extends State<CreditCardFront> {
                         S.of(context).valid_thru,
                         style: AppStyles.formTextStyle(
                           Colors.white,
-                          AppDimen.labelFormDefaultSize,
+                          AppDimen.defaultLabelFormSize,
                         ),
                       ),
                       Text(
                         "10/26",
                         style: AppStyles.formTextStyle(
                           Colors.white,
-                          AppDimen.labelFormDefaultSize,
+                          AppDimen.defaultLabelFormSize,
                         ),
                       ),
                     ],
@@ -105,7 +105,7 @@ class _CreditCardFrontState extends State<CreditCardFront> {
                     "CARDHOLDER NAME",
                     style: AppStyles.formTextStyle(
                       Colors.white,
-                      AppDimen.labelFormDefaultSize,
+                      AppDimen.defaultLabelFormSize,
                     ),
                   ),
                 ],

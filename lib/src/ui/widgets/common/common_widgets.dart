@@ -1,9 +1,11 @@
-
 import 'package:bank_cards/src/ui/resources/app_color.dart';
+import 'package:bank_cards/src/ui/resources/app_dimen.dart';
+import 'package:bank_cards/src/ui/resources/app_styles.dart';
 import 'package:bank_cards/src/ui/resources/decorations.dart';
 import 'package:bank_cards/src/utils/constants.dart';
-import 'package:flutter/material.dart';
 import 'package:bank_cards/src/utils/converter.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CommonWidgets {
   static BoxDecoration loginBackground() {
@@ -69,7 +71,9 @@ class CommonWidgets {
 
   static Widget createInvoiceItem(statement, model) {
     return Card(
-      margin: EdgeInsets.only(top: 5),
+      margin: EdgeInsets.only(
+        top: ScreenUtil.instance.setWidth(AppDimen.defaultDividerHeight),
+      ),
       child: Container(
         decoration: Decorations.listItemDecoration(),
         child: Column(
@@ -80,17 +84,28 @@ class CommonWidgets {
                 image: AssetImage(statement.icon),
                 width: 36,
               ),
-              title: Text(statement.description),
-              subtitle: Text(statement.additionalInfo),
+              title: Text(
+                statement.description,
+                style: AppStyles.defaultTextStyle(),
+              ),
+              subtitle: Padding(
+                padding: EdgeInsets.only(top: AppDimen.simpleMargin),
+                child: Text(
+                  statement.additionalInfo,
+                  style: AppStyles.formTextStyle(
+                      Colors.white, AppDimen.defaultLabelSubTitleSize),
+                ),
+              ),
               trailing: Container(
                 alignment: Alignment.center,
                 width: 100,
                 height: 40,
                 child: Text(
-                  model.toCurrency(
-                      statement.amount, statement.type),
+                  model.toCurrency(statement.amount, statement.type),
                   style: TextStyle(
-                      color: statement.type == Constants.statementTypeDebit ? Color(0xFFB34747) : AppColor.green,
+                      color: statement.type == Constants.statementTypeDebit
+                          ? Color(0xFFB34747)
+                          : AppColor.green,
                       fontSize: 16,
                       fontWeight: FontWeight.bold),
                 ),
