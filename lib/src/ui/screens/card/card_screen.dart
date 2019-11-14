@@ -6,10 +6,10 @@ import 'package:bank_cards/src/ui/resources/app_dimen.dart';
 import 'package:bank_cards/src/ui/resources/app_styles.dart';
 import 'package:bank_cards/src/ui/resources/decorations.dart';
 import 'package:bank_cards/src/ui/screens/base/base_widget.dart';
-import 'package:bank_cards/src/ui/widgets/common/common_widgets.dart';
 import 'package:bank_cards/src/ui/widgets/credit_card/credit_card_front.dart';
 import 'package:bank_cards/src/ui/widgets/custom_circular_progress_indicator.dart';
 import 'package:bank_cards/src/ui/widgets/menu/horizontal_menu_widget.dart';
+import 'package:bank_cards/src/ui/widgets/menu/menu_item_widget.dart';
 import 'package:bank_cards/src/utils/formatter.dart';
 import 'package:bank_cards/src/viewmodel/base/base_viewmodel.dart';
 import 'package:bank_cards/src/viewmodel/card/card_viewmodel.dart';
@@ -43,7 +43,6 @@ class _CardPageState extends State<CardPage> {
 
   @override
   Widget build(BuildContext context) {
-
     Size screenSize = MediaQuery.of(context).size;
 
     return BaseWidget<CardViewModel>(
@@ -253,7 +252,10 @@ class _CardPageState extends State<CardPage> {
 //             break;
         }
       },
-      child: CommonWidgets.menuItem(img, text),
+      child: MenuItemWidget(
+        image: img,
+        text: text,
+      ),
     );
   }
 }

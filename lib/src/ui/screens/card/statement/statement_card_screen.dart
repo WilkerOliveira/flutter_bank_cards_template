@@ -5,10 +5,10 @@ import 'package:bank_cards/src/ui/resources/app_dimen.dart';
 import 'package:bank_cards/src/ui/resources/app_styles.dart';
 import 'package:bank_cards/src/ui/resources/decorations.dart';
 import 'package:bank_cards/src/ui/screens/base/base_widget.dart';
-import 'package:bank_cards/src/ui/widgets/common/common_widgets.dart';
 import 'package:bank_cards/src/ui/widgets/common/custom_appbar.dart';
 import 'package:bank_cards/src/ui/widgets/credit_card/credit_card_front.dart';
 import 'package:bank_cards/src/ui/widgets/custom_circular_progress_indicator.dart';
+import 'package:bank_cards/src/ui/widgets/list_item/statement_item_widget.dart';
 import 'package:bank_cards/src/viewmodel/base/base_viewmodel.dart';
 import 'package:bank_cards/src/viewmodel/card/statement_card_viewmodel.dart';
 import 'package:flutter/cupertino.dart';
@@ -142,8 +142,16 @@ class _StatementCardScreenState extends State<StatementCardScreen> {
                   child: new ListView.builder(
                     itemCount: _statementResponse.statement.length,
                     itemBuilder: (BuildContext ctxt, int index) {
-                      return CommonWidgets.createInvoiceItem(
-                          _statementResponse.statement[index], model);
+                      return StatementItemWidget(
+                        icon: _statementResponse.statement[index].icon,
+                        title: _statementResponse.statement[index].description,
+                        description:
+                            _statementResponse.statement[index].additionalInfo,
+                        amount: model.toCurrency(
+                            _statementResponse.statement[index].amount,
+                            _statementResponse.statement[index].type),
+                        statementType: _statementResponse.statement[index].type,
+                      );
                     },
                   ),
                 ),

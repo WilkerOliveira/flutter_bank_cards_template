@@ -1,13 +1,13 @@
-import 'package:bank_cards/src/ui/resources/decorations.dart';
-import 'package:bank_cards/src/ui/widgets/common/common_widgets.dart';
-import 'package:bank_cards/src/ui/widgets/menu/horizontal_menu_widget.dart';
-import 'package:flutter/material.dart';
-import 'package:bank_cards/src/ui/widgets/common/account_header.dart';
 import 'package:bank_cards/generated/i18n.dart';
+import 'package:bank_cards/src/ui/resources/app_color.dart';
 import 'package:bank_cards/src/ui/resources/app_dimen.dart';
 import 'package:bank_cards/src/ui/resources/app_styles.dart';
+import 'package:bank_cards/src/ui/resources/decorations.dart';
+import 'package:bank_cards/src/ui/widgets/common/account_header.dart';
+import 'package:bank_cards/src/ui/widgets/menu/horizontal_menu_widget.dart';
+import 'package:bank_cards/src/ui/widgets/menu/menu_item_widget.dart';
 import 'package:bank_cards/src/utils/formatter.dart';
-import 'package:bank_cards/src/ui/resources/app_color.dart';
+import 'package:flutter/material.dart';
 
 class BankPage extends StatefulWidget {
   @override
@@ -33,7 +33,6 @@ class _BankPageState extends State<BankPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-
     return new Container(
       decoration: BoxDecoration(
         gradient: Decorations.gradientDecoration(),
@@ -134,7 +133,10 @@ class _BankPageState extends State<BankPage> with TickerProviderStateMixin {
   Widget createNewItem(img, text, position) {
     return new GestureDetector(
       onTap: () {},
-      child: CommonWidgets.menuItem(img, text),
+      child: MenuItemWidget(
+        image: img,
+        text: text,
+      ),
     );
   }
 }

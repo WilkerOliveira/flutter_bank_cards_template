@@ -72,10 +72,19 @@ class AppDimen {
   static const double cardDetailWidth = 100.0;
 
   static const double menuCardHeight = 150.0;
+  static const double menuItemHeight = 90.0;
+  static const double menuItemWidth = 112.0;
+  static const double menuItemBorderRadius = 15.0;
+  static const double menuItemImageWidth = 48.0;
+  static const double menuItemTextSize = 12.0;
 
   static const double creditCardHeight = 126.0;
   static const double creditCardWidth = 390.0;
   static const double creditCardLogoWidth = 64.0;
   static const double creditCardLogoHeight = 64.0;
   static const double creditCardNumberSize = 22.0;
+
+  static const double listItemIconSize = 36.0;
+  static const double listItemContentWidth =  100.0;
+  static const double listItemContentHeight = 40.0;
 }

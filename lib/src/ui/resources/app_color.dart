@@ -16,4 +16,6 @@ class AppColor {
 
   static const Color creditCardFirstColor = Color(0xFFbdc3c7);
   static const Color creditCardSecondColor = Color(0xFF2c3e50);
+
+  static const Color debitColor = Color(0xFFB34747);
 }
