@@ -100,7 +100,8 @@ class _StatementCardScreenState extends State<StatementCardScreen> {
                                   .setWidth(AppDimen.simpleMargin),
                             ),
                             child: Text(
-                              (model.state != ViewState.Busy
+                              (model.state != ViewState.Busy &&
+                                      _statementResponse != null
                                   ? _statementResponse.filterMonth
                                   : " - "),
                               style: AppStyles.defaultTextStyle()
@@ -156,7 +157,10 @@ class _StatementCardScreenState extends State<StatementCardScreen> {
                   ),
                 ),
               )
-            : Text("Nothing to show!!!")
+            : Text(
+                "Nothing to show!!!",
+                style: AppStyles.defaultTextStyle(),
+              )
         : CustomCircularProgressIndicator();
   }
 }

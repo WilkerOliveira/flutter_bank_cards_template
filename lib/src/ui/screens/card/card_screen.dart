@@ -137,14 +137,11 @@ class _CardPageState extends State<CardPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                SizedBox(
-                  width: ScreenUtil.instance.setWidth(AppDimen.cardDetailWidth),
-                  child: Padding(
-                    padding: EdgeInsets.all(AppDimen.paddingCardDetail),
-                    child: Text(
-                      S.of(context).due_date,
-                      style: AppStyles.titleDetailStyle(),
-                    ),
+                Padding(
+                  padding: EdgeInsets.all(AppDimen.paddingCardDetail),
+                  child: Text(
+                    S.of(context).due_date,
+                    style: AppStyles.titleDetailStyle(),
                   ),
                 ),
                 Padding(
@@ -165,14 +162,11 @@ class _CardPageState extends State<CardPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                SizedBox(
-                  width: ScreenUtil.instance.setWidth(AppDimen.cardDetailWidth),
-                  child: Padding(
-                    padding: EdgeInsets.all(AppDimen.paddingCardDetail),
-                    child: Text(
-                      S.of(context).limit,
-                      style: AppStyles.titleDetailStyle(),
-                    ),
+                Padding(
+                  padding: EdgeInsets.all(AppDimen.paddingCardDetail),
+                  child: Text(
+                    S.of(context).limit,
+                    style: AppStyles.titleDetailStyle(),
                   ),
                 ),
                 Padding(
@@ -196,14 +190,11 @@ class _CardPageState extends State<CardPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                SizedBox(
-                  width: ScreenUtil.instance.setWidth(AppDimen.cardDetailWidth),
-                  child: Padding(
-                    padding: EdgeInsets.all(AppDimen.paddingCardDetail),
-                    child: Text(
-                      S.of(context).available,
-                      style: AppStyles.titleDetailStyle(),
-                    ),
+                Padding(
+                  padding: EdgeInsets.all(AppDimen.paddingCardDetail),
+                  child: Text(
+                    S.of(context).available,
+                    style: AppStyles.titleDetailStyle(),
                   ),
                 ),
                 Padding(

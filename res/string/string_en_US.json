@@ -54,5 +54,7 @@
   "emailNotFound": "Email not found!",
   "my_cards_title": "My Cards",
   "valid_thru": "VALID THRU",
-  "statement_date": "Statement date:"
+  "statement_date": "Statement date:",
+  "bank": "Bank",
+  "agency": "Agency"
 }

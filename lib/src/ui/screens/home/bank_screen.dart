@@ -8,6 +8,7 @@ import 'package:bank_cards/src/ui/widgets/menu/horizontal_menu_widget.dart';
 import 'package:bank_cards/src/ui/widgets/menu/menu_item_widget.dart';
 import 'package:bank_cards/src/utils/formatter.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BankPage extends StatefulWidget {
   @override
@@ -33,7 +34,7 @@ class _BankPageState extends State<BankPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return new Container(
+    return Container(
       decoration: BoxDecoration(
         gradient: Decorations.gradientDecoration(),
       ),
@@ -43,6 +44,15 @@ class _BankPageState extends State<BankPage> with TickerProviderStateMixin {
         children: <Widget>[
           AccountHeader(),
           this.balance(context),
+          Container(
+            width: ScreenUtil.instance.setWidth(300),
+            padding: EdgeInsets.all(
+              ScreenUtil.instance.setWidth(AppDimen.simpleMargin),
+            ),
+            child: Divider(
+              color: Colors.black,
+            ),
+          ),
           SingleChildScrollView(
             child: HorizontalMenuWidget(
               menuItems: this._menuItems,
@@ -55,76 +65,117 @@ class _BankPageState extends State<BankPage> with TickerProviderStateMixin {
   }
 
   Widget balance(mainContext) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    return Column(
       children: <Widget>[
         Container(
-          decoration: Decorations.balanceDecoration(),
-          padding: EdgeInsets.only(top: AppDimen.balanceMarginTop),
-          height: AppDimen.balanceBodyHeight,
-          width: AppDimen.balanceBodyWidth,
-          child: Padding(
-            padding: EdgeInsets.fromLTRB(
-              AppDimen.balanceBodyLeftPadding,
-              AppDimen.balanceBodyTopPadding,
-              AppDimen.balanceBodyRightPadding,
-              AppDimen.balanceBodyBottomPadding,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  S.of(context).current_balance,
-                  textAlign: TextAlign.start,
-                  style: AppStyles.balanceTitleStyle(),
+          margin: EdgeInsets.all(
+              ScreenUtil.instance.setWidth(AppDimen.defaultMargin)),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(
+                  right: ScreenUtil.instance.setWidth(AppDimen.defaultMargin),
                 ),
-                SizedBox(width: AppDimen.balanceSizedBox),
-                Padding(
-                  padding:
-                      EdgeInsets.only(top: AppDimen.balanceAmountTopPadding),
-                  child: Text(
-                    Formatter.moneyFormatter(-400),
-                    textAlign: TextAlign.start,
-                    style: AppStyles.balanceAmountStyle(-400),
-                  ),
-                )
-              ],
-            ),
+                child: Text(
+                  S.of(context).current_balance,
+                  style: TextStyle(fontSize: 14, color: Colors.white),
+                ),
+              ),
+              Text(
+                "\$ 100,987.00",
+                style: TextStyle(fontSize: 32, color: Colors.white),
+              ),
+            ],
           ),
         ),
         Container(
-          decoration: Decorations.balanceDecoration(),
-          padding: EdgeInsets.only(top: AppDimen.balanceMarginTop),
-          height: AppDimen.balanceBodyHeight,
-          width: AppDimen.balanceBodyWidth,
-          child: Padding(
-            padding: EdgeInsets.fromLTRB(
-              AppDimen.balanceBodyLeftPadding,
-              AppDimen.balanceBodyTopPadding,
-              AppDimen.balanceBodyRightPadding,
-              AppDimen.balanceBodyBottomPadding,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  S.of(context).investments,
-                  textAlign: TextAlign.start,
-                  style: AppStyles.balanceTitleStyle(),
-                ),
-                SizedBox(width: AppDimen.balanceSizedBox),
-                Padding(
-                  padding:
-                      EdgeInsets.only(top: AppDimen.balanceAmountTopPadding),
-                  child: Text(
-                    Formatter.moneyFormatter(300),
-                    textAlign: TextAlign.start,
-                    style: AppStyles.balanceAmountStyle(300),
-                  ),
-                )
-              ],
-            ),
+          width: ScreenUtil.instance.setWidth(300),
+          padding: EdgeInsets.all(
+            ScreenUtil.instance.setWidth(AppDimen.simpleMargin),
           ),
+          child: Divider(
+            color: Colors.black,
+          ),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            Container(
+              decoration: Decorations.balanceDecoration(),
+              padding: EdgeInsets.only(
+                top: ScreenUtil.instance.setWidth(AppDimen.balanceMarginTop),
+              ),
+              height: ScreenUtil.instance.setHeight(AppDimen.balanceBodyHeight),
+              width: ScreenUtil.instance.setWidth(AppDimen.balanceBodyWidth),
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(
+                  ScreenUtil.instance.setWidth(AppDimen.balanceBodyLeftPadding),
+                  ScreenUtil.instance.setWidth(AppDimen.balanceBodyTopPadding),
+                  ScreenUtil.instance
+                      .setWidth(AppDimen.balanceBodyRightPadding),
+                  ScreenUtil.instance
+                      .setWidth(AppDimen.balanceBodyBottomPadding),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      "Today",
+                      textAlign: TextAlign.start,
+                      style: AppStyles.balanceTitleStyle(),
+                    ),
+                    SizedBox(width: ScreenUtil.instance.setWidth(AppDimen.balanceSizedBox),),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          top: ScreenUtil.instance.setWidth(AppDimen.balanceAmountTopPadding),),
+                      child: Text(
+                        Formatter.moneyFormatter(-400),
+                        textAlign: TextAlign.start,
+                        style: AppStyles.balanceAmountStyle(-400),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+            Container(
+              decoration: Decorations.balanceDecoration(),
+              padding: EdgeInsets.only(top: ScreenUtil.instance.setWidth(AppDimen.balanceMarginTop),),
+              height: ScreenUtil.instance.setHeight(AppDimen.balanceBodyHeight),
+              width: ScreenUtil.instance.setWidth(AppDimen.balanceBodyWidth),
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(
+                  ScreenUtil.instance.setWidth(AppDimen.balanceBodyLeftPadding),
+                  ScreenUtil.instance.setWidth(AppDimen.balanceBodyTopPadding),
+                  ScreenUtil.instance
+                      .setWidth(AppDimen.balanceBodyRightPadding),
+                  ScreenUtil.instance
+                      .setWidth(AppDimen.balanceBodyBottomPadding),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      S.of(context).investments,
+                      textAlign: TextAlign.start,
+                      style: AppStyles.balanceTitleStyle(),
+                    ),
+                    SizedBox(width: AppDimen.balanceSizedBox),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          top: AppDimen.balanceAmountTopPadding),
+                      child: Text(
+                        Formatter.moneyFormatter(300),
+                        textAlign: TextAlign.start,
+                        style: AppStyles.balanceAmountStyle(300),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
       ],
     );

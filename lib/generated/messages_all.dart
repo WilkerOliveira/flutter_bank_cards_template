@@ -69,6 +69,8 @@ class $pt_BR extends MessageLookupByLibrary {
 		"my_cards_title" : MessageLookupByLibrary.simpleMessage("Meus Cartões"),
 		"valid_thru" : MessageLookupByLibrary.simpleMessage("VÁLIDO ATÉ"),
 		"statement_date" : MessageLookupByLibrary.simpleMessage("Data do Extrato:"),
+		"bank" : MessageLookupByLibrary.simpleMessage("Banco"),
+		"agency" : MessageLookupByLibrary.simpleMessage("Agência"),
 
   };
 }
@@ -135,6 +137,8 @@ class $en_US extends MessageLookupByLibrary {
 		"my_cards_title" : MessageLookupByLibrary.simpleMessage("My Cards"),
 		"valid_thru" : MessageLookupByLibrary.simpleMessage("VALID THRU"),
 		"statement_date" : MessageLookupByLibrary.simpleMessage("Statement date:"),
+		"bank" : MessageLookupByLibrary.simpleMessage("Bank"),
+		"agency" : MessageLookupByLibrary.simpleMessage("Agency"),
 
   };
 }

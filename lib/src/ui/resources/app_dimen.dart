@@ -35,7 +35,7 @@ class AppDimen {
   static const double balanceSizedBox = 10.0;
   static const double balanceAmountTopPadding = 10.0;
 
-  static const double cardsHeight = 230.0;
+  static const double cardsHeight = 250.0;
   static const double cardsWidth = 80.0;
   static const double marginCardDetail = 20.0;
   static const double paddingCardDetail = 8.0;
@@ -87,4 +87,9 @@ class AppDimen {
   static const double listItemIconSize = 36.0;
   static const double listItemContentWidth =  100.0;
   static const double listItemContentHeight = 40.0;
+
+  static const double bankAccountHeaderWidth = 330.0;
+  static const double bankAccountHeaderHeight = 40.0;
+  static const double bankAccountLabelSize = 14.0;
+  static const double bankAccountValueSize = 16.0;
 }

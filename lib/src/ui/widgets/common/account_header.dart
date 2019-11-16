@@ -1,93 +1,113 @@
+import 'package:bank_cards/generated/i18n.dart';
 import 'package:bank_cards/src/ui/resources/app_color.dart';
 import 'package:bank_cards/src/ui/resources/app_dimen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AccountHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(AppDimen.marginAccountHeader),
+      margin: EdgeInsets.only(
+        left: ScreenUtil.instance.setWidth(AppDimen.marginAccountHeader),
+        top: ScreenUtil.instance.setWidth(AppDimen.marginAccountHeader),
+        bottom: ScreenUtil.instance.setWidth(AppDimen.marginAccountHeader),
+      ),
       width: MediaQuery.of(context).size.width,
+      height: ScreenUtil.instance.setHeight(AppDimen.bankAccountHeaderHeight),
+      decoration: BoxDecoration(
+          color: AppColor.topHead,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(15),
+            bottomLeft: Radius.circular(15),
+          )),
       child: Center(
-        child: Stack(
-          children: <Widget>[
-            Container(
-              decoration: new BoxDecoration(
-                //color: CustomColors.GREEN,
-                borderRadius: new BorderRadius.only(
-                  bottomLeft: const Radius.circular(10.0),
-                  bottomRight: const Radius.circular(10.0),
-                  topLeft: const Radius.circular(10.0),
-                  topRight: const Radius.circular(10.0),
-                ),
+        child: Container(
+          decoration: new BoxDecoration(
+            //color: CustomColors.GREEN,
+            borderRadius: new BorderRadius.only(
+              bottomLeft: Radius.circular(
+                ScreenUtil.instance.setWidth(AppDimen.simpleMargin),
               ),
-              width: 330.0,
-              height: 40.0,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-
-                   Text(
-                      'BANK: ',
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                      ),
-                    ),
-                  Text(
-                    "999",
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                    ),
-                  ),
-
-
-                 Text(
-                      'AGCY: ',
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                      ),
-                    ),
-
-                  Text(
-                    '3892',
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                    ),
-                  ),
-
-                  Text(
-                    'ACCT: ',
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                    ),
-                  ),
-                  Text(
-                    '9837-0',
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                    ),
-                  ),
-
-                 Icon(Icons.content_copy, size: 20,),
-                ],
+              bottomRight: Radius.circular(
+                ScreenUtil.instance.setWidth(AppDimen.simpleMargin),
+              ),
+              topLeft: Radius.circular(
+                ScreenUtil.instance.setWidth(AppDimen.simpleMargin),
+              ),
+              topRight: Radius.circular(
+                ScreenUtil.instance.setWidth(AppDimen.simpleMargin),
               ),
             ),
-          ],
+          ),
+          width: ScreenUtil.instance.setWidth(AppDimen.bankAccountHeaderWidth),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Text(
+                S.of(context).bank.toUpperCase(),
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize:
+                      ScreenUtil.instance.setSp(AppDimen.bankAccountLabelSize),
+                ),
+              ),
+              Text(
+                "999",
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize:
+                      ScreenUtil.instance.setSp(AppDimen.bankAccountValueSize),
+                ),
+              ),
+              Text(
+                S.of(context).agency.toUpperCase(),
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize:
+                      ScreenUtil.instance.setSp(AppDimen.bankAccountLabelSize),
+                ),
+              ),
+              Text(
+                '3892',
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize:
+                      ScreenUtil.instance.setSp(AppDimen.bankAccountValueSize),
+                ),
+              ),
+              Text(
+                S.of(context).account.toUpperCase(),
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize:
+                      ScreenUtil.instance.setSp(AppDimen.bankAccountLabelSize),
+                ),
+              ),
+              Text(
+                '9837-0',
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize:
+                      ScreenUtil.instance.setSp(AppDimen.bankAccountValueSize),
+                ),
+              ),
+              Icon(
+                Icons.content_copy,
+                size: 20,
+                color: Colors.white,
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -250,6 +250,14 @@ class S {
     return Intl.message("Data do Extrato:", name: 'statement_date');
   }
 
+  String get bank {
+    return Intl.message("Banco", name: 'bank');
+  }
+
+  String get agency {
+    return Intl.message("Agência", name: 'agency');
+  }
+
 
 }
 
