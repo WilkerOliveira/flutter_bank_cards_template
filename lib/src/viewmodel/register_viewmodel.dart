@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bank_cards/src/exceptions/custom_exception.dart';
 import 'package:bank_cards/src/models/user.dart';
 import 'package:bank_cards/src/repository/login/login_repository.dart';
@@ -8,18 +10,19 @@ class RegisterViewModel extends BaseViewModel {
 
   RegisterViewModel() {
     this._loginRepository = LoginRepository();
+    super.viewStateController = StreamController();
+    super.setStateStream(ViewState.Idle);
   }
 
   Future<User> registerNewUser(User newUser) async {
-
-    setState(ViewState.Busy);
+    setStateStream(ViewState.Busy);
 
     try {
-
       super.error = false;
       super.customErrorMessage = null;
 
-      String uID = await _loginRepository.signUp(newUser.email, newUser.password, newUser.nickName);
+      String uID = await _loginRepository.signUp(
+          newUser.email, newUser.password, newUser.nickName);
 
       newUser.userID = uID;
 
@@ -34,8 +37,14 @@ class RegisterViewModel extends BaseViewModel {
       super.error = true;
       super.customErrorMessage = null;
       return null;
-    }finally{
-      setState(ViewState.Idle);
+    } finally {
+      setStateStream(ViewState.Idle);
     }
+  }
+
+  @override
+  void dispose() {
+    super.viewStateController.close();
+    super.dispose();
   }
 }

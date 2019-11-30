@@ -17,6 +17,7 @@ Some items that should be implemented soon:
 - [flutter_svg](https://pub.dev/packages/flutter_svg)
 - [flutter_swiper](https://pub.dev/packages/flutter_swiper)
 - [brasil_fields](https://pub.dev/packages/brasil_fields)
+- [Flutter Provider v3 Architecture](https://medium.com/flutter-community/flutter-provider-v3-architecture-using-proxyprovider-for-injection-62cf5c58ea52)
 
 
 #### Extra infos

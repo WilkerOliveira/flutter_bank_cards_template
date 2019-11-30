@@ -1,10 +1,9 @@
 import 'package:bank_cards/generated/i18n.dart';
 import 'package:bank_cards/src/models/user.dart';
 import 'package:bank_cards/src/ui/resources/app_color.dart';
-import 'package:bank_cards/src/ui/resources/decorations.dart';
 import 'package:bank_cards/src/ui/resources/app_dimen.dart';
 import 'package:bank_cards/src/ui/resources/app_styles.dart';
-import 'package:bank_cards/src/ui/screens/base/base_widget.dart';
+import 'package:bank_cards/src/ui/resources/decorations.dart';
 import 'package:bank_cards/src/ui/utility/screen_utility.dart';
 import 'package:bank_cards/src/ui/validation/common_form_validation.dart';
 import 'package:bank_cards/src/ui/validation/register_form_validation.dart';
@@ -15,6 +14,7 @@ import 'package:bank_cards/src/viewmodel/base/base_viewmodel.dart';
 import 'package:bank_cards/src/viewmodel/register_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 class RegisterScreen extends StatefulWidget {
   @override
@@ -26,6 +26,7 @@ class _RegisterScreenState extends State<RegisterScreen>
   final _formKey = GlobalKey<FormState>();
   var passKey = GlobalKey<FormFieldState>();
   User newUser = User();
+  final RegisterViewModel model = RegisterViewModel();
 
   FocusNode _nameFocus;
   FocusNode _nicknameFocus;
@@ -83,34 +84,38 @@ class _RegisterScreenState extends State<RegisterScreen>
   }
 
   Widget _body() {
-    return BaseWidget<RegisterViewModel>(
-      model: RegisterViewModel(),
-      onModelReady: (model) async {},
-      builder: (mainContext, model, child) => Container(
-        margin: EdgeInsets.only(
-          left: ScreenUtil.instance.setWidth(AppDimen.defaultMargin),
-          right: ScreenUtil.instance.setWidth(AppDimen.defaultMargin),
-        ),
-        color: AppColor.darkBlue,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            registerForm(model),
-            model.state == ViewState.Busy
-                ? CustomCircularProgressIndicator()
-                : submitButton(model),
-            SizedBox(
-              height: ScreenUtil.instance.setHeight(
-                AppDimen.sizedBoxSpace,
-              ),
+    return Container(
+      margin: EdgeInsets.only(
+        left: ScreenUtil.instance.setWidth(AppDimen.defaultMargin),
+        right: ScreenUtil.instance.setWidth(AppDimen.defaultMargin),
+      ),
+      color: AppColor.darkBlue,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          registerForm(),
+          StreamProvider<ViewState>.value(
+            updateShouldNotify: (p, n) => true,
+            value: model.viewStateStream,
+            initialData: ViewState.Idle,
+            child: Consumer<ViewState>(
+              builder: (context, viewState, widget) =>
+                  viewState == ViewState.Busy
+                      ? CustomCircularProgressIndicator()
+                      : submitButton(),
             ),
-          ],
-        ),
+          ),
+          SizedBox(
+            height: ScreenUtil.instance.setHeight(
+              AppDimen.sizedBoxSpace,
+            ),
+          ),
+        ],
       ),
     );
   }
 
-  Widget submitButton(RegisterViewModel model) {
+  Widget submitButton() {
     return Material(
       elevation: ScreenUtil.instance.setWidth(5.0),
       borderRadius: BorderRadius.circular(
@@ -126,7 +131,7 @@ class _RegisterScreenState extends State<RegisterScreen>
           ScreenUtil.instance.setWidth(20.0),
         ),
         onPressed: () async {
-          _doRegister(model);
+          _doRegister();
         },
         child: Text(
           S.of(context).btn_register,
@@ -139,7 +144,7 @@ class _RegisterScreenState extends State<RegisterScreen>
     );
   }
 
-  void _doRegister(RegisterViewModel model) async {
+  void _doRegister() async {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
 
@@ -159,9 +164,9 @@ class _RegisterScreenState extends State<RegisterScreen>
     }
   }
 
-  Widget registerForm(RegisterViewModel model) {
-    TextStyle style = AppStyles.formTextStyle(AppColor.darkBlue,
-        ScreenUtil.instance.setSp(AppDimen.formTextSize));
+  Widget registerForm() {
+    TextStyle style = AppStyles.formTextStyle(
+        AppColor.darkBlue, ScreenUtil.instance.setSp(AppDimen.formTextSize));
 
     final nameField = TextFormField(
       obscureText: false,
@@ -251,7 +256,7 @@ class _RegisterScreenState extends State<RegisterScreen>
       textInputAction: TextInputAction.done,
       focusNode: _confPassword,
       onFieldSubmitted: (term) {
-        _doRegister(model);
+        _doRegister();
       },
     );
 

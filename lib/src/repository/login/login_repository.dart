@@ -13,7 +13,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 class LoginRepository extends BaseRepository {
   LoginRepository();
 
-  StreamController<User> _loginController = StreamController<User>();
+  StreamController<User> _loginController = StreamController<User>.broadcast();
 
   Stream<User> get currentUser => _loginController.stream;
 
@@ -100,7 +100,7 @@ class LoginRepository extends BaseRepository {
 
   Future<void> addUser(user) async {
 
-    this._loginController.add(user);
+    this._loginController.sink.add(user);
 
     bool userExist = await LoginService.checkUserExist(user.userID);
 

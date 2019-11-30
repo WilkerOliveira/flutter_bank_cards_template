@@ -1,3 +1,11 @@
+/*
+
+This class was based on the Flutter Provider v3 Architecture using ProxyProvider for Injection
+
+https://medium.com/flutter-community/flutter-provider-v3-architecture-using-proxyprovider-for-injection-62cf5c58ea52
+
+ */
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

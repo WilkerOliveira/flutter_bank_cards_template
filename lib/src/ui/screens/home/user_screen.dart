@@ -35,7 +35,7 @@ class _UserPageState extends State<UserPage> {
                 height: 100.0,
                 width: MediaQuery.of(context).size.width,
                 child: Text(
-                  'User Name: ' + Provider.of<User>(context).firstName,
+                  'User Name: ' + Provider.of<User>(context).email,
                   textAlign: TextAlign.left,
                 ),
               ),
