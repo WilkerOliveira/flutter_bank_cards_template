@@ -15,37 +15,38 @@ import 'package:bank_cards/src/repository/card/service/statement/statement_card_
 import 'package:bank_cards/src/repository/card/statement_card_repository.dart';
 import 'package:bank_cards/src/repository/login/login_repository.dart';
 import 'package:provider/provider.dart';
+import 'package:provider/single_child_widget.dart';
 
-List<SingleChildCloneableWidget> providers = [
+List<SingleChildWidget> providers = [
   ...independentServices,
   ...dependentServices,
   ...uiConsumableProviders
 ];
 
-List<SingleChildCloneableWidget> independentServices = [
+List<SingleChildWidget> independentServices = [
   Provider.value(value: CardService()),
   Provider.value(value: StatementCardService()),
   Provider.value(value: InvoiceService()),
   Provider.value(value: LoginRepository()),
 ];
 
-List<SingleChildCloneableWidget> dependentServices = [
+List<SingleChildWidget> dependentServices = [
   ProxyProvider<CardService, CardRepository>(
-    builder: (context, service, repository) => CardRepository(service: service),
+    update: (context, service, repository) => CardRepository(service: service),
   ),
   ProxyProvider<StatementCardService, StatementCardRepository>(
-    builder: (context, service, repository) =>
+    update: (context, service, repository) =>
         StatementCardRepository(service: service),
   ),
   ProxyProvider<InvoiceService, InvoiceCardRepository>(
-    builder: (context, service, repository) =>
+    update: (context, service, repository) =>
         InvoiceCardRepository(service: service),
   )
 ];
 
-List<SingleChildCloneableWidget> uiConsumableProviders = [
+List<SingleChildWidget> uiConsumableProviders = [
   StreamProvider<User>(
-    builder: (context) =>
+    create: (context) =>
         Provider.of<LoginRepository>(context, listen: false).currentUser,
   ),
 ];
