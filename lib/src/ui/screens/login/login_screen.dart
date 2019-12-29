@@ -6,7 +6,6 @@ import 'package:bank_cards/src/ui/resources/app_images.dart';
 import 'package:bank_cards/src/ui/resources/app_styles.dart';
 import 'package:bank_cards/src/ui/resources/app_color.dart';
 import 'package:bank_cards/src/ui/resources/decorations.dart';
-import 'package:bank_cards/src/ui/screens/base/base_widget.dart';
 import 'package:bank_cards/src/ui/utility/screen_utility.dart';
 import 'package:bank_cards/src/ui/validation/common_form_validation.dart';
 import 'package:bank_cards/src/ui/validation/register_form_validation.dart';
@@ -27,6 +26,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen>
     with CommonFormValidation, RegisterFormValidation {
   final _formKey = GlobalKey<FormState>();
+  LoginViewModel model;
 
   FocusNode _emailFocus;
   FocusNode _password;
@@ -57,6 +57,7 @@ class _LoginScreenState extends State<LoginScreen>
   @override
   Widget build(BuildContext context) {
     this._size = MediaQuery.of(context).size;
+    this.model = Provider.of<LoginViewModel>(context);
 
     return Scaffold(
       body: Container(
@@ -78,14 +79,11 @@ class _LoginScreenState extends State<LoginScreen>
   }
 
   Widget _body() {
-    return BaseWidget<LoginViewModel>(
-      model: LoginViewModel(Provider.of(context)),
-      onModelReady: (model) async {},
-      builder: (mainContext, model, child) => Container(
+    return Container(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            loginForm(model),
+            loginForm(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
@@ -177,7 +175,6 @@ class _LoginScreenState extends State<LoginScreen>
             ),
           ],
         ),
-      ),
     );
   }
 
@@ -194,7 +191,9 @@ class _LoginScreenState extends State<LoginScreen>
     }
   }
 
-  Widget loginForm(LoginViewModel model) {
+  Widget loginForm() {
+    var model = Provider.of<LoginViewModel>(context);
+
     TextStyle style = AppStyles.formTextStyle(AppColor.darkBlue,
         ScreenUtil.instance.setSp(AppDimen.formTextSize));
 
@@ -296,12 +295,15 @@ class _LoginScreenState extends State<LoginScreen>
             SizedBox(
               height: ScreenUtil.instance.setHeight(AppDimen.extraMargin),
             ),
-            model.state == ViewState.Busy
-                ? SpinKitThreeBounce(
-                    color: Colors.white,
-                    size: ScreenUtil.instance.setWidth(AppDimen.loadingSize),
-                  )
-                : loginButton,
+            Selector<LoginViewModel, ViewState>(
+                builder: (context, value, child) => value == ViewState.Busy
+                    ? SpinKitThreeBounce(
+                  color: Colors.white,
+                  size: ScreenUtil.instance.setWidth(AppDimen.loadingSize),
+                )
+                    : loginButton,
+              selector: (buildContext, model) => model.state,
+            ),
             SizedBox(
               height: ScreenUtil.instance.setHeight(AppDimen.extraMargin),
             ),
