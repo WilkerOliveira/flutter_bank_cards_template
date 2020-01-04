@@ -7,6 +7,8 @@
 
 This is a template of mobile bank under development and migrating from a private server to Cloud Firestore.
 
+In this model, I am using Consumer, Selector and StreamProvider just to show how easy they are to use.
+
 Some items that should be implemented soon:
 
     - Exceptions
