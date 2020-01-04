@@ -77,6 +77,7 @@ class AppDimen {
   static const double menuItemBorderRadius = 15.0;
   static const double menuItemImageWidth = 48.0;
   static const double menuItemTextSize = 12.0;
+  static const double menuItemPadding = 4.0;
 
   static const double creditCardHeight = 126.0;
   static const double creditCardWidth = 390.0;

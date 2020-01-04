@@ -58,6 +58,18 @@ class S {
     return Intl.message("Extrato", name: 'statement');
   }
 
+  String get payments {
+    return Intl.message("Pagamentos", name: 'payments');
+  }
+
+  String get invoices {
+    return Intl.message("Faturas", name: 'invoices');
+  }
+
+  String get more {
+    return Intl.message("Mais", name: 'more');
+  }
+
   String get app_name {
     return Intl.message("Mobile Bank", name: 'app_name');
   }

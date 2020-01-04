@@ -14,7 +14,7 @@ class MenuItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.all(
-        ScreenUtil.instance.setWidth(AppDimen.simpleMargin),
+        ScreenUtil.instance.setWidth(AppDimen.menuItemPadding),
       ),
       height: ScreenUtil.instance.setHeight(AppDimen.menuItemHeight),
       width: ScreenUtil.instance.setWidth(AppDimen.menuItemWidth),

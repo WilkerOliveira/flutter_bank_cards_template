@@ -8,6 +8,7 @@ import 'package:bank_cards/src/repository/card/statement_card_repository.dart';
 import 'package:bank_cards/src/repository/login/login_repository.dart';
 import 'package:bank_cards/src/ui/resources/app_styles.dart';
 import 'package:bank_cards/src/ui/screens/splash_screen.dart';
+import 'package:bank_cards/src/viewmodel/card/card_viewmodel.dart';
 import 'package:bank_cards/src/viewmodel/login_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -47,8 +48,13 @@ class App extends StatelessWidget {
               Provider.of<LoginRepository>(context, listen: false).currentUser,
         ),
         ChangeNotifierProvider(
-          create: (context) => LoginViewModel(Provider.of(context, listen: false)),
-        )
+          create: (context) =>
+              LoginViewModel(Provider.of(context, listen: false)),
+        ),
+        ChangeNotifierProvider(
+          create: (context) =>
+              CardViewModel(repository: Provider.of(context, listen: false)),
+        ),
       ],
       child: MaterialApp(
         localizationsDelegates: [
