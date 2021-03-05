@@ -1,6 +1,6 @@
 # Mobile Bank Template
 
-# ************* This project is no longer being developed. A new version, with new standards is being developed *****************
+# ******** This project is no longer being developed. A new version, with new standards is being developed ********
 
 |  <img src='http://wilkeroliveira.cloudapp.net/mwmobile/bank-cards-01.png' width="30%" /> |  <img src='http://wilkeroliveira.cloudapp.net/mwmobile/bank-cards-02.png' width="30%" /> |  <img src='http://wilkeroliveira.cloudapp.net/mwmobile/bank-cards-03.png' width="30%" /> |  <img src='http://wilkeroliveira.cloudapp.net/mwmobile/bank-cards-04.png' width="30%" /> |
 | :------------: | :------------: | :------------: | :------------: |
